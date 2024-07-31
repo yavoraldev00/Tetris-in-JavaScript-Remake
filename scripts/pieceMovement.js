@@ -95,9 +95,12 @@ const movePiece = (movementDirection) => {
             }
         })
 
-        if(breakFlag){ // if collision is detected, stops function
-            // SET PIECE ON BOARD
-            debugger;
+        if(breakFlag){ // If collision is detected, places piece on the board and generates new one
+            // Sets the piece on the board
+            setPiece();
+
+            // Generates and places a new piece on the board
+            generatePiece();
             return
         }
 

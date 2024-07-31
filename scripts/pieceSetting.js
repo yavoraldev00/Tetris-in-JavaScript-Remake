@@ -107,6 +107,22 @@ const placePiece = (piece) => {
     })
 }
 
+// Generates new piece
+const generatePiece = () => {
+    chosenPiece = tetrisPieces[pieceNames[0]]["coordinates"];
+    placePiece(chosenPiece);
+}
+
+// Sets current piece on the board
+const setPiece = () => {
+    var currentPieces = document.querySelectorAll(".current-piece")
+
+    currentPieces.forEach((piece) => { // replaces the "current-piece" class with the "piece" class
+        piece.classList.remove("current-piece")
+        piece.classList.add("piece")
+    })
+}
+
 
 // Randomly chosen Tetronimo
 var chosenPiece = tetrisPieces[pieceNames[0]]["coordinates"];
