@@ -121,6 +121,8 @@ const setPiece = () => {
         piece.classList.remove("current-piece")
         piece.classList.add("piece")
     })
+
+    curRotation = 0;
 }
 
 
