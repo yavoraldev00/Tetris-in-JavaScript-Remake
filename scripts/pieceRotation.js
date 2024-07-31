@@ -123,40 +123,36 @@ const setPiece = (piece) => {
     })
 }
 
-// Rotates piece RIGHT by ADDING current rotation values, updates current rotation + 1
-const rotatePieceRight = () => {
+// Function used to rotate pieces RIGHT and LEFT
+const rotatePiece = (rotationDirection) => { // Rotates piece RIGHT by ADDING current rotation values, updates current rotation + 1
     // Removes piece
     removePiece();
 
-    // do rotation
-    const rotatedPiece = chosenPiece.map((piece, index) => {
-        return piece += tetrisPieces['i_shape']['rotations'][curRotation][index];
-    })
+    if(rotationDirection == "x"){
+        // Rotates right
+        const rotatedPiece = chosenPiece.map((piece, index) => {
+            return piece += tetrisPieces['i_shape']['rotations'][curRotation][index];
+        })
 
-    chosenPiece = rotatedPiece
+        // Sets original piece to rotation piece
+        chosenPiece = rotatedPiece;
+    
+        // Updates current rotation
+        (curRotation == 3) ? curRotation = 0 : curRotation += 1;
 
-    // Sets piece
-    setPiece(chosenPiece);
+    }else if(rotationDirection == "z"){ // Rotates piece LEFT by SUBTRACTING current rotation values, updates current rotation - 1
+        // Updates current rotation
+        (curRotation == 0) ? curRotation = 3 : curRotation -= 1;
 
-    // Updates current rotation
-    (curRotation == 3) ? curRotation = 0 : curRotation += 1;
-};
+        // do rotation
+        const rotatedPiece = chosenPiece.map((piece, index) => {
+            return piece += (tetrisPieces['i_shape']['rotations'][curRotation][index] *-1);
+        })
 
-// Rotates piece LEFT by SUBTRACTING current rotation values, updates current rotation - 1
-const rotatePieceLeft = () => {
-    // Removes piece
-    removePiece();
-
-    // Updates current rotation
-    (curRotation == 0) ? curRotation = 3 : curRotation -= 1;
-
-    // do rotation
-    const rotatedPiece = chosenPiece.map((piece, index) => {
-        return piece -= tetrisPieces['i_shape']['rotations'][curRotation][index];
-    })
-
-    chosenPiece = rotatedPiece
-
+        // Sets original piece to rotation piece
+        chosenPiece = rotatedPiece;
+    }
+    
     // Sets piece
     setPiece(chosenPiece);
 };
@@ -164,11 +160,8 @@ const rotatePieceLeft = () => {
 document.addEventListener("keydown", (e)=> {
     const pressedKey = e.key;
 
-    if(pressedKey == "x"){
-        rotatePieceRight()
-    }
-    if(pressedKey == "z"){
-        rotatePieceLeft()
+    if(pressedKey == "x" || pressedKey == "z"){
+        rotatePiece(pressedKey)
     }
 
     console.log(curRotation)
