@@ -99,7 +99,7 @@ const removePiece = () => {
 }
 
 // Sets current piece on board
-const setPiece = (piece) => {
+const placePiece = (piece) => {
     piece.forEach((pieceCell) => {
         const cell = document.querySelector(`[data-cell-number="${pieceCell}"]`);
 
@@ -115,7 +115,7 @@ var chosenPiece = tetrisPieces[pieceNames[0]]["coordinates"];
 var curRotation = 0;
 
 // Sets piece on board
-setPiece(chosenPiece)
+placePiece(chosenPiece)
 
 // Detects pressed key
 document.addEventListener("keydown", (e)=> {
@@ -123,7 +123,7 @@ document.addEventListener("keydown", (e)=> {
 
     if(pressedKey == "x" || pressedKey == "z"){
         rotatePiece(pressedKey)
-    }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft"){
+    }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft" || pressedKey == "ArrowDown"){
         movePiece(pressedKey)
     }
 

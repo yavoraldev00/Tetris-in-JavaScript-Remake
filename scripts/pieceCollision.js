@@ -12,17 +12,21 @@ const collisionDetection = (curPieceLocation, movedPieceLocation, pressedKey) =>
                 return true;
             }
             break;
+        case "ArrowDown":
+            if(movedPieceLocation > 199){
+                return true;
+            }
+            break;
         case "x":
-            if(curPieceLocation%10 >= 8 && movedPieceLocation%10 <= 2 || curPieceLocation%10 <= 2 && movedPieceLocation%10 >= 8){
-                return true;
-            }
-            break;
         case "z":
-            if(curPieceLocation%10 >= 8 && movedPieceLocation%10 <= 2 || curPieceLocation%10 <= 2 && movedPieceLocation%10 >= 8){
+            if(
+                (curPieceLocation%10 >= 8 && movedPieceLocation%10 <= 2 || curPieceLocation%10 <= 2 && movedPieceLocation%10 >= 8)
+                    ||
+                movedPieceLocation > 199
+            ){
                 return true;
             }
             break;
-        
         default: break;
     }
 }
