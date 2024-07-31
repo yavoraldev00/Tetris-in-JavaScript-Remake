@@ -1,8 +1,6 @@
 // Function used to rotate pieces RIGHT and LEFT
 const rotatePiece = (rotationDirection) => {
     var breakFlag = false;
-    // Removes piece
-    removePiece();
 
     if(rotationDirection == "x"){ // Rotates piece RIGHT by ADDING current rotation values, updates current rotation + 1
         // Rotates right
@@ -14,7 +12,6 @@ const rotatePiece = (rotationDirection) => {
         })
 
         if(breakFlag){ // if collision is detected, stops function
-            setPiece(chosenPiece);
             return
         }
 
@@ -38,13 +35,15 @@ const rotatePiece = (rotationDirection) => {
 
         if(breakFlag){ // if collision is detected, stops function
             (curRotation == 3) ? curRotation = 0 : curRotation += 1;
-            setPiece(chosenPiece);
             return
         }
 
         // Sets original piece to rotation piece
         chosenPiece = rotatedPiece;
     }
+
+    // Removes piece
+    removePiece();
     
     // Sets piece
     setPiece(chosenPiece);
@@ -53,9 +52,6 @@ const rotatePiece = (rotationDirection) => {
 // Function used to move piece LEFT and RIGHT
 const movePiece = (movementDirection) => {
     var breakFlag = false;
-
-    // Removes piece
-    removePiece();
 
     if(movementDirection == "ArrowRight"){ // Moves piece +1 to right
         // Moves right
@@ -68,7 +64,6 @@ const movePiece = (movementDirection) => {
         })
 
         if(breakFlag){ // if collision is detected, stops function
-            setPiece(chosenPiece);
             return
         }
 
@@ -85,13 +80,15 @@ const movePiece = (movementDirection) => {
         })
 
         if(breakFlag){ // if collision is detected, stops function
-            setPiece(chosenPiece);
             return
         }
 
         // Sets original piece to moved piece
         chosenPiece = movedPiece;
     }
+
+    // Removes piece
+    removePiece();
     
     // Sets piece
     setPiece(chosenPiece);
