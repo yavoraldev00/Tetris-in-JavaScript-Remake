@@ -7,6 +7,22 @@
     <title>Tetris</title>
 </head>
 <body>
-    <h1 class="w-full text-center">Hello</h1>
+    <h1 class="w-full my-8 text-center text-xl font-bold">Tetris</h1>
+
+    <!-- Grid containing game and extra information -->
+    <div class="grid grid-cols-7 h-24 w-10/12 mx-auto">
+
+        <!-- Held piece and other information -->
+        <div class="bg-green-400 col-span-2"></div>
+
+        <!-- Game board -->
+        <div id="board" class="board"></div>
+
+        <!-- Next piece and other information -->
+        <div class="bg-purple-500 col-span-2"></div>
+    </div>
+
+    <!-- Game scripts -->
+    <script src="scripts/board.js"></script>
 </body>
 </html>
