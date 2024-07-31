@@ -89,79 +89,42 @@ const pieceNames = ["i_shape","j_shape","l_shape","o_shape","s_shape","t_shape",
 // Random selection of Tetris piece
 const randomPiece = Math.floor(Math.random() * (pieceNames.length-1));
 
-// Randomly chosen Tetronimo
-var chosenPiece = tetrisPieces[pieceNames[0]]["coordinates"];
-
-// Set chosen piece on board
-chosenPiece.forEach(piece => {
-    const cell = document.querySelector(`[data-cell-number="${piece}"]`);
-
-    if (cell) {
-        cell.classList.add("piece");
-    }
-});
-
-var curRotation = 0;
-
 // Removes current piece from board
 const removePiece = () => {
-    const setPiecesArr = document.querySelectorAll(".piece");
+    const setPiecesArr = document.querySelectorAll(".current-piece");
 
     setPiecesArr.forEach((piece) => {
-        piece.classList.remove("piece");
+        piece.classList.remove("current-piece");
     })
 }
 
 // Sets current piece on board
 const setPiece = (piece) => {
-    // set pieces
-
     piece.forEach((pieceCell) => {
         const cell = document.querySelector(`[data-cell-number="${pieceCell}"]`);
 
-        cell.classList.add("piece");
+        cell.classList.add("current-piece");
     })
 }
 
-// Function used to rotate pieces RIGHT and LEFT
-const rotatePiece = (rotationDirection) => { // Rotates piece RIGHT by ADDING current rotation values, updates current rotation + 1
-    // Removes piece
-    removePiece();
 
-    if(rotationDirection == "x"){
-        // Rotates right
-        const rotatedPiece = chosenPiece.map((piece, index) => {
-            return piece += tetrisPieces['i_shape']['rotations'][curRotation][index];
-        })
+// Randomly chosen Tetronimo
+var chosenPiece = tetrisPieces[pieceNames[0]]["coordinates"];
 
-        // Sets original piece to rotation piece
-        chosenPiece = rotatedPiece;
-    
-        // Updates current rotation
-        (curRotation == 3) ? curRotation = 0 : curRotation += 1;
+// Current piece rotation
+var curRotation = 0;
 
-    }else if(rotationDirection == "z"){ // Rotates piece LEFT by SUBTRACTING current rotation values, updates current rotation - 1
-        // Updates current rotation
-        (curRotation == 0) ? curRotation = 3 : curRotation -= 1;
+// Sets piece on board
+setPiece(chosenPiece)
 
-        // do rotation
-        const rotatedPiece = chosenPiece.map((piece, index) => {
-            return piece += (tetrisPieces['i_shape']['rotations'][curRotation][index] *-1);
-        })
-
-        // Sets original piece to rotation piece
-        chosenPiece = rotatedPiece;
-    }
-    
-    // Sets piece
-    setPiece(chosenPiece);
-};
-
+// Detects pressed key
 document.addEventListener("keydown", (e)=> {
     const pressedKey = e.key;
 
     if(pressedKey == "x" || pressedKey == "z"){
         rotatePiece(pressedKey)
+    }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft"){
+        movePiece(pressedKey)
     }
 
     console.log(curRotation)
