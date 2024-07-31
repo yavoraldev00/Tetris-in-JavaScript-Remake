@@ -115,6 +115,7 @@ const generatePiece = () => {
 
 // Sets current piece on the board
 const setPiece = () => {
+    // Variable with all current piece locations
     var currentPieces = document.querySelectorAll(".current-piece")
 
     currentPieces.forEach((piece) => { // replaces the "current-piece" class with the "piece" class
@@ -122,6 +123,7 @@ const setPiece = () => {
         piece.classList.add("piece")
     })
 
+    // Resets current rotation
     curRotation = 0;
 }
 
@@ -137,11 +139,12 @@ placePiece(chosenPiece)
 
 // Detects pressed key
 document.addEventListener("keydown", (e)=> {
+    // Variable that stores pressed key
     const pressedKey = e.key;
 
-    if(pressedKey == "x" || pressedKey == "z"){
+    if(pressedKey == "x" || pressedKey == "z"){ // If "x" or "z" are pressed, rotates piece
         rotatePiece(pressedKey)
-    }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft" || pressedKey == "ArrowDown"){
+    }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft" || pressedKey == "ArrowDown" || pressedKey == "ArrowUp"){ // If directional keys are perssed, moves piece
         movePiece(pressedKey)
     }
 

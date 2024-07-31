@@ -106,6 +106,37 @@ const movePiece = (movementDirection) => {
 
         // Sets original piece to moved piece
         chosenPiece = movedPiece;
+    }else if(movementDirection == "ArrowUp"){ // Moves piece to bottom of board/closest colliding piece and generates new piece
+        let distance = [0,0,0,0]
+        
+        chosenPiece.forEach((piece, index) => {
+            while(!collisionDetection(piece, piece+10, movementDirection)){
+                distance[index] += 1;
+                piece += 10;
+            }
+        });
+
+        let travelDistance = Math.min(...distance);
+
+        const movedPiece = chosenPiece.map((piece) => {
+            return piece += (travelDistance*10)
+        })
+
+        // Sets original piece to moved piece
+        chosenPiece = movedPiece;
+
+        // Removes piece
+        removePiece();
+        
+        // Sets piece
+        placePiece(chosenPiece);
+
+        // Sets the piece on the board
+        setPiece();
+
+        // Generates and places a new piece on the board
+        generatePiece();
+        return
     }
 
     // Removes piece

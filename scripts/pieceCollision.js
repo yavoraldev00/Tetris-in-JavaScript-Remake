@@ -22,6 +22,7 @@ const collisionDetection = (curPieceLocation, movedPieceLocation, pressedKey) =>
             }
             break;
         case "ArrowDown":
+        case "ArrowUp":
             if(
                 movedPieceLocation > 199
                 ||
