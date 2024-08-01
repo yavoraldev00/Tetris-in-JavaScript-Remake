@@ -1,4 +1,3 @@
-
 //Tetris pieces
 tetrisPieces = {
     // Guide to initial coordinates
@@ -29,7 +28,13 @@ tetrisPieces = {
 
 
     "j_shape": {
-        coordinates: [0,10,11,12]
+        coordinates: [0,10,11,12],
+        rotations: [
+            [2 ,  -9,0,  9],
+            [20,  11,0,-11],
+            [-2,   9,0, -9],
+            [-20,-11,0, 11]
+        ]
     },
 
     // [*, 1, 2, 3]
@@ -86,9 +91,6 @@ tetrisPieces = {
 // Piece names used to generate Tetronimo
 const pieceNames = ["i_shape","j_shape","l_shape","o_shape","s_shape","t_shape","z_shape"]
 
-// Random selection of Tetris piece
-const randomPiece = Math.floor(Math.random() * (pieceNames.length-1));
-
 // Removes current piece from board
 const removePiece = () => {
     const setPiecesArr = document.querySelectorAll(".current-piece");
@@ -109,7 +111,7 @@ const placePiece = (piece) => {
 
 // Generates new piece
 const generatePiece = () => {
-    chosenPiece = tetrisPieces[pieceNames[0]]["coordinates"];
+    chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
     placePiece(chosenPiece);
 }
 
@@ -128,8 +130,14 @@ const setPiece = () => {
 }
 
 
+// Random selection of Tetris piece
+// const randomPiece = Math.floor(Math.random() * (pieceNames.length-1));
+const randomPiece = 1;
+
 // Randomly chosen Tetronimo
-var chosenPiece = tetrisPieces[pieceNames[0]]["coordinates"];
+var chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
+
+
 
 // Current piece rotation
 var curRotation = 0;

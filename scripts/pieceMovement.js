@@ -5,10 +5,10 @@ const rotatePiece = (rotationDirection) => {
     if(rotationDirection == "x"){ // Rotates piece RIGHT by ADDING current rotation values, updates current rotation + 1
         // Rotates right
         const rotatedPiece = chosenPiece.map((piece, index) => {
-            if(collisionDetection(piece, piece + tetrisPieces['i_shape']['rotations'][curRotation][index], rotationDirection)){
+            if(collisionDetection(piece, piece + tetrisPieces[pieceNames[randomPiece]]['rotations'][curRotation][index], rotationDirection)){
                 breakFlag = true;
             }
-            return piece += tetrisPieces['i_shape']['rotations'][curRotation][index];
+            return piece += tetrisPieces[pieceNames[randomPiece]]['rotations'][curRotation][index];
         })
 
         if(breakFlag){ // if collision is detected, stops function
@@ -27,10 +27,10 @@ const rotatePiece = (rotationDirection) => {
 
         // do rotation
         const rotatedPiece = chosenPiece.map((piece, index) => {
-            if(collisionDetection(piece, piece + (tetrisPieces['i_shape']['rotations'][curRotation][index] *-1), rotationDirection)){
+            if(collisionDetection(piece, piece + (tetrisPieces[pieceNames[randomPiece]]['rotations'][curRotation][index] *-1), rotationDirection)){
                 breakFlag = true;
             }
-            return piece += (tetrisPieces['i_shape']['rotations'][curRotation][index] *-1);
+            return piece += (tetrisPieces[pieceNames[randomPiece]]['rotations'][curRotation][index] *-1);
         })
 
         if(breakFlag){ // if collision is detected, stops function
