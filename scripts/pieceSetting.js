@@ -59,7 +59,13 @@ tetrisPieces = {
     // [30,31,32,33]
 
     "o_shape": {
-        coordinates: [1,2,11,12]
+        coordinates: [1,2,11,12],
+        rotations: [
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0],
+            [0,0,0,0]
+        ]
     },
 
     // [0,  *, *, 3]
@@ -68,7 +74,13 @@ tetrisPieces = {
     // [30,31,32,33]
 
     "s_shape": {
-        coordinates: [1,2,10,11]
+        coordinates: [1,2,10,11],
+        rotations: [
+            [ 11, 20, -9, 0],
+            [  9, -2, 11, 0],
+            [-11,-20,  9, 0],
+            [ -9,  2,-11, 0]
+        ]
     },
 
     // [0 , *, *, 3]
@@ -77,7 +89,13 @@ tetrisPieces = {
     // [30,31,32,33]
 
     "t_shape": {
-        coordinates: [1,10,11,12]
+        coordinates: [1,10,11,12],
+        rotations: [
+            [],
+            [],
+            [],
+            []
+        ]
     },
 
     // [0,  *, 2, 3]
@@ -86,7 +104,13 @@ tetrisPieces = {
     // [30,31,32,33]
 
     "z_shape": {
-        coordinates: [0,1,11,12]
+        coordinates: [0,1,11,12],
+        rotations: [
+            [],
+            [],
+            [],
+            []
+        ]
     }
     // [ *, *, 2, 3]
     // [10,* ,* ,13]
@@ -138,7 +162,7 @@ const setPiece = () => {
 
 // Random selection of Tetris piece
 // const randomPiece = Math.floor(Math.random() * (pieceNames.length-1));
-const randomPiece = 2;
+const randomPiece = 4;
 
 // Randomly chosen Tetronimo
 var chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
