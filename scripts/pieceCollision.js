@@ -4,6 +4,9 @@ const collisionDetection = (curPieceLocation, movedPieceLocation, pressedKey) =>
 
     let lowerLimit = 2;
     let upperLimit = 8;
+    if(movedPieceLocation < 0 || movedPieceLocation > 199){
+        return true;
+    }
 
     switch(pressedKey){
         case "ArrowRight":

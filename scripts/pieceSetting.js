@@ -148,7 +148,7 @@ const removePiece = () => {
 // Sets current piece on board
 const placePiece = (piece) => {
     piece.forEach((pieceCell) => {
-        const cell = document.querySelector(`[data-cell-number="${pieceCell}"]`);
+        const cell = board.querySelector(`[data-cell-number="${pieceCell}"]`);
 
         cell.classList.add("current-piece");
         cell.classList.add( `${tetrisPieces[pieceNames[randomPiece]]["name"] + "-color"}` );
@@ -185,7 +185,7 @@ const generatePiece = () => {
 // Sets current piece on the board
 const setPiece = () => {
     // Variable with all current piece locations
-    var currentPieces = document.querySelectorAll(".current-piece")
+    var currentPieces = board.querySelectorAll(".current-piece")
 
     currentPieces.forEach((piece) => { // replaces the "current-piece" class with the "piece" class
         piece.classList.remove("current-piece")
