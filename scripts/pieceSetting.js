@@ -157,6 +157,8 @@ const placePiece = (piece) => {
 
 // Generates new piece
 const generatePiece = () => {
+    let breakFlag = false;
+
     checkForLineClear();
     randomPiece = Math.floor(Math.random() * 7)
 
@@ -168,6 +170,16 @@ const generatePiece = () => {
 
     chosenPiece = adjustedPiece;
     placePiece(chosenPiece);
+
+    chosenPiece.forEach((pieces) => {
+        if(collisionDetection(pieces, pieces, "ArrowDown")){
+            breakFlag = true;
+        }
+    })
+
+    if(breakFlag){
+        alert("YOU LOSE")
+    }
 }
 
 // Sets current piece on the board

@@ -20,6 +20,7 @@ const checkForLineClear = () => {
 
 // Swaps the classes current line with the line above
 const moveLineClasses = (oldLine, newLine) => {
+    debugger;
     for(let i = 0; i < 10; i++){
         oldLine[i].classList = newLine[i].classList;
     }
