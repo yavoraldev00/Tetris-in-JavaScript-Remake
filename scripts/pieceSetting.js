@@ -157,6 +157,8 @@ const placePiece = (piece) => {
 
 // Generates new piece
 const generatePiece = () => {
+    randomPiece = Math.floor(Math.random() * 7)
+
     chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
     placePiece(chosenPiece);
 }
@@ -177,8 +179,7 @@ const setPiece = () => {
 
 
 // Random selection of Tetris piece
-// const randomPiece = Math.floor(Math.random() * (pieceNames.length-1));
-const randomPiece = 1;
+var randomPiece = Math.floor(Math.random() * 6);
 
 // Randomly chosen Tetronimo
 var chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
