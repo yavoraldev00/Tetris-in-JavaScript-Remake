@@ -91,10 +91,10 @@ tetrisPieces = {
     "t_shape": {
         coordinates: [1,10,11,12],
         rotations: [
-            [],
-            [],
-            [],
-            []
+            [ 11, -9,0,   9],
+            [  9, 11,0, -11],
+            [-11,  9,0,  -9],
+            [ -9,-11,0,  11]
         ]
     },
 
@@ -162,7 +162,7 @@ const setPiece = () => {
 
 // Random selection of Tetris piece
 // const randomPiece = Math.floor(Math.random() * (pieceNames.length-1));
-const randomPiece = 4;
+const randomPiece = 5;
 
 // Randomly chosen Tetronimo
 var chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
