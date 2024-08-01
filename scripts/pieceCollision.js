@@ -2,6 +2,9 @@
 const collisionDetection = (curPieceLocation, movedPieceLocation, pressedKey) => {
     let movedPiece = document.querySelector(`[data-cell-number="${movedPieceLocation}"]`);
 
+    let lowerLimit = 2;
+    let upperLimit = 8;
+
     switch(pressedKey){
         case "ArrowRight":
             if(

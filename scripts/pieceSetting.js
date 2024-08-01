@@ -12,6 +12,8 @@ tetrisPieces = {
     // -----------------
 
     "i_shape": {
+        name:"i_shape",
+        color: "bg-blue-300",
         coordinates: [10,11,12,13],
         rotations: [
             [-8,   1, 10, 19],
@@ -28,6 +30,8 @@ tetrisPieces = {
 
 
     "j_shape": {
+        name:"j_shape",
+        color: "bg-blue-600",
         coordinates: [0,10,11,12],
         rotations: [
             [2 ,  -9,0,  9],
@@ -44,6 +48,8 @@ tetrisPieces = {
 
 
     "l_shape": {
+        name:"l_shape",
+        color: "bg-orange-400",
         coordinates: [2,10,11,12],
         rotations: [
             [ 20, -9,0,  9],
@@ -59,6 +65,8 @@ tetrisPieces = {
     // [30,31,32,33]
 
     "o_shape": {
+        name:"o_shape",
+        color: "bg-yellow-300",
         coordinates: [1,2,11,12],
         rotations: [
             [0,0,0,0],
@@ -74,6 +82,8 @@ tetrisPieces = {
     // [30,31,32,33]
 
     "s_shape": {
+        name:"s_shape",
+        color: "bg-green-400",
         coordinates: [1,2,10,11],
         rotations: [
             [ 11, 20, -9, 0],
@@ -89,6 +99,8 @@ tetrisPieces = {
     // [30,31,32,33]
 
     "t_shape": {
+        name:"t_shape",
+        color: "bg-purple-600",
         coordinates: [1,10,11,12],
         rotations: [
             [ 11, -9,0,   9],
@@ -104,6 +116,8 @@ tetrisPieces = {
     // [30,31,32,33]
 
     "z_shape": {
+        name:"z_shape",
+        color: "bg-red-500",
         coordinates: [0,1,11,12],
         rotations: [
             [  2, 11, 0,   9],
@@ -127,6 +141,7 @@ const removePiece = () => {
 
     setPiecesArr.forEach((piece) => {
         piece.classList.remove("current-piece");
+        piece.classList.remove( `${tetrisPieces[pieceNames[randomPiece]]["name"] + "-color"}` );
     })
 }
 
@@ -136,6 +151,7 @@ const placePiece = (piece) => {
         const cell = document.querySelector(`[data-cell-number="${pieceCell}"]`);
 
         cell.classList.add("current-piece");
+        cell.classList.add( `${tetrisPieces[pieceNames[randomPiece]]["name"] + "-color"}` );
     })
 }
 
@@ -162,12 +178,10 @@ const setPiece = () => {
 
 // Random selection of Tetris piece
 // const randomPiece = Math.floor(Math.random() * (pieceNames.length-1));
-const randomPiece = 6;
+const randomPiece = 1;
 
 // Randomly chosen Tetronimo
 var chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
-
-
 
 // Current piece rotation
 var curRotation = 0;

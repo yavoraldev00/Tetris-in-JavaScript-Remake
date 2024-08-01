@@ -19,5 +19,33 @@
 }
 
 .current-piece {
-    @apply bg-yellow-500 shadow-[inset_0_0_4px_3px_rgba(0,0,0,0.1)];
+    @apply shadow-[inset_0_0_4px_3px_rgba(0,0,0,0.1)];
+}
+
+.i_shape-color {
+    @apply bg-blue-300;
+}
+
+.j_shape-color {
+    @apply bg-blue-600;
+}
+
+.l_shape-color {
+    @apply bg-orange-400;
+}
+
+.o_shape-color {
+    @apply bg-yellow-300;
+}
+
+.s_shape-color {
+    @apply bg-green-400;
+}
+
+.t_shape-color {
+    @apply bg-purple-600;
+}
+
+.z_shape-color {
+    @apply bg-red-500;
 }
