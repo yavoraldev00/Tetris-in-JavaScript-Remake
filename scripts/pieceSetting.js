@@ -157,6 +157,7 @@ const placePiece = (piece) => {
 
 // Generates new piece
 const generatePiece = () => {
+    checkForLineClear();
     randomPiece = Math.floor(Math.random() * 7)
 
     chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
@@ -186,6 +187,13 @@ var chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
 
 // Current piece rotation
 var curRotation = 0;
+
+// Current cleared lines
+var clearedLines = 0;
+
+// Sets cleared lines score
+var lineScore = document.getElementById("lines");
+lineScore.textContent = clearedLines;
 
 // Sets piece on board
 placePiece(chosenPiece)
