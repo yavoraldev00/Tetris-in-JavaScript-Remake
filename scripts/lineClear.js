@@ -11,6 +11,7 @@ const checkForLineClear = () => {
                 moveLineClasses(oldRow, newRow);
             }
 
+            // Adds +1 score to cleared lines
             clearedLines += 1;
             lineScore.textContent = clearedLines;
         }

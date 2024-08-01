@@ -11,7 +11,7 @@
 }
 
 .cell {
-    @apply bg-purple-300 w-6 aspect-square border-white border text-xs overflow-hidden;
+    @apply bg-gray-200 w-6 aspect-square border-white border text-xs overflow-hidden;
 }
 
 .piece {

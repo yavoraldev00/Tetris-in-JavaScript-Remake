@@ -161,6 +161,12 @@ const generatePiece = () => {
     randomPiece = Math.floor(Math.random() * 7)
 
     chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
+    
+    adjustedPiece = chosenPiece.map((piece) => {
+        return piece += 3;
+    })
+
+    chosenPiece = adjustedPiece;
     placePiece(chosenPiece);
 }
 
@@ -180,10 +186,10 @@ const setPiece = () => {
 
 
 // Random selection of Tetris piece
-var randomPiece = Math.floor(Math.random() * 6);
+var randomPiece;
 
 // Randomly chosen Tetronimo
-var chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
+var chosenPiece;
 
 // Current piece rotation
 var curRotation = 0;
@@ -191,12 +197,13 @@ var curRotation = 0;
 // Current cleared lines
 var clearedLines = 0;
 
+// Generates a piece to start the game
+generatePiece();
+
 // Sets cleared lines score
 var lineScore = document.getElementById("lines");
 lineScore.textContent = clearedLines;
 
-// Sets piece on board
-placePiece(chosenPiece)
 
 // Detects pressed key
 document.addEventListener("keydown", (e)=> {
