@@ -1,5 +1,6 @@
+// Main board
 const board = document.getElementById("board")
-var cell_num = 0;
+var cellNum = 0;
 
 for (let i = 0; i < 20; i++) {
     const row = document.createElement("div");
@@ -8,17 +9,18 @@ for (let i = 0; i < 20; i++) {
     for (let j = 0; j < 10; j++) {
         const cell = document.createElement("div");
         cell.classList.add("cell");
-        cell.setAttribute("data-cell-number", cell_num);
-        cell.textContent = cell_num;
+        cell.setAttribute("data-cell-number", cellNum);
+        cell.textContent = cellNum;
         row.appendChild(cell);
-        cell_num += 1;
+        cellNum += 1;
     }
 
     board.appendChild(row);
 }
 
-var held_cell_num = 0;
-const held_piece = document.getElementById("held-piece");
+// Held piece board
+const heldPieceBoard = document.getElementById("held-piece-board");
+var cellNum = 0;
 
 for (let i = 0; i < 4; i++) {
     const row = document.createElement("div");
@@ -27,17 +29,19 @@ for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 4; j++) {
         const cell = document.createElement("div");
         cell.classList.add("cell");
-        cell.setAttribute("data-cell-number", held_cell_num);
-        cell.textContent = held_cell_num;
+        cell.setAttribute("data-cell-number", cellNum);
+        cell.textContent = cellNum;
         row.appendChild(cell);
-        held_cell_num += 1;
+        cellNum += 1;
     }
 
-    held_piece.appendChild(row);
+    heldPieceBoard.appendChild(row);
+    cellNum += 6;
 }
 
-var held_cell_num = 0;
-const next_piece = document.getElementById("next-piece");
+// Next piece board
+const nextPieceBoard = document.getElementById("next-piece-board");
+var cellNum = 0;
 
 for (let i = 0; i < 4; i++) {
     const row = document.createElement("div");
@@ -46,11 +50,13 @@ for (let i = 0; i < 4; i++) {
     for (let j = 0; j < 4; j++) {
         const cell = document.createElement("div");
         cell.classList.add("cell");
-        cell.setAttribute("data-cell-number", held_cell_num);
-        cell.textContent = held_cell_num;
+        cell.setAttribute("data-cell-number", cellNum);
+        cell.textContent = cellNum;
         row.appendChild(cell);
-        held_cell_num += 1;
+        cellNum += 1;
     }
 
-    next_piece.appendChild(row);
+    nextPieceBoard.appendChild(row);
+    cellNum += 6;
+
 }
