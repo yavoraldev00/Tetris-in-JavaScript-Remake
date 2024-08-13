@@ -2,25 +2,32 @@
 const checkForLineClear = () => {
     let rowArray = Array.from(board.getElementsByClassName("row"));
 
-    for(let i = 19; i > 0; i--){
-        while(rowArray[i].querySelectorAll(".piece").length == 10){ // If full row detected, moves all lines 1 down
-            for(let j = i; j > 1; j--){
-                let oldRow = Array.from(rowArray[j].querySelectorAll(".cell"));
-                let newRow = Array.from(rowArray[j-1].querySelectorAll(".cell"));
+    let filledRows = [];
 
-                moveLineClasses(oldRow, newRow);
-            }
-
-            // Adds +1 score to cleared lines
-            clearedLines += 1;
-            lineScore.textContent = clearedLines;
+    for (let i = 0; i < rowArray.length; i++){
+        if(rowArray[i].querySelectorAll(".piece").length == 10){
+            filledRows.push(i);
         }
     }
+
+    // Remove filled rows and move above rows down
+    filledRows.forEach(rowIndex => {
+        for (let i = rowIndex; i > 0; i--) {
+            let oldRow = Array.from(rowArray[i].querySelectorAll(".cell"));
+            let newRow = Array.from(rowArray[i - 1].querySelectorAll(".cell"));
+            moveLineClasses(oldRow, newRow);
+        }
+        // Clear the top row
+        let topRow = Array.from(rowArray[0].querySelectorAll(".cell"));
+        topRow.forEach(cell => cell.classList.remove("piece"));
+    });
+
+    var lineScore = document.getElementById("lines");
+    lineScore.textContent = Number(lineScore.textContent) + filledRows.length;
 }
 
 // Swaps the classes current line with the line above
 const moveLineClasses = (oldLine, newLine) => {
-    debugger;
     for(let i = 0; i < 10; i++){
         oldLine[i].classList = newLine[i].classList;
     }
