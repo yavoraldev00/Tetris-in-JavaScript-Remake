@@ -194,6 +194,10 @@ const setNewPiece = (newPiece) => {
 
         // Places the piece on the board
         placePiece(pieceState.currentCoordinates);
+        
+        removeNextPiece();
+        pieceState.nextPiece = structuredClone(generatePiece());
+        setNextPiece();
     }
 }
 
@@ -216,12 +220,22 @@ const setPiece = () => {
 
 // Sets NEXT piece on Next Piece board
 const setNextPiece = () => {
-    
+    pieceState.nextPiece["coordinates"].forEach((pieceCell) => {
+        const cell = nextPieceBoard.querySelector(`[data-cell-number="${pieceCell}"]`);
+
+        cell.classList.add("piece");
+        cell.classList.add( `${pieceState.nextPiece["name"] + "-color"}` );
+    })
 }
 
 // Removes NEXT piece from Next Piece board
 const removeNextPiece = () => {
+    pieceState.nextPiece["coordinates"].forEach((pieceCell) => {
+        const cell = nextPieceBoard.querySelector(`[data-cell-number="${pieceCell}"]`);
 
+        cell.classList.remove("piece");
+        cell.classList.remove( `${pieceState.nextPiece["name"] + "-color"}` );
+    })
 }
 
 // Sets HELD piece on Next Piece board
@@ -237,8 +251,15 @@ const removeHeldPiece = () => {
 // Current cleared lines
 var clearedLines = 0;
 
-// Generates a piece to start the game
-setNewPiece(generatePiece());
+// Starts the game
+const startGame = () => {
+    pieceState.nextPiece = structuredClone(generatePiece());
+
+    // Generates a piece to start the game
+    setNewPiece(pieceState.nextPiece);
+}
+
+startGame();
 
 // Sets cleared lines score
 var lineScore = document.getElementById("lines");

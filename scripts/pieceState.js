@@ -22,7 +22,7 @@ const pieceState = {
     },
 
     get nextPiece() {
-        return this.heldTetronimo
+        return this.nextTetronimo
     },
 
     set nextPiece(item) {

@@ -100,7 +100,7 @@ const movePiece = (movementDirection) => {
             setPiece();
 
             // Generates and places a new piece on the board
-            setNewPiece(generatePiece());
+            setNewPiece(pieceState.nextPiece);
             return
         }
 
@@ -135,7 +135,7 @@ const movePiece = (movementDirection) => {
         setPiece();
 
         // Generates and places a new piece on the board
-        setNewPiece(generatePiece());
+        setNewPiece(pieceState.nextPiece);
         return
     }
 
