@@ -214,6 +214,26 @@ const setPiece = () => {
     checkForLineClear()
 }
 
+// Sets NEXT piece on Next Piece board
+const setNextPiece = () => {
+    
+}
+
+// Removes NEXT piece from Next Piece board
+const removeNextPiece = () => {
+
+}
+
+// Sets HELD piece on Next Piece board
+const setHeldPiece = () => {
+    
+}
+
+// Removes HELD piece from Next Piece board
+const removeHeldPiece = () => {
+
+}
+
 // Current cleared lines
 var clearedLines = 0;
 
