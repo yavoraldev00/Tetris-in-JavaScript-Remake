@@ -3,6 +3,7 @@ const pieceState = {
     heldTetronimo: null,
     nextTetronimo: null,
     coordinates: [],
+    rotation: 0,
 
     get currentPiece() {
         return this.curTetronimo
@@ -28,11 +29,19 @@ const pieceState = {
         this.nextTetronimo = item
     },
 
-    get curCord() {
+    get currentCoordinates() {
         return this.coordinates
     },
 
-    set curCord(item) {
+    set currentCoordinates(item) {
         this.coordinates = item
+    },
+
+    get currentRotation() {
+        return this.rotation
+    },
+
+    set currentRotation(item) {
+        this.rotation = item
     }   
 }

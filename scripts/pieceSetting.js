@@ -141,7 +141,7 @@ const removePiece = () => {
 
     setPiecesArr.forEach((piece) => {
         piece.classList.remove("current-piece");
-        piece.classList.remove( `${tetrisPieces[pieceNames[randomPiece]]["name"] + "-color"}` );
+        piece.classList.remove( `${pieceState.curTetronimo.name + "-color"}` );
     })
 }
 
@@ -151,7 +151,7 @@ const placePiece = (piece) => {
         const cell = board.querySelector(`[data-cell-number="${pieceCell}"]`);
 
         cell.classList.add("current-piece");
-        cell.classList.add( `${tetrisPieces[pieceNames[randomPiece]]["name"] + "-color"}` );
+        cell.classList.add( `${pieceState.curTetronimo.name + "-color"}` );
     })
 }
 
@@ -159,7 +159,7 @@ const placePiece = (piece) => {
 const generatePiece = () => {
     let breakFlag = false;
 
-    randomPiece = Math.floor(Math.random() * 7)
+    let randomPiece = Math.floor(Math.random() * 7)
 
     chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
 
@@ -202,10 +202,6 @@ const setPiece = () => {
     // Checks and clears any lines
     checkForLineClear()
 }
-
-
-// Random selection of Tetris piece
-var randomPiece;
 
 // Randomly chosen Tetronimo
 var chosenPiece;
