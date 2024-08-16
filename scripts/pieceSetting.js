@@ -161,21 +161,21 @@ const generatePiece = () => {
 
     let randomPiece = Math.floor(Math.random() * 7)
 
-    chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
+    pieceState.currentCoordinates = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
 
     // Sets the randomly chosen piece as the current piece in pieceState
     pieceState.currentPiece = structuredClone(tetrisPieces[pieceNames[randomPiece]]);
 
-    // let chosenPiece2 = pieceState.currentPiece["coordinates"];
+    // let pieceState.currentCoordinates2 = pieceState.currentPiece["coordinates"];
     
-    adjustedPiece = chosenPiece.map((piece) => {
+    adjustedPiece = pieceState.currentCoordinates.map((piece) => {
         return piece += 3;
     })
 
-    chosenPiece = adjustedPiece;
-    placePiece(chosenPiece);
+    pieceState.currentCoordinates = adjustedPiece;
+    placePiece(pieceState.currentCoordinates);
 
-    chosenPiece.forEach((pieces) => {
+    pieceState.currentCoordinates.forEach((pieces) => {
         if(collisionDetection(pieces, pieces, "ArrowDown")){
             breakFlag = true;
         }
@@ -202,9 +202,6 @@ const setPiece = () => {
     // Checks and clears any lines
     checkForLineClear()
 }
-
-// Randomly chosen Tetronimo
-var chosenPiece;
 
 // Current cleared lines
 var clearedLines = 0;
