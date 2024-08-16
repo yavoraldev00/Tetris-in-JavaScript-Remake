@@ -213,9 +213,8 @@ const setNewPiece = (newPiece) => {
         // Places the piece on the board
         placePiece(pieceState.currentCoordinates);
         
-        removeNextPiece();
         pieceState.nextPiece = structuredClone(generatePiece());
-        setNextPiece();
+        updateNextPiece();
 
         moveGhostPiece();
     }
@@ -224,7 +223,7 @@ const setNewPiece = (newPiece) => {
 // Sets current piece on the board
 const setPiece = () => {
     // Variable with all current piece locations
-    var currentPieces = board.querySelectorAll(".current-piece")
+    const currentPieces = board.querySelectorAll(".current-piece")
 
     currentPieces.forEach((piece) => { // replaces the "current-piece" class with the "piece" class
         piece.classList.remove("current-piece")
@@ -238,23 +237,23 @@ const setPiece = () => {
     checkForLineClear()
 }
 
-// Sets NEXT piece on Next Piece board
-const setNextPiece = () => {
+// Updates piece on Next Piece board. Removes old one and adds new one
+const updateNextPiece = () => {
+    const setPiecesArr = nextPieceBoard.querySelectorAll(".piece");
+
+    if(setPiecesArr.length > 0){
+        setPiecesArr.forEach((pieceCell) => {
+            pieceCell.classList.remove("piece");
+            //might need to fix later
+            pieceCell.classList.remove( `${pieceState.currentPiece["name"] + "-color"}` );
+        })
+    }
+
     pieceState.nextPiece["coordinates"].forEach((pieceCell) => {
         const cell = nextPieceBoard.querySelector(`[data-cell-number="${pieceCell}"]`);
 
         cell.classList.add("piece");
         cell.classList.add( `${pieceState.nextPiece["name"] + "-color"}` );
-    })
-}
-
-// Removes NEXT piece from Next Piece board
-const removeNextPiece = () => {
-    pieceState.nextPiece["coordinates"].forEach((pieceCell) => {
-        const cell = nextPieceBoard.querySelector(`[data-cell-number="${pieceCell}"]`);
-
-        cell.classList.remove("piece");
-        cell.classList.remove( `${pieceState.nextPiece["name"] + "-color"}` );
     })
 }
 
