@@ -197,7 +197,7 @@ const setPiece = () => {
     })
 
     // Resets current rotation
-    curRotation = 0;
+    pieceState.currentRotation = 0;
 
     // Checks and clears any lines
     checkForLineClear()
@@ -205,9 +205,6 @@ const setPiece = () => {
 
 // Randomly chosen Tetronimo
 var chosenPiece;
-
-// Current piece rotation
-var curRotation = 0;
 
 // Current cleared lines
 var clearedLines = 0;
@@ -231,5 +228,5 @@ document.addEventListener("keydown", (e)=> {
         movePiece(pressedKey)
     }
 
-    console.log(curRotation)
+    console.log(pieceState.currentRotation)
 })

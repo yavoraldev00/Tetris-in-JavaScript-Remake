@@ -5,10 +5,10 @@ const rotatePiece = (rotationDirection) => {
     if(rotationDirection == "x"){ // Rotates piece RIGHT by ADDING current rotation values, updates current rotation + 1
         // Rotates right
         const rotatedPiece = chosenPiece.map((piece, index) => {
-            if(collisionDetection(piece, piece + pieceState.currentPiece["rotations"][curRotation][index], rotationDirection)){
+            if(collisionDetection(piece, piece + pieceState.currentPiece["rotations"][pieceState.currentRotation][index], rotationDirection)){
                 breakFlag = true;
             }
-            return piece += pieceState.currentPiece["rotations"][curRotation][index];
+            return piece += pieceState.currentPiece["rotations"][pieceState.currentRotation][index];
         })
 
         if(breakFlag){ // if collision is detected, stops function
@@ -19,22 +19,22 @@ const rotatePiece = (rotationDirection) => {
         chosenPiece = rotatedPiece;
     
         // Updates current rotation
-        (curRotation == 3) ? curRotation = 0 : curRotation += 1;
+        (pieceState.currentRotation == 3) ? pieceState.currentRotation = 0 : pieceState.currentRotation += 1;
 
     }else if(rotationDirection == "z"){ // Rotates piece LEFT by SUBTRACTING current rotation values, updates current rotation - 1
         // Updates current rotation
-        (curRotation == 0) ? curRotation = 3 : curRotation -= 1;
+        (pieceState.currentRotation == 0) ? pieceState.currentRotation = 3 : pieceState.currentRotation -= 1;
 
         // do rotation
         const rotatedPiece = chosenPiece.map((piece, index) => {
-            if(collisionDetection(piece, piece + (pieceState.currentPiece["rotations"][curRotation][index] *-1), rotationDirection)){
+            if(collisionDetection(piece, piece + (pieceState.currentPiece["rotations"][pieceState.currentRotation][index] *-1), rotationDirection)){
                 breakFlag = true;
             }
-            return piece += (pieceState.currentPiece["rotations"][curRotation][index] *-1);
+            return piece += (pieceState.currentPiece["rotations"][pieceState.currentRotation][index] *-1);
         })
 
         if(breakFlag){ // if collision is detected, stops function
-            (curRotation == 3) ? curRotation = 0 : curRotation += 1;
+            (pieceState.currentRotation == 3) ? pieceState.currentRotation = 0 : pieceState.currentRotation += 1;
             return
         }
 
