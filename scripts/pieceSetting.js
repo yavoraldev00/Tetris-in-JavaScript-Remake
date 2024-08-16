@@ -137,7 +137,7 @@ const pieceNames = ["i_shape","j_shape","l_shape","o_shape","s_shape","t_shape",
 
 // Removes current piece from board
 const removePiece = () => {
-    const setPiecesArr = document.querySelectorAll(".current-piece");
+    const setPiecesArr = board.querySelectorAll(".current-piece");
 
     setPiecesArr.forEach((piece) => {
         piece.classList.remove("current-piece");
@@ -159,10 +159,14 @@ const placePiece = (piece) => {
 const generatePiece = () => {
     let breakFlag = false;
 
-    checkForLineClear();
     randomPiece = Math.floor(Math.random() * 7)
 
     chosenPiece = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
+
+    // Sets the randomly chosen piece as the current piece in pieceState
+    pieceState.currentPiece = structuredClone(tetrisPieces[pieceNames[randomPiece]]);
+
+    // let chosenPiece2 = pieceState.currentPiece["coordinates"];
     
     adjustedPiece = chosenPiece.map((piece) => {
         return piece += 3;
@@ -194,6 +198,9 @@ const setPiece = () => {
 
     // Resets current rotation
     curRotation = 0;
+
+    // Checks and clears any lines
+    checkForLineClear()
 }
 
 
