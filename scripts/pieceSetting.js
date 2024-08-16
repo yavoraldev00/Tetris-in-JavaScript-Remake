@@ -155,19 +155,25 @@ const placePiece = (piece) => {
     })
 }
 
-// Generates new piece
 const generatePiece = () => {
+    // Randomly selects a piece to generate
+    const randomPiece = Math.floor(Math.random() * 7)
+
+    const randomPieceObject = structuredClone(tetrisPieces[pieceNames[randomPiece]]);
+
+    return randomPieceObject;
+};
+
+// Sets a new piece on the board
+const setNewPiece = (newPiece) => {
     let breakFlag = false;
 
-    // Randomly selects a piece to generate
-    let randomPiece = Math.floor(Math.random() * 7)
-
     // Sets initial coordinates for the piece on the board
-    pieceState.currentCoordinates = tetrisPieces[pieceNames[randomPiece]]["coordinates"];
+    pieceState.currentCoordinates = newPiece.coordinates;
 
     // Sets the randomly chosen piece as the current piece in pieceState
-    pieceState.currentPiece = structuredClone(tetrisPieces[pieceNames[randomPiece]]);
-    
+    pieceState.currentPiece = structuredClone(newPiece);
+
     // Moves piece to the middle of the game board after generating it
     adjustedPiece = pieceState.currentCoordinates.map((piece) => {
         return piece += 3;
@@ -185,7 +191,7 @@ const generatePiece = () => {
     if(breakFlag){ // If there is a piece there already, game is over
         alert("YOU LOSE")
     }else{ // If space is empty, places the piece on the board
-        
+
         // Places the piece on the board
         placePiece(pieceState.currentCoordinates);
     }
@@ -212,7 +218,7 @@ const setPiece = () => {
 var clearedLines = 0;
 
 // Generates a piece to start the game
-generatePiece();
+setNewPiece(generatePiece());
 
 // Sets cleared lines score
 var lineScore = document.getElementById("lines");
