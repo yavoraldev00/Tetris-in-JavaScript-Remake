@@ -107,23 +107,8 @@ const movePiece = (movementDirection) => {
         // Sets original piece to moved piece
         pieceState.currentCoordinates = movedPiece;
     }else if(movementDirection == "ArrowUp"){ // Moves piece to bottom of board/closest colliding piece and generates new piece
-        let distance = [0,0,0,0]
-        
-        pieceState.currentCoordinates.forEach((piece, index) => {
-            while(!collisionDetection(piece, piece+10, movementDirection)){
-                distance[index] += 1;
-                piece += 10;
-            }
-        });
-
-        let travelDistance = Math.min(...distance);
-
-        const movedPiece = pieceState.currentCoordinates.map((piece) => {
-            return piece += (travelDistance*10)
-        })
-
         // Sets original piece to moved piece
-        pieceState.currentCoordinates = movedPiece;
+        pieceState.currentCoordinates = hardDropDistance();
 
         // Removes piece
         removePiece();
@@ -144,4 +129,36 @@ const movePiece = (movementDirection) => {
     
     // Sets piece
     placePiece(pieceState.currentCoordinates);
+}
+
+// Function that returns a piece for a hard drop / ghost piece location
+const hardDropDistance = () => {
+    // Base numbers needed for each piece to move until they encouter another piece
+    let distance = [0,0,0,0]
+
+    // Adds +1 to a value, until the meet another piece / bottom of the board
+    pieceState.currentCoordinates.forEach((piece, index) => {
+        while(!collisionDetection(piece, piece+10, "ArrowUp")){
+            distance[index] += 1;
+            piece += 10;
+        }
+    });
+
+    // Calculates which piece has the minimum distance
+    const travelDistance = Math.min(...distance);
+
+    // Returns an update location, where the tetronimo touches a piece at the bottom
+    const movedPiece = pieceState.currentCoordinates.map((piece) => {
+        return piece += (travelDistance*10)
+    })
+
+    return movedPiece;
+}
+
+// Updates the ghost piece location
+const moveGhostPiece = () => {
+    pieceState.ghostCoordinates = hardDropDistance();
+
+    // Updates the ghost piece on the board
+    setGhostPiece();
 }

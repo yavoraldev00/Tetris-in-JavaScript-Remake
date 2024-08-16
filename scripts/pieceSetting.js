@@ -155,6 +155,24 @@ const placePiece = (piece) => {
     })
 }
 
+// Sets the ghost piece location
+const setGhostPiece = () => {
+    // Removes current ghost piece from board
+    const setPiecesArr = board.querySelectorAll(".ghost-piece");
+
+    setPiecesArr.forEach((piece) => {
+        piece.classList.remove("ghost-piece");
+    })
+
+    // Updates ghost piece location to match current one
+
+    pieceState.currentGhostCoordinates.forEach((pieceCell) => {
+        const cell = board.querySelector(`[data-cell-number="${pieceCell}"]`);
+
+        cell.classList.add("ghost-piece");
+    })
+}
+
 const generatePiece = () => {
     // Randomly selects a piece to generate
     const randomPiece = Math.floor(Math.random() * 7)
@@ -198,6 +216,8 @@ const setNewPiece = (newPiece) => {
         removeNextPiece();
         pieceState.nextPiece = structuredClone(generatePiece());
         setNextPiece();
+
+        moveGhostPiece();
     }
 }
 
@@ -276,6 +296,8 @@ document.addEventListener("keydown", (e)=> {
     }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft" || pressedKey == "ArrowDown" || pressedKey == "ArrowUp"){ // If directional keys are perssed, moves piece
         movePiece(pressedKey)
     }
+
+    moveGhostPiece();
 
     console.log(pieceState.currentRotation)
 })
