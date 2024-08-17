@@ -1,6 +1,6 @@
 // Function used to check if there are any cleared lines
 const checkForLineClear = () => {
-    let rowArray = Array.from(board.getElementsByClassName("row"));
+    const rowArray = Array.from(board.getElementsByClassName("row"));
 
     let filledRows = [];
 
@@ -24,6 +24,11 @@ const checkForLineClear = () => {
 
     var lineScore = document.getElementById("lines");
     lineScore.textContent = Number(lineScore.textContent) + filledRows.length;
+
+    // If lines are cleared, plays line clear animation
+    if(filledRows.length > 0){
+        lineClearAnimation(filledRows, rowArray);
+    }
 }
 
 // Swaps the classes current line with the line above
@@ -31,4 +36,13 @@ const moveLineClasses = (oldLine, newLine) => {
     for(let i = 0; i < 10; i++){
         oldLine[i].classList = newLine[i].classList;
     }
+}
+
+const lineClearAnimation = (clearedLines, rowArray) => {
+    // Removes ghost piece
+    removeGhostPiece();
+    
+    clearedLines.forEach(clearedLine => {
+        debugger;
+    })
 }

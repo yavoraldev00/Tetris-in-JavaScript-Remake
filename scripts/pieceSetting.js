@@ -157,19 +157,25 @@ const placePiece = (piece) => {
 
 // Sets the ghost piece location
 const setGhostPiece = () => {
-    // Removes current ghost piece from board
-    const setPiecesArr = board.querySelectorAll(".ghost-piece");
-
-    setPiecesArr.forEach((piece) => {
-        piece.classList.remove("ghost-piece");
-    })
+    // Removes ghost piece
+    removeGhostPiece();
 
     // Updates ghost piece location to match current one
-
     pieceState.currentGhostCoordinates.forEach((pieceCell) => {
         const cell = board.querySelector(`[data-cell-number="${pieceCell}"]`);
 
         cell.classList.add("ghost-piece");
+    })
+}
+
+// Removes the ghost piece from the board
+const removeGhostPiece = () => {
+    // Gets all the current ghost pieces from the board
+    const setPiecesArr = board.querySelectorAll(".ghost-piece");
+
+    // Removes each ghost piece from the board
+    setPiecesArr.forEach((piece) => {
+        piece.classList.remove("ghost-piece");
     })
 }
 
@@ -211,9 +217,12 @@ const setNewPiece = (newPiece) => {
     }else{ // If space is empty, places the piece on the board
         // Places the piece on the board
         placePiece(pieceState.currentCoordinates);
+debugger;
+        if(pieceState.currentHeld == false){
+            pieceState.nextPiece = structuredClone(generatePiece());
+            updateNextPiece();
+        }
 
-        pieceState.nextPiece = structuredClone(generatePiece());
-        updateNextPiece();
 
         moveGhostPiece();
     }
@@ -292,21 +301,16 @@ const updateHeldPiece = () => {
     
         pieceState.currentCoordinates = [0,0,0,0];
         pieceState.currentRotation = 0;
+
+        // Updates held to being used
+        pieceState.currentHeld = true
     
         if(swappedPiece == null){
             setNewPiece(pieceState.nextPiece);
         }else{
             setNewPiece(swappedPiece);
         }
-
-        // Updates held to being used
-        pieceState.currentHeld = true
     }
-}
-
-// Removes HELD piece from Next Piece board
-const removeHeldPiece = () => {
-
 }
 
 // Current cleared lines
