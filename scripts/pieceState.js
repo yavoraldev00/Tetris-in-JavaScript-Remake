@@ -5,6 +5,7 @@ const pieceState = {
     coordinates: [],
     ghostCoordinates: [],
     rotation: 0,
+    held: false,
 
     get currentPiece() {
         return this.curTetronimo
@@ -52,5 +53,13 @@ const pieceState = {
 
     set currentGhostCoordinates(item) {
         this.ghostCoordinates = item
-    }   
+    },
+
+    get currentHeld() {
+        return this.held
+    },
+
+    set currentHeld(item) {
+        this.held = item
+    }
 }

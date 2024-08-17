@@ -209,10 +209,9 @@ const setNewPiece = (newPiece) => {
     if(breakFlag){ // If there is a piece there already, game is over
         alert("YOU LOSE")
     }else{ // If space is empty, places the piece on the board
-
         // Places the piece on the board
         placePiece(pieceState.currentCoordinates);
-        
+
         pieceState.nextPiece = structuredClone(generatePiece());
         updateNextPiece();
 
@@ -232,6 +231,9 @@ const setPiece = () => {
 
     // Resets current rotation
     pieceState.currentRotation = 0;
+
+    // Updates held function to be 
+    pieceState.currentHeld = false
 
     // Checks and clears any lines
     checkForLineClear()
@@ -258,8 +260,49 @@ const updateNextPiece = () => {
 }
 
 // Sets HELD piece on Next Piece board
-const setHeldPiece = () => {
+const updateHeldPiece = () => {
+    // If hold HAS NOT been used, then swaps held piece with current one
+    if(pieceState.currentHeld == false){
+        // Removes the current piece from the board
+        removePiece();
     
+        // Gets all pieces on the held piece board
+        const setPiecesArr = heldPieceBoard.querySelectorAll(".piece");
+    
+        // Removes any present piece from the held board
+        if(pieceState.heldPiece != null){
+            setPiecesArr.forEach((pieceCell) => {
+                pieceCell.classList.remove("piece");
+                pieceCell.classList.remove( `${pieceState.heldPiece["name"] + "-color"}` );
+            })
+        }
+    
+        // Variable with copy of currently held piece
+        const swappedPiece = structuredClone(pieceState.heldPiece);
+    
+        // Updates held piece to be equal to the current piece
+        pieceState.heldPiece = structuredClone(pieceState.currentPiece);
+    
+        // Sets the pieces to the held piece board
+        pieceState.heldPiece["coordinates"].forEach((pieceCell) => {
+            const cell = heldPieceBoard.querySelector(`[data-cell-number="${pieceCell}"]`);
+    
+            cell.classList.add("piece");
+            cell.classList.add( `${pieceState.heldPiece["name"] + "-color"}` );
+        })
+    
+        pieceState.currentCoordinates = [0,0,0,0];
+        pieceState.currentRotation = 0;
+    
+        if(swappedPiece == null){
+            setNewPiece(pieceState.nextPiece);
+        }else{
+            setNewPiece(swappedPiece);
+        }
+
+        // Updates held to being used
+        pieceState.currentHeld = true
+    }
 }
 
 // Removes HELD piece from Next Piece board
@@ -294,6 +337,8 @@ document.addEventListener("keydown", (e)=> {
         rotatePiece(pressedKey)
     }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft" || pressedKey == "ArrowDown" || pressedKey == "ArrowUp"){ // If directional keys are perssed, moves piece
         movePiece(pressedKey)
+    }else if(pressedKey == "a"){ // If directional keys are perssed, moves piece
+        updateHeldPiece()
     }
 
     moveGhostPiece();
