@@ -241,19 +241,18 @@ const setPiece = () => {
 
 // Updates piece on Next Piece board. Removes old one and adds new one
 const updateNextPiece = () => {
+    // Gets all pieces on the next board
     const setPiecesArr = nextPieceBoard.querySelectorAll(".piece");
 
-    if(setPiecesArr.length > 0){
-        setPiecesArr.forEach((pieceCell) => {
-            pieceCell.classList.remove("piece");
-            //might need to fix later
-            pieceCell.classList.remove( `${pieceState.currentPiece["name"] + "-color"}` );
-        })
-    }
-
+    // Removes each piece from the next board
+    setPiecesArr.forEach((pieceCell) => {
+        pieceCell.classList.remove("piece");
+        pieceCell.classList.remove( `${pieceState.currentPiece["name"] + "-color"}` );
+    })
+    
+    // Adds each piece of the current next held piece to the next board
     pieceState.nextPiece["coordinates"].forEach((pieceCell) => {
         const cell = nextPieceBoard.querySelector(`[data-cell-number="${pieceCell}"]`);
-
         cell.classList.add("piece");
         cell.classList.add( `${pieceState.nextPiece["name"] + "-color"}` );
     })
