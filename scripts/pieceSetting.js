@@ -328,6 +328,11 @@ const startGame = () => {
 
     // Generates a piece to start the game
     setNewPiece(pieceState.nextPiece);
+
+    // Start music
+    const music = document.getElementById("music");
+
+    // debugger;
 }
 
 startGame();

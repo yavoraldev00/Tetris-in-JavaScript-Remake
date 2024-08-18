@@ -2,6 +2,10 @@
 const rotatePiece = (rotationDirection) => {
     var breakFlag = false;
 
+    // Sound effect
+    rotateSound.load();
+    rotateSound.play();
+
     if(rotationDirection == "x"){ // Rotates piece RIGHT by ADDING current rotation values, updates current rotation + 1
         // Rotates right
         const rotatedPiece = pieceState.currentCoordinates.map((piece, index) => {
@@ -54,6 +58,10 @@ const movePiece = (movementDirection) => {
     var breakFlag = false;
 
     if(movementDirection == "ArrowRight"){ // Moves piece +1 to right
+        // Sound effect
+        moveSound.load();
+        moveSound.play();
+        
         // Moves RIGHT
         const movedPiece = pieceState.currentCoordinates.map((piece) => {
             if(collisionDetection(piece, piece+1, movementDirection)){
@@ -70,6 +78,10 @@ const movePiece = (movementDirection) => {
         // Sets original piece to moved piece
         pieceState.currentCoordinates = movedPiece;
     }else if(movementDirection == "ArrowLeft"){ // Moves piece -1 to left
+        // Sound effect
+        moveSound.load();
+        moveSound.play();
+        
         // Moves LEFT
         const movedPiece = pieceState.currentCoordinates.map((piece) => {
             if(collisionDetection(piece, piece-1, movementDirection)){
@@ -86,6 +98,10 @@ const movePiece = (movementDirection) => {
         // Sets original piece to moved piece
         pieceState.currentCoordinates = movedPiece;
     }else if(movementDirection == "ArrowDown"){ // Moves piece +10 down
+        // Sound effect
+        softDropSound.load();
+        softDropSound.play();
+
         // Moves DOWN
         const movedPiece = pieceState.currentCoordinates.map((piece) => {
             if(collisionDetection(piece, piece+10, movementDirection)){
@@ -110,7 +126,11 @@ const movePiece = (movementDirection) => {
 
         // Sets original piece to moved piece
         pieceState.currentCoordinates = movedPiece;
-    }else if(movementDirection == "ArrowUp"){ // Moves piece to bottom of board/closest colliding piece and generates new piece
+    }else if(movementDirection == "ArrowUp"){// Moves piece to bottom of board/closest colliding piece and generates new piece
+        // Sound effect
+        hardDropSound.load();
+        hardDropSound.play();
+        
         // Sets original piece to moved piece
         pieceState.currentCoordinates = hardDropDistance();
 

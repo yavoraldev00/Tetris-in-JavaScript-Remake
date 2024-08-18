@@ -50,6 +50,10 @@ const lineClearAnimationStart = (clearedLines, rowArray) => {
 
     // Variable for animation delay
     pieceState.currentLineClearAnimation = true;
+
+    // Sound effect
+    clearSound.load();
+    clearSound.play();
 }
 
 // Sets a class on rows when animation ends
