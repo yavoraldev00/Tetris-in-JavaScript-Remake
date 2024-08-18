@@ -11,7 +11,7 @@
 }
 
 .row-clear {
-    @apply animate-spin;
+    @apply animate-ping;
 }
 
 .cell {

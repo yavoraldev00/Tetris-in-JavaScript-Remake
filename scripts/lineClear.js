@@ -50,14 +50,10 @@ const lineClearAnimationStart = (clearedLines, rowArray) => {
 
     // Variable for animation delay
     pieceState.currentLineClearAnimation = true;
-
-    // sleep(2000);
 }
 
 // Sets a class on rows when animation ends
 const lineClearAnimationEnd = (clearedLines, rowArray) => {
-    // sleep(2000);
-
     setTimeout(() => {
         clearedLines.forEach((clearedLine) => {
             rowArray[clearedLine].classList.remove("row-clear")
@@ -68,16 +64,5 @@ const lineClearAnimationEnd = (clearedLines, rowArray) => {
 
         // Generates and places a new piece on the board
         setNewPiece(pieceState.nextPiece);
-    }, 2000);
+    }, 400);
 }
-
-// function delay(ms) {
-//     return new Promise(resolve => setTimeout(resolve, ms));
-// }
-
-// function sleep(miliseconds) {
-//     var currentTime = new Date().getTime();
- 
-//     while (currentTime + miliseconds >= new Date().getTime()) {
-//     }
-// }
