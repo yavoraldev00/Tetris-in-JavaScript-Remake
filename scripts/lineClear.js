@@ -10,6 +10,15 @@ const checkForLineClear = () => {
         }
     }
 
+    // If lines are cleared, plays line clear animation
+    if(filledRows.length > 0){
+        // Starts the line clear animation
+        lineClearAnimationStart(filledRows, rowArray);
+
+        // Stops the line clear animation
+        lineClearAnimationEnd(filledRows, rowArray);
+    }
+
     // Remove filled rows and move above rows down
     filledRows.forEach(rowIndex => {
         for (let i = rowIndex; i > 0; i--) {
@@ -24,11 +33,6 @@ const checkForLineClear = () => {
 
     var lineScore = document.getElementById("lines");
     lineScore.textContent = Number(lineScore.textContent) + filledRows.length;
-
-    // If lines are cleared, plays line clear animation
-    if(filledRows.length > 0){
-        lineClearAnimation(filledRows, rowArray);
-    }
 }
 
 // Swaps the classes current line with the line above
@@ -38,11 +42,42 @@ const moveLineClasses = (oldLine, newLine) => {
     }
 }
 
-const lineClearAnimation = (clearedLines, rowArray) => {
-    // Removes ghost piece
-    removeGhostPiece();
-    
-    clearedLines.forEach(clearedLine => {
-        debugger;
-    })
+// Sets a class on rows so they can play a clear animation
+const lineClearAnimationStart = (clearedLines, rowArray) => {     
+    clearedLines.forEach((clearedLine) => {
+        rowArray[clearedLine].classList.add("row-clear")
+    });
+
+    // Variable for animation delay
+    pieceState.currentLineClearAnimation = true;
+
+    // sleep(2000);
 }
+
+// Sets a class on rows when animation ends
+const lineClearAnimationEnd = (clearedLines, rowArray) => {
+    // sleep(2000);
+
+    setTimeout(() => {
+        clearedLines.forEach((clearedLine) => {
+            rowArray[clearedLine].classList.remove("row-clear")
+        });
+
+        // Variable for animation delay
+        pieceState.currentLineClearAnimation = false;
+
+        // Generates and places a new piece on the board
+        setNewPiece(pieceState.nextPiece);
+    }, 2000);
+}
+
+// function delay(ms) {
+//     return new Promise(resolve => setTimeout(resolve, ms));
+// }
+
+// function sleep(miliseconds) {
+//     var currentTime = new Date().getTime();
+ 
+//     while (currentTime + miliseconds >= new Date().getTime()) {
+//     }
+// }

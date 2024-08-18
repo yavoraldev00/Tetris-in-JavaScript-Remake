@@ -95,12 +95,16 @@ const movePiece = (movementDirection) => {
             }
         })
 
-        if(breakFlag){ // If collision is detected, places piece on the board and generates new one
+        if(breakFlag){ // If collision is detected, places piece on the board and generates new one            
             // Sets the piece on the board
             setPiece();
 
-            // Generates and places a new piece on the board
-            setNewPiece(pieceState.nextPiece);
+            // If there is no line clears / animation going, places a new piece on the board
+            if(pieceState.currentLineClearAnimation == false){
+                // Generates and places a new piece on the board
+                setNewPiece(pieceState.nextPiece);
+            }
+            
             return
         }
 
@@ -119,8 +123,12 @@ const movePiece = (movementDirection) => {
         // Sets the piece on the board
         setPiece();
 
-        // Generates and places a new piece on the board
-        setNewPiece(pieceState.nextPiece);
+        // If there is no line clears / animation going, places a new piece on the board
+        if(pieceState.currentLineClearAnimation == false){
+            // Generates and places a new piece on the board
+            setNewPiece(pieceState.nextPiece);
+        }
+
         return
     }
 

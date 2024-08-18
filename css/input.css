@@ -10,6 +10,10 @@
     @apply flex w-fit;
 }
 
+.row-clear {
+    @apply animate-spin;
+}
+
 .cell {
     @apply bg-gray-200 w-6 aspect-square border-white border text-xs overflow-hidden;
 }

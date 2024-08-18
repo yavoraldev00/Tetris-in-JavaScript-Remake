@@ -10,3 +10,10 @@
 7. Improved UI
 8. Score
 9. Leaderboards
+
+### How to create line clear animation
+- while cycle
+- disable controls
+- disable game state
+- https://stackoverflow.com/questions/16623852/how-to-pause-javascript-code-execution-for-2-seconds
+- piece setting game controls

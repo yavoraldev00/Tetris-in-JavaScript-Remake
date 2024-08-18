@@ -6,6 +6,7 @@ const pieceState = {
     ghostCoordinates: [],
     rotation: 0,
     held: false,
+    lineClearAnimation: false,
 
     get currentPiece() {
         return this.curTetronimo
@@ -61,5 +62,13 @@ const pieceState = {
 
     set currentHeld(item) {
         this.held = item
+    },
+
+    get currentLineClearAnimation() {
+        return this.lineClearAnimation
+    },
+
+    set currentLineClearAnimation(item) {
+        this.lineClearAnimation = item
     }
 }

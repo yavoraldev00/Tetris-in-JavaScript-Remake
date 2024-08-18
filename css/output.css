@@ -647,6 +647,16 @@ video {
   width: fit-content;
 }
 
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.row-clear {
+  animation: spin 1s linear infinite;
+}
+
 .cell {
   aspect-ratio: 1 / 1;
   width: 1.5rem;

@@ -217,7 +217,7 @@ const setNewPiece = (newPiece) => {
     }else{ // If space is empty, places the piece on the board
         // Places the piece on the board
         placePiece(pieceState.currentCoordinates);
-debugger;
+        
         if(pieceState.currentHeld == false){
             pieceState.nextPiece = structuredClone(generatePiece());
             updateNextPiece();
@@ -230,6 +230,9 @@ debugger;
 
 // Sets current piece on the board
 const setPiece = () => {
+    // Removes ghost piece
+    removeGhostPiece();
+
     // Variable with all current piece locations
     const currentPieces = board.querySelectorAll(".current-piece")
 
@@ -245,7 +248,7 @@ const setPiece = () => {
     pieceState.currentHeld = false
 
     // Checks and clears any lines
-    checkForLineClear()
+    checkForLineClear();
 }
 
 // Updates piece on Next Piece board. Removes old one and adds new one
@@ -333,18 +336,21 @@ lineScore.textContent = clearedLines;
 
 // Detects pressed key
 document.addEventListener("keydown", (e)=> {
-    // Variable that stores pressed key
-    const pressedKey = e.key;
-
-    if(pressedKey == "x" || pressedKey == "z"){ // If "x" or "z" are pressed, rotates piece
-        rotatePiece(pressedKey)
-    }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft" || pressedKey == "ArrowDown" || pressedKey == "ArrowUp"){ // If directional keys are perssed, moves piece
-        movePiece(pressedKey)
-    }else if(pressedKey == "a"){ // If directional keys are perssed, moves piece
-        updateHeldPiece()
+    // Can only controll if no animation is playing
+    if(pieceState.currentLineClearAnimation == false){
+        // Variable that stores pressed key
+        const pressedKey = e.key;
+    
+        if(pressedKey == "x" || pressedKey == "z"){ // If "x" or "z" are pressed, rotates piece
+            rotatePiece(pressedKey)
+        }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft" || pressedKey == "ArrowDown" || pressedKey == "ArrowUp"){ // If directional keys are perssed, moves piece
+            movePiece(pressedKey)
+        }else if(pressedKey == "a"){ // If directional keys are perssed, moves piece
+            updateHeldPiece()
+        }
+    
+        moveGhostPiece();
+    
+        console.log(pieceState.currentRotation)
     }
-
-    moveGhostPiece();
-
-    console.log(pieceState.currentRotation)
 })
