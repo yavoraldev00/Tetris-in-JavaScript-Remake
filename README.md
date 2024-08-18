@@ -19,3 +19,4 @@
 - piece setting game controls
 - difficulty
 - levels
+- t-spins
