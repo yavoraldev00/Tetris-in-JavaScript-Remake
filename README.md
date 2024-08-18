@@ -17,3 +17,5 @@
 - disable game state
 - https://stackoverflow.com/questions/16623852/how-to-pause-javascript-code-execution-for-2-seconds
 - piece setting game controls
+- difficulty
+- levels
