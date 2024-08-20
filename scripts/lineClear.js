@@ -53,7 +53,7 @@ const lineClearAnimationStart = (clearedLines, rowArray) => {
     pieceState.currentLineClearAnimation = true;
 
     // Sound effect
-    clearSound.load();
+    clearSound.currentTime = 0;
     clearSound.play();
 }
 

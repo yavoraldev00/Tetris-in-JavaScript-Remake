@@ -3,7 +3,7 @@ const rotatePiece = (rotationDirection) => {
     var breakFlag = false;
 
     // Sound effect
-    rotateSound.load();
+    rotateSound.currentTime = 0;
     rotateSound.play();
 
     if(rotationDirection == "x"){ // Rotates piece RIGHT by ADDING current rotation values, updates current rotation + 1
@@ -59,7 +59,7 @@ const movePiece = (movementDirection) => {
 
     if(movementDirection == "ArrowRight"){ // Moves piece +1 to right
         // Sound effect
-        moveSound.load();
+        moveSound.currentTime = 0;
         moveSound.play();
         
         // Moves RIGHT
@@ -79,7 +79,7 @@ const movePiece = (movementDirection) => {
         pieceState.currentCoordinates = movedPiece;
     }else if(movementDirection == "ArrowLeft"){ // Moves piece -1 to left
         // Sound effect
-        moveSound.load();
+        moveSound.currentTime = 0;
         moveSound.play();
         
         // Moves LEFT
@@ -99,7 +99,7 @@ const movePiece = (movementDirection) => {
         pieceState.currentCoordinates = movedPiece;
     }else if(movementDirection == "ArrowDown"){ // Moves piece +10 down
         // Sound effect
-        softDropSound.load();
+        softDropSound.currentTime = 0;
         softDropSound.play();
 
         // Moves DOWN
@@ -128,7 +128,7 @@ const movePiece = (movementDirection) => {
         pieceState.currentCoordinates = movedPiece;
     }else if(movementDirection == "ArrowUp"){// Moves piece to bottom of board/closest colliding piece and generates new piece
         // Sound effect
-        hardDropSound.load();
+        hardDropSound.currentTime = 0;
         hardDropSound.play();
         
         // Sets original piece to moved piece

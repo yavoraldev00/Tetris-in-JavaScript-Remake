@@ -1,5 +1,10 @@
 const hardDropSound = new Audio("resources/se_game_harddrop.wav");
+hardDropSound.load();
 const moveSound = new Audio("resources/se_game_move.wav");
+moveSound.load();
 const rotateSound = new Audio("resources/se_game_rotate.wav");
+rotateSound.load();
 const softDropSound = new Audio("resources/se_game_softdrop.wav");
+softDropSound.load();
 const clearSound = new Audio("resources/se_game_clear.wav");
+clearSound.load();
