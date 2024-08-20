@@ -20,3 +20,6 @@
 - difficulty
 - levels
 - t-spins
+
+#### Features to fix
+- sound effects break if used too quickly

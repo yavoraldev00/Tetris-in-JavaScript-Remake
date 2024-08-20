@@ -1,7 +1,8 @@
+// Array holding all rows on the board
+const rowArray = Array.from(board.getElementsByClassName("row"));
+
 // Function used to check if there are any cleared lines
 const checkForLineClear = () => {
-    const rowArray = Array.from(board.getElementsByClassName("row"));
-
     let filledRows = [];
 
     for (let i = 0; i < rowArray.length; i++){

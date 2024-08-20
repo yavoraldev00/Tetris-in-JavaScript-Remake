@@ -233,7 +233,6 @@ const setPiece = () => {
     // Removes ghost piece
     removeGhostPiece();
 
-    debugger;
     // Variable with all current piece locations
     const currentPieces = board.querySelectorAll(".current-piece")
 
@@ -250,8 +249,6 @@ const setPiece = () => {
 
     // Checks and clears any lines
     checkForLineClear();
-
-    debugger;
 }
 
 // Updates piece on Next Piece board. Removes old one and adds new one

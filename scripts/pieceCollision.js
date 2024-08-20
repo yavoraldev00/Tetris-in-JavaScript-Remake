@@ -1,6 +1,6 @@
 // Function used for collision detection. Returns "true" if new piece location would collide with wall/other piece
 const collisionDetection = (curPieceLocation, movedPieceLocation, pressedKey) => {
-    let movedPiece = board.querySelector(`[data-cell-number="${movedPieceLocation}"]`);
+    const movedPiece = board.querySelector(`[data-cell-number="${movedPieceLocation}"]`);
 
     let lowerLimit = 2;
     let upperLimit = 8;
