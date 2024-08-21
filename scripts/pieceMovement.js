@@ -8,15 +8,23 @@ const rotatePiece = (rotationDirection) => {
 
     if(rotationDirection == "x"){ // Rotates piece RIGHT by ADDING current rotation values, updates current rotation + 1
         // Rotates right
-        const rotatedPiece = pieceState.currentCoordinates.map((piece, index) => {
+        var rotatedPiece = pieceState.currentCoordinates.map((piece, index) => { //Checks for collision
             if(collisionDetection(piece, piece + pieceState.currentPiece["rotations"][pieceState.currentRotation][index], rotationDirection)){
                 breakFlag = true;
             }
             return piece += pieceState.currentPiece["rotations"][pieceState.currentRotation][index];
         })
 
-        if(breakFlag){ // if collision is detected, stops function
-            return
+        if(breakFlag){ // If collision is detected, tries wall kick
+            // Kicked piece
+            const kickedPiece = checkWallKick(rotatedPiece, rotationDirection);
+
+            if(kickedPiece == false){ // If no wall kicks can be preformed, ends rotation attempt
+                return
+            }
+
+            // If wall kick is possible, sets it as the new rotated piece
+            rotatedPiece = kickedPiece;
         }
 
         // Sets original piece to rotation piece
