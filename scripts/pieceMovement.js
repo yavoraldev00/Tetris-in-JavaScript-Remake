@@ -1,6 +1,9 @@
 // Function used to rotate pieces RIGHT and LEFT
 const rotatePiece = (rotationDirection) => {
-    var breakFlag = false;
+    // var breakFlag = false;
+    var leftCollision = false;
+    var rightCollision = false;
+    
 
     // Sound effect
     rotateSound.currentTime = 0;
@@ -9,15 +12,24 @@ const rotatePiece = (rotationDirection) => {
     if(rotationDirection == "x"){ // Rotates piece RIGHT by ADDING current rotation values, updates current rotation + 1
         // Rotates right
         var rotatedPiece = pieceState.currentCoordinates.map((piece, index) => { //Checks for collision
-            if(collisionDetection(piece, piece + pieceState.currentPiece["rotations"][pieceState.currentRotation][index], rotationDirection)){
-                breakFlag = true;
+            // if(collisionDetection(piece, piece + pieceState.currentPiece["rotations"][pieceState.currentRotation][index], rotationDirection)){
+            //     breakFlag = true;
+            // }
+            if(collisionDetection(piece, piece + pieceState.currentPiece["rotations"][pieceState.currentRotation][index], "leftCollision")){
+                leftCollision = true;
             }
+
+            if(collisionDetection(piece, piece + pieceState.currentPiece["rotations"][pieceState.currentRotation][index], "rightCollision")){
+                rightCollision = true;
+            }
+
+
             return piece += pieceState.currentPiece["rotations"][pieceState.currentRotation][index];
         })
 
-        if(breakFlag){ // If collision is detected, tries wall kick
+        if(/*breakFlag*/ leftCollision || rightCollision){ // If collision is detected, tries wall kick
             // Kicked piece
-            const kickedPiece = checkWallKick(rotatedPiece, rotationDirection);
+            const kickedPiece = checkWallKick(rotatedPiece, rotationDirection, leftCollision, rightCollision);
 
             if(kickedPiece == false){ // If no wall kicks can be preformed, ends rotation attempt
                 return
@@ -38,16 +50,31 @@ const rotatePiece = (rotationDirection) => {
         (pieceState.currentRotation == 0) ? pieceState.currentRotation = 3 : pieceState.currentRotation -= 1;
 
         // do rotation
-        const rotatedPiece = pieceState.currentCoordinates.map((piece, index) => {
-            if(collisionDetection(piece, piece + (pieceState.currentPiece["rotations"][pieceState.currentRotation][index] *-1), rotationDirection)){
-                breakFlag = true;
+        var rotatedPiece = pieceState.currentCoordinates.map((piece, index) => {
+            // if(collisionDetection(piece, piece + (pieceState.currentPiece["rotations"][pieceState.currentRotation][index] *-1), rotationDirection)){
+            //     breakFlag = true;
+            // }
+            if(collisionDetection(piece, piece + (pieceState.currentPiece["rotations"][pieceState.currentRotation][index] *-1), "leftCollision")){
+                leftCollision = true;
             }
+            if(collisionDetection(piece, piece + (pieceState.currentPiece["rotations"][pieceState.currentRotation][index] *-1), "rightCollision")){
+                rightCollision = true;
+            }
+            
             return piece += (pieceState.currentPiece["rotations"][pieceState.currentRotation][index] *-1);
         })
 
-        if(breakFlag){ // if collision is detected, stops function
-            (pieceState.currentRotation == 3) ? pieceState.currentRotation = 0 : pieceState.currentRotation += 1;
-            return
+        if(/*breakFlag*/ leftCollision || rightCollision){ // if collision is detected, stops function
+            const kickedPiece = checkWallKick(rotatedPiece, rotationDirection, leftCollision, rightCollision);
+
+            if(kickedPiece == false){ // If no wall kicks can be preformed, ends rotation attempt
+                (pieceState.currentRotation == 3) ? pieceState.currentRotation = 0 : pieceState.currentRotation += 1;
+                
+                return
+            }
+
+            // If wall kick is possible, sets it as the new rotated piece
+            rotatedPiece = kickedPiece;            
         }
 
         // Sets original piece to rotation piece

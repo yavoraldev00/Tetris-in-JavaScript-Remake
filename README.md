@@ -1,7 +1,7 @@
 # Tetris-in-JavaScript-Remake
 
 ## Features to add
-1. Wall kicks
+1. (Advanced) Wall kicks - Floor kicks, wall kicks against other pieces, t-spins
 2. Line clear animation
 3. Sound effects ( line clear, tetris, piece drop )
 4. Music

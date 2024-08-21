@@ -71,19 +71,32 @@ const collisionDetection = (curPieceLocation, movedPieceLocation, pressedKey) =>
                 return true;
             }
             break;
+        case "Collision":
+            if(
+                movedPiece.classList.contains("piece")
+            ){
+                return true;
+            }
+            break;
         default: break;
     }
 }
 
-const checkWallKick = (curPieceLocation, rotationDirection) => {
+const checkWallKick = (curPieceLocation, rotationDirection, leftCollision, rightCollision) => {
+    // Offset is 1, unless it's I shape in position 1 or 3, and is on the left or right edge of the screen
+    const leftOffset = (pieceState.currentPiece.name == "i_shape" && (pieceState.currentRotation == 3 || pieceState.currentRotation == 2) && pieceState.currentCoordinates[0]%10 == 9) ? 2 : 1;
+    
+    // Offset is 1, unless it's I shape in position 1 or 3, and is on the left or right edge of the screen
+    const rightOffset = (pieceState.currentPiece.name == "i_shape" && (pieceState.currentRotation == 1 || pieceState.currentRotation == 0) && pieceState.currentCoordinates[0]%10 == 0) ? 2 : 1;
+
     // Tetris piece if it was moved one to the left
     const kickedPieceLeft = curPieceLocation.map((piece)=>{
-        return piece -= 1;
+        return piece -= leftOffset;
     })
 
     // Tetris piece if it was moved one to the right
     const kickedPieceRight = curPieceLocation.map((piece)=>{
-        return piece -= 1;
+        return piece += rightOffset;
     })
 
     // Flag used for collision checks
@@ -91,18 +104,23 @@ const checkWallKick = (curPieceLocation, rotationDirection) => {
 
     if(rotationDirection == "x"){ // If rotating RIGHT
         //Pushed piece LEFT and checks for collision
-        curPieceLocation.forEach((piece, index) => {
-            if(collisionDetection(piece, kickedPieceLeft[index], "ArrowLeft")){
-                breakFlag = true;
+        if(rightCollision){
+            kickedPieceLeft.forEach((piece) => {
+                if(collisionDetection(null, piece, "Collision")){
+                    breakFlag = true;
+                }
+            });
+
+            //If NOT colliding, returls the LEFT PUSHED piece
+            if(!breakFlag){
+                return kickedPieceLeft;
+            }else{
+                return false;
             }
-        });
-
-        if(breakFlag){ // If still coliding, pushes piece RIGHT and checks for collision
-            // Resets breakFlag for next check
-            breakFlag = false;
-
-            curPieceLocation.forEach((piece, index) => {
-                if(collisionDetection(piece, kickedPieceRight[index], "ArrowRight")){
+        }else if(leftCollision){ // If collision is on left side, when turn piece clockwise
+            //Pushed piece LEFT and checks for collision
+            kickedPieceRight.forEach((piece) => {
+                if(collisionDetection(null, piece, "Collision")){
                     breakFlag = true;
                 }
             });
@@ -114,23 +132,25 @@ const checkWallKick = (curPieceLocation, rotationDirection) => {
                 return false;
             }
         }
-        //If breakFlag doesn't get triggered, returns the LEFT PUSHED piece
-        return kickedPieceLeft;
-        
     }else if(rotationDirection == "z"){ // If rotating LEFT
         //Pushed piece RIGHT and checks for collision
-        curPieceLocation.forEach((piece, index) => {
-            if(collisionDetection(piece, kickedPieceRight[index], "ArrowRight")){
-                breakFlag = true;
+        if(leftCollision){ // If collision is on left side, when turn piece counter-clockwise
+            kickedPieceRight.forEach((piece) => {
+                if(collisionDetection(null, piece, "Collision")){
+                    breakFlag = true;
+                }
+            });
+
+            //If NOT colliding, returls the RIGHT PUSHED piece
+            if(!breakFlag){
+                return kickedPieceRight;
+            }else{
+                return false;
             }
-        });
-
-        if(breakFlag){ // If still coliding, pushes piece LEFT and checks for collision
-            // Resets breakFlag for next check
-            breakFlag = false;
-
-            curPieceLocation.forEach((piece, index) => {
-                if(collisionDetection(piece, kickedPieceLeft[index], "ArrowLeft")){
+        }else if(rightCollision){ // If collision is on right side, when turn piece counter-clockwise
+            //Pushed piece LEFT and checks for collision
+            kickedPieceLeft.forEach((piece) => {
+                if(collisionDetection(null, piece, "Collision")){
                     breakFlag = true;
                 }
             });
@@ -142,8 +162,5 @@ const checkWallKick = (curPieceLocation, rotationDirection) => {
                 return false;
             }
         }
-
-        //If breakFlag doesn't get triggered, returns the LEFT PUSHED piece
-        return kickedPieceRight;
     }
 }
