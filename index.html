@@ -10,7 +10,7 @@
     <h1 class="w-full my-8 text-center text-xl font-bold">Tetris</h1>
 
     <!-- Grid containing game and extra information -->
-    <div class="grid grid-cols-7 h-24 w-10/12 mx-auto">
+    <div class="grid relative grid-cols-7 h-fit w-10/12 mx-auto">
 
         <!-- Held piece and other information -->
         <div class="bg-slate-200 border-2 border-black border-outset col-span-2 flex flex-col items-center">
@@ -28,6 +28,7 @@
             <div class="font-extrabold">Next Piece</div>
             <p>Score: <span id="score"></span></p>
             <h2 class="text-lg">Controlls</h2>
+            <p>Esc - Pause</p>
             <p>Left/Right Arrow Key - Movement</p>
             <p>Up Arrow key - Hard drop</p>
             <p>Down Arrow key - Soft drop</p>
@@ -35,10 +36,23 @@
             <p>X - Rotate right</p>
             <p>A - Hold piece</p>
         </div>
+
+        <!-- Start of game message -->
+        <div class="flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-green-300 z-30 border-2 border-gray-400 rounded-md" id="start-msg">
+            <p class="text-xl font-bold">Welcome</p>
+            <p class="text-center">This is a recreation of the game Tetris, recreated in JavaScript. You can see the controls on the right side of the screen. On the left side of the screen you may select various background music to listen to while you're playing. When you are ready, click the "Start" button to begin.</p>
+            <button class="bg-gray-300 bg-opacity-90 py-2 px-4 text-lg rounded-xl cursor-pointer" id="start-game">Start</button>
+        </div>
+
+        <!-- Pause message -->
+        <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-green-300 z-30 border-2 border-gray-400 rounded-md" id="pause-msg">
+            <p class="text-xl font-bold">PAUSED</p>
+            <button class="bg-gray-300 bg-opacity-90 py-2 px-4 my-auto text-lg rounded-xl cursor-pointer" id="resume-game">Continue</button>
+        </div>
     </div>
 
     <!-- <iframe src="resources/mario.mp3" class="hidden" allow="autoplay" id="audio"> -->
-    <audio src="resources/mario.mp3" id="music" autoplay controls loop></audio>
+    <!-- <audio src="resources/mario.mp3" id="music" autoplay controls loop></audio> -->
     <!-- </iframe> -->
 
     <!-- Game scripts -->
@@ -49,5 +63,6 @@
     <script src="scripts/pieceCollision.js"></script>
     <script src="scripts/lineClear.js"></script>
     <script src="scripts/pieceSetting.js"></script>
+    <script src="scripts/gameState.js"></script>
 </body>
 </html>

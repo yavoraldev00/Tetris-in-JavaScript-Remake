@@ -337,27 +337,3 @@ startGame();
 // Sets cleared lines score
 var lineScore = document.getElementById("lines");
 lineScore.textContent = clearedLines;
-
-
-// Detects pressed key
-document.addEventListener("keydown", (e)=> {
-    // Can only controll if no animation is playing
-    if(pieceState.currentLineClearAnimation == false){
-        // Variable that stores pressed key
-        const pressedKey = e.key;
-    
-        if(pressedKey == "x" || pressedKey == "z"){ // If "x" or "z" are pressed, rotates piece
-            rotatePiece(pressedKey)
-        }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft" || pressedKey == "ArrowDown" || pressedKey == "ArrowUp"){ // If directional keys are perssed, moves piece
-            movePiece(pressedKey)
-        }else if(pressedKey == "a"){ // If directional keys are perssed, moves piece
-            updateHeldPiece()
-        }
-    
-        if(pieceState.currentLineClearAnimation == false){
-            moveGhostPiece();
-        }
-    
-        console.log(pieceState.currentRotation)
-    }
-})
