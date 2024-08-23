@@ -52,9 +52,34 @@ const lineClearAnimationStart = (clearedLines, rowArray) => {
     // Variable for animation delay
     pieceState.currentLineClearAnimation = true;
 
+    debugger;
+
+    // Plays sound effect on line clear
+    switch(clearedLines.length){
+        case 1:
+            clearSingle.currentTime = 0;
+            clearSingle.play();
+            break;
+        
+        case 2:
+            clearDouble.currentTime = 0;
+            clearDouble.play();
+            break;
+        
+        case 3:
+            clearTriple.currentTime = 0;
+            clearTriple.play();
+            break;
+        
+        case 4:
+            clearTetris.currentTime = 0;
+            clearTetris.play();
+            break;
+        default: break;
+    }
+
     // Sound effect
-    clearSound.currentTime = 0;
-    clearSound.play();
+   
 }
 
 // Sets a class on rows when animation ends
