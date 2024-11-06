@@ -2,7 +2,11 @@
 module.exports = {
   content: ["index.html"],
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        "open-font": ["Open Sans", "sans-serif"]
+      }
+    },
   },
   plugins: [],
 }
