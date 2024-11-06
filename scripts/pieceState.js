@@ -7,6 +7,7 @@ const pieceState = {
     rotation: 0,
     held: false,
     lineClearAnimation: false,
+    gameActive: false,
 
     get currentPiece() {
         return this.curTetronimo
@@ -70,5 +71,13 @@ const pieceState = {
 
     set currentLineClearAnimation(item) {
         this.lineClearAnimation = item
+    },
+
+    get currentGameActive() {
+        return this.gameActive
+    },
+
+    set currentGameActive(item) {
+        this.gameActive = item
     }
 }

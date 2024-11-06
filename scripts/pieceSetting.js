@@ -214,6 +214,9 @@ const setNewPiece = (newPiece) => {
 
     if(breakFlag){ // If there is a piece there already, game is over
         alert("YOU LOSE")
+
+        // Stops the game
+        pieceState.currentGameActive = false;
     }else{ // If space is empty, places the piece on the board
         // Places the piece on the board
         placePiece(pieceState.currentCoordinates);
@@ -326,13 +329,9 @@ const startGame = () => {
     // Generates a piece to start the game
     setNewPiece(pieceState.nextPiece);
 
-    // Start music
-    const music = document.getElementById("music");
-
-    // debugger;
+    // Sets the game state to be active, allowing controlls
+    pieceState.currentGameActive = true;
 }
-
-startGame();
 
 // Sets cleared lines score
 var lineScore = document.getElementById("lines");
