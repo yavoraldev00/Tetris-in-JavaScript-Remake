@@ -21,3 +21,6 @@ clearTriple.load();
 
 const clearTetris = new Audio("resources/se_game_tetris.wav");
 clearTetris.load();
+
+const gameOver = new Audio("resources/game_over.mp3");
+gameOver.load();

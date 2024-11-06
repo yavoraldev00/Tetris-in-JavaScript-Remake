@@ -5,6 +5,9 @@ const startGameButton = document.querySelector("#start-game");
 const pauseGameMsg = document.querySelector("#pause-msg");
 const pauseGameButton = document.querySelector("#pause-msg");
 
+const gameOverMsg = document.querySelector("#game-over-msg");
+const gameOverButton = document.querySelector("#game-over");
+
 const beginGame = () => {
     startGameMsg.classList.add("hidden");
 
@@ -17,6 +20,10 @@ const pauseGame = () => {
 
     // Pauses the game
     pieceState.currentGameActive = false;
+};
+
+const gameOverScreen = () => {
+    gameOverMsg.classList.remove("hidden")
 };
 
 const unpauseGame = () => {

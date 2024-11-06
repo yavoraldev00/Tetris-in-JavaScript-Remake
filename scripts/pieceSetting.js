@@ -213,10 +213,15 @@ const setNewPiece = (newPiece) => {
     })
 
     if(breakFlag){ // If there is a piece there already, game is over
-        alert("YOU LOSE")
+        // Shows Game Over screen
+        gameOverScreen();
 
         // Stops the game
         pieceState.currentGameActive = false;
+
+        // Game Over sound
+        gameOver.currentTime = 0;
+        gameOver.play();
     }else{ // If space is empty, places the piece on the board
         // Places the piece on the board
         placePiece(pieceState.currentCoordinates);
