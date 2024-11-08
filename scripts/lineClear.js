@@ -52,8 +52,6 @@ const lineClearAnimationStart = (clearedLines, rowArray) => {
     // Variable for animation delay
     pieceState.currentLineClearAnimation = true;
 
-    debugger;
-
     // Plays sound effect on line clear
     switch(clearedLines.length){
         case 1:

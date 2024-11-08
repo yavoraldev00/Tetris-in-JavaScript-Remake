@@ -13,6 +13,9 @@ const beginGame = () => {
 
     // Starts the game by setting a piece on the board
     startGame();
+
+    // Starts automatic drop down timer
+    startTimer();
 };
 
 const pauseGame = () => {
@@ -36,6 +39,18 @@ const unpauseGame = () => {
 startGameButton.addEventListener("click", beginGame);
 pauseGameButton.addEventListener("click", unpauseGame);
 
+// Automatic movement timer, moves the piece down at an interval
+
+let timerId; // Store the timer ID to clear it later
+
+function startTimer() {
+  timerId = setInterval(() => {
+    if (pieceState.gameActive && !pieceState.currentLineClearAnimation) {
+      movePiece("ArrowDown"); // Move the piece down automatically
+    }
+  }, 1000); // 1000 milliseconds = 1 second
+}
+
 // Detects pressed key
 document.addEventListener("keydown", (e)=> {
     // Can only controll if no animation is playing
@@ -48,7 +63,7 @@ document.addEventListener("keydown", (e)=> {
             if(pressedKey == "x" || pressedKey == "z"){ // If "x" or "z" are pressed, rotates piece
                 rotatePiece(pressedKey)
             }else if(pressedKey == "ArrowRight" || pressedKey == "ArrowLeft" || pressedKey == "ArrowDown" || pressedKey == "ArrowUp"){ // If directional keys are perssed, moves piece
-                movePiece(pressedKey)
+                movePiece(pressedKey, e)
             }else if(pressedKey == "a"){ // If directional keys are perssed, moves piece
                 updateHeldPiece()
             }else if(pressedKey == "Escape"){

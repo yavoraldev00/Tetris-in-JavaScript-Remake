@@ -219,6 +219,9 @@ const setNewPiece = (newPiece) => {
         // Stops the game
         pieceState.currentGameActive = false;
 
+        // Stops the automatic block falling interval
+        clearInterval(timerId);
+
         // Game Over sound
         gameOver.currentTime = 0;
         gameOver.play();

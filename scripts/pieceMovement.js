@@ -89,7 +89,7 @@ const rotatePiece = (rotationDirection) => {
 };
 
 // Function used to move piece LEFT and RIGHT
-const movePiece = (movementDirection) => {
+const movePiece = (movementDirection, playerMovement = false) => {
     var breakFlag = false;
 
     if(movementDirection == "ArrowRight"){ // Moves piece +1 to right
@@ -133,9 +133,13 @@ const movePiece = (movementDirection) => {
         // Sets original piece to moved piece
         pieceState.currentCoordinates = movedPiece;
     }else if(movementDirection == "ArrowDown"){ // Moves piece +10 down
-        // Sound effect
-        softDropSound.currentTime = 0;
-        softDropSound.play();
+        
+        // Only plays sound effect when player pressed DownArrow
+        if(playerMovement !== false){
+            // Sound effect
+            softDropSound.currentTime = 0;
+            softDropSound.play();
+        }
 
         // Moves DOWN
         const movedPiece = pieceState.currentCoordinates.map((piece) => {
@@ -145,6 +149,10 @@ const movePiece = (movementDirection) => {
                 return piece += 10
             }
         })
+
+        // Resets the timer / interval of automatic block falling
+        clearInterval(timerId);
+        startTimer();
 
         if(breakFlag){ // If collision is detected, places piece on the board and generates new one            
             // Sets the piece on the board
