@@ -1,5 +1,5 @@
 // Array holding all rows on the board
-const rowArray = Array.from(board.getElementsByClassName("row"));
+var rowArray = Array.from(board.getElementsByClassName("row"));
 
 // Function used to check if there are any cleared lines
 const checkForLineClear = () => {
@@ -18,6 +18,15 @@ const checkForLineClear = () => {
 
         // Stops the line clear animation
         lineClearAnimationEnd(filledRows, rowArray);
+
+        // Variable that displays the score
+        var lineScore = document.getElementById("lines");
+
+        // Updates the score
+        pieceState.currentLines = pieceState.currentLines + filledRows.length;
+
+        // Updates the text on the score board
+        lineScore.textContent = pieceState.currentLines;
     }
 
     // Remove filled rows and move above rows down
@@ -31,9 +40,6 @@ const checkForLineClear = () => {
         let topRow = Array.from(rowArray[0].querySelectorAll(".cell"));
         topRow.forEach(cell => cell.classList.remove("piece"));
     });
-
-    var lineScore = document.getElementById("lines");
-    lineScore.textContent = Number(lineScore.textContent) + filledRows.length;
 }
 
 // Swaps the classes current line with the line above

@@ -39,13 +39,14 @@ pauseGameButton.addEventListener("click", unpauseGame);
 // Automatic movement timer, moves the piece down at an interval
 
 let timerId; // Store the timer ID to clear it later
+let intervalTime = 1000; // How fast the block automatically drops, becomes faster (lower time), when lines are cleared
 
 function startTimer() {
   timerId = setInterval(() => {
     if (pieceState.gameActive && !pieceState.currentLineClearAnimation) {
       movePiece("ArrowDown"); // Move the piece down automatically
     }
-  }, 1000); // 1000 milliseconds = 1 second
+  }, intervalTime); // 1000 milliseconds = 1 second
 }
 
 // Detects pressed key

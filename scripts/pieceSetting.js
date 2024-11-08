@@ -332,8 +332,18 @@ var clearedLines = 0;
 
 // Starts the game
 const startGame = () => {
+    // resets and updates variables
     pieceState.reset(); // Clears out any held, next pieces, resets rotations etc.
+    rowArray = Array.from(board.getElementsByClassName("row"));
 
+    // Variable that displays the score
+    var lineScore = document.getElementById("lines");
+
+    // Updates the text on the score board
+    lineScore.textContent = pieceState.currentLines;
+
+    // -------------------------------------- //
+    
     pieceState.nextPiece = structuredClone(generatePiece());
 
     // Generates a piece to start the game
@@ -357,6 +367,8 @@ const restartGame = () => {
     
     nextPieceBoard.parentElement.replaceChild(nextPieceBoardClone.cloneNode(true), nextPieceBoard);
     nextPieceBoard = document.getElementById("next-piece-board");
+
+    // ------------------------------------------------- //
 
     // Removes the game over message
     gameOverMsg.classList.add("hidden");

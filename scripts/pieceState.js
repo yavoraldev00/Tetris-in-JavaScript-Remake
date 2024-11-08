@@ -4,6 +4,9 @@ const pieceState = {
     nextTetronimo: null,
     coordinates: [],
     ghostCoordinates: [],
+    lines: 0,
+    level: 0,
+    score: 0,
     rotation: 0,
     held: false,
     lineClearAnimation: false,
@@ -15,6 +18,9 @@ const pieceState = {
         this.nextTetronimo = null;
         this.coordinates = [];
         this.ghostCoordinates = [];
+        this.lines = 0;
+        this.level = 0;
+        this.score = 0;
         this.rotation = 0;
         this.held = false;
         this.lineClearAnimation = false;
@@ -51,6 +57,30 @@ const pieceState = {
 
     set currentCoordinates(item) {
         this.coordinates = item
+    },
+
+    get currentLines() {
+        return this.lines
+    },
+
+    set currentLines(item) {
+        this.lines = item
+    },
+
+    get currentLevel() {
+        return this.level
+    },
+
+    set currentLevel(item) {
+        this.level = item
+    },
+
+    get currentScore() {
+        return this.score
+    },
+
+    set currentScore(item) {
+        this.score = item
     },
 
     get currentRotation() {
