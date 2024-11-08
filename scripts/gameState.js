@@ -13,9 +13,6 @@ const beginGame = () => {
 
     // Starts the game by setting a piece on the board
     startGame();
-
-    // Starts automatic drop down timer
-    startTimer();
 };
 
 const pauseGame = () => {

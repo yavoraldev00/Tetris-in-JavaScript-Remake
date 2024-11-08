@@ -332,6 +332,8 @@ var clearedLines = 0;
 
 // Starts the game
 const startGame = () => {
+    pieceState.reset(); // Clears out any held, next pieces, resets rotations etc.
+
     pieceState.nextPiece = structuredClone(generatePiece());
 
     // Generates a piece to start the game
@@ -339,6 +341,28 @@ const startGame = () => {
 
     // Sets the game state to be active, allowing controlls
     pieceState.currentGameActive = true;
+
+    // Starts automatic drop down timer
+    startTimer();
+}
+
+// Restarts the game after Game Over
+const restartGame = () => {
+    // Resets the game boards and updates the variables that hold them
+    board.parentElement.replaceChild(boardClone.cloneNode(true), board);
+    board = document.getElementById("board");
+
+    heldPieceBoard.parentElement.replaceChild(heldPieceBoardClone.cloneNode(true), heldPieceBoard);
+    heldPieceBoard = document.getElementById("held-piece-board");
+    
+    nextPieceBoard.parentElement.replaceChild(nextPieceBoardClone.cloneNode(true), nextPieceBoard);
+    nextPieceBoard = document.getElementById("next-piece-board");
+
+    // Removes the game over message
+    gameOverMsg.classList.add("hidden");
+
+    // Starts the game
+    startGame();
 }
 
 // Sets cleared lines score

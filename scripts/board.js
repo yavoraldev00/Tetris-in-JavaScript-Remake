@@ -1,5 +1,5 @@
 // Main board
-const board = document.getElementById("board")
+var board = document.getElementById("board")
 var cellNum = 0;
 
 for (let i = 0; i < 20; i++) {
@@ -18,8 +18,13 @@ for (let i = 0; i < 20; i++) {
     board.appendChild(row);
 }
 
+// Deep copy of the empty board
+const boardClone = board.cloneNode(true);
+
+// -------------------------------------------------- //
+
 // Held piece board
-const heldPieceBoard = document.getElementById("held-piece-board");
+var heldPieceBoard = document.getElementById("held-piece-board");
 var cellNum = 0;
 
 for (let i = 0; i < 4; i++) {
@@ -39,8 +44,13 @@ for (let i = 0; i < 4; i++) {
     cellNum += 6;
 }
 
+// Deep copy of the empty board
+const heldPieceBoardClone = heldPieceBoard.cloneNode(true);
+
+// -------------------------------------------------- //
+
 // Next piece board
-const nextPieceBoard = document.getElementById("next-piece-board");
+var nextPieceBoard = document.getElementById("next-piece-board");
 var cellNum = 0;
 
 for (let i = 0; i < 4; i++) {
@@ -58,5 +68,7 @@ for (let i = 0; i < 4; i++) {
 
     nextPieceBoard.appendChild(row);
     cellNum += 6;
-
 }
+
+// Deep copy of the empty board
+const nextPieceBoardClone = nextPieceBoard.cloneNode(true);

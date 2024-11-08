@@ -9,6 +9,18 @@ const pieceState = {
     lineClearAnimation: false,
     gameActive: false,
 
+    reset() {
+        this.curTetronimo = null;
+        this.heldTetronimo = null;
+        this.nextTetronimo = null;
+        this.coordinates = [];
+        this.ghostCoordinates = [];
+        this.rotation = 0;
+        this.held = false;
+        this.lineClearAnimation = false;
+        this.gameActive = false;
+    },
+
     get currentPiece() {
         return this.curTetronimo
     },
