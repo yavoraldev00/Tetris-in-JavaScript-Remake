@@ -335,12 +335,11 @@ const startGame = () => {
     // resets and updates variables
     pieceState.reset(); // Clears out any held, next pieces, resets rotations etc.
     rowArray = Array.from(board.getElementsByClassName("row"));
-
-    // Variable that displays the score
-    var lineScore = document.getElementById("lines");
-
+    
     // Updates the text on the score board
-    lineScore.textContent = pieceState.currentLines;
+    document.getElementById("lines").textContent = pieceState.currentLines;
+    document.getElementById("level").textContent = pieceState.currentLevel;
+    document.getElementById("score").textContent = pieceState.currentScore;
 
     // -------------------------------------- //
     

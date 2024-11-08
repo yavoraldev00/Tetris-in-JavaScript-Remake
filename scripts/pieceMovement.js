@@ -154,6 +154,9 @@ const movePiece = (movementDirection, playerMovement = false) => {
         clearInterval(timerId);
         startTimer();
 
+        // Updates the score by 1
+        updateScore(1, playerMovement);
+
         if(breakFlag){ // If collision is detected, places piece on the board and generates new one            
             // Sets the piece on the board
             setPiece();
@@ -175,7 +178,7 @@ const movePiece = (movementDirection, playerMovement = false) => {
         hardDropSound.play();
         
         // Sets original piece to moved piece
-        pieceState.currentCoordinates = hardDropDistance();
+        pieceState.currentCoordinates = hardDropDistance(playerMovement);
 
         // Removes piece
         removePiece();
@@ -203,7 +206,7 @@ const movePiece = (movementDirection, playerMovement = false) => {
 }
 
 // Function that returns a piece for a hard drop / ghost piece location
-const hardDropDistance = () => {
+const hardDropDistance = (playerMovement) => {
     // Base numbers needed for each piece to move until they encouter another piece
     let distance = [0,0,0,0]
 
@@ -217,6 +220,9 @@ const hardDropDistance = () => {
 
     // Calculates which piece has the minimum distance
     const travelDistance = Math.min(...distance);
+
+    // Updates the score by 2 points for each block traveled
+    updateScore(travelDistance*2, playerMovement);
 
     // Returns an update location, where the tetronimo touches a piece at the bottom
     const movedPiece = pieceState.currentCoordinates.map((piece) => {

@@ -4,7 +4,8 @@ module.exports = {
   theme: {
     extend: {
       fontFamily: {
-        "open-font": ["Open Sans", "sans-serif"]
+        "open-font": '"Open Sans", sans-serif',
+        "silkscreen": '"Silkscreen", sans-serif'
       }
     },
   },

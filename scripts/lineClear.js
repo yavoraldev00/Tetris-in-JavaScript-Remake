@@ -31,7 +31,23 @@ const checkForLineClear = () => {
         // Updates the text on the score board
         lineScore.textContent = pieceState.currentLines;
 
-        debugger;
+        // Updates the score depending on the lines cleared
+        switch(true){
+            case filledRows.length == 1:
+                updateScore(100 * pieceState.currentLevel, true);
+                break;
+            case filledRows.length == 2:
+                updateScore(300 * pieceState.currentLevel, true);
+                break;
+            case filledRows.length == 3:
+                updateScore(500 * pieceState.currentLevel, true);
+                break;
+            case filledRows.length == 4:
+                updateScore(800 * pieceState.currentLevel, true);
+                break;
+            default: break;
+        }
+
         // Increases level and game speed
         switch(true){
             case pieceState.currentLines >= 150:
@@ -84,9 +100,7 @@ const checkForLineClear = () => {
                     startTimer();
                 }
                 break;
-            default:
-                pieceState.currentLevel = 1;
-                break;
+            default: break;
         }
 
 

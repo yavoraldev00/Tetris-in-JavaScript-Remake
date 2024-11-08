@@ -5,12 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"> -->
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/output.css">
     <title>Tetris</title>
 </head>
 <body class="block font-open-font">
-    <h1 class="w-full my-8 text-center text-xl font-bold">Tetris</h1>
+    <h1 class="w-full my-8 text-center text-2xl font-bold font-silkscreen">Tetris</h1>
 
     <!-- Grid containing game and extra information -->
     <div class="grid relative grid-cols-7 h-fit w-10/12 mx-auto">
@@ -18,9 +19,9 @@
         <!-- Held piece and other information -->
         <div class="bg-slate-200 border-2 border-black border-outset col-span-2 flex flex-col items-center">
             <div id="held-piece-board" class="my-4"></div>
-            <div class="font-extrabold">Held Piece</div>
-            <p>Lines cleared: <span id="lines"></span></p>
-            <p>Level: <span id="level">1</span></p>
+            <div class="font-extrabold font-silkscreen">Held Piece</div>
+            <p class="font-silkscreen">Lines cleared: <span id="lines"></span></p>
+            <p class="font-silkscreen">Level: <span id="level">1</span></p>
 
             <div class="my-auto">
                 <label for="tetris-music">Tetris</label>
@@ -36,9 +37,13 @@
         <!-- Next piece and other information -->
         <div class="bg-slate-200 col-span-2 flex flex-col items-center">
             <div id="next-piece-board" class="my-4"></div>
-            <div class="font-extrabold">Next Piece</div>
-            <p>Score: <span id="score"></span></p>
-            <h2 class="text-lg">Controlls</h2>
+            <div class="font-extrabold font-silkscreen">Next Piece</div>
+            <p class="font-silkscreen">Score:</p>
+            <p class="font-silkscreen" id="score">0</p>
+
+            <div class="my-3"></div> <!-- Spacer between score and controlls -->
+
+            <h2 class="text-lg font-semibold">Controlls</h2>
             <p>Esc - Pause</p>
             <p>Left/Right Arrow Key - Movement</p>
             <p>Up Arrow key - Hard drop</p>
@@ -50,20 +55,20 @@
 
         <!-- Start of game message -->
         <div class="flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-green-300 z-30 border-2 border-gray-400 rounded-md" id="start-msg">
-            <p class="text-xl font-bold">Welcome</p>
+            <p class="text-2xl font-silkscreen">Welcome</p>
             <p class="text-center">This is a recreation of the game Tetris, recreated in JavaScript. You can see the controls on the right side of the screen. On the left side of the screen you may select various background music to listen to while you're playing. When you are ready, click the "Start" button to begin.</p>
-            <button class="bg-gray-300 bg-opacity-90 py-2 px-4 text-lg rounded-xl cursor-pointer" id="start-game">Start</button>
+            <button class="bg-gray-300 bg-opacity-90 py-2 px-4 text-lg rounded-xl cursor-pointer" id="start-game" onclick=beginGame()>Start</button>
         </div>
 
         <!-- Pause message -->
         <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-green-300 z-30 border-2 border-gray-400 rounded-md" id="pause-msg">
-            <p class="text-xl font-bold">PAUSED</p>
-            <button class="bg-gray-300 bg-opacity-90 py-2 px-4 my-auto text-lg rounded-xl cursor-pointer" id="resume-game">Continue</button>
+            <p class="text-2xl font-silkscreen">PAUSED</p>
+            <button class="bg-gray-300 bg-opacity-90 py-2 px-4 my-auto text-lg rounded-xl cursor-pointer" id="resume-game" onclick=unpauseGame()>Continue</button>
         </div>
 
         <!-- Game Over screen -->
         <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-green-300 z-30 border-2 border-gray-400 rounded-md" id="game-over-msg">
-            <p class="text-xl font-bold">Game Over :(</p>
+            <p class="text-2xl font-silkscreen">Game Over :(</p>
             <button class="bg-gray-300 bg-opacity-90 py-2 px-4 my-auto text-lg rounded-xl cursor-pointer" id="game-over" onclick=restartGame() >Restart?</button>
         </div>
     </div>

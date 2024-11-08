@@ -5,7 +5,7 @@ const pieceState = {
     coordinates: [],
     ghostCoordinates: [],
     lines: 0,
-    level: 0,
+    level: 1,
     score: 0,
     rotation: 0,
     held: false,
@@ -19,12 +19,14 @@ const pieceState = {
         this.coordinates = [];
         this.ghostCoordinates = [];
         this.lines = 0;
-        this.level = 0;
+        this.level = 1;
         this.score = 0;
         this.rotation = 0;
         this.held = false;
         this.lineClearAnimation = false;
         this.gameActive = false;
+
+        debugger;
     },
 
     get currentPiece() {

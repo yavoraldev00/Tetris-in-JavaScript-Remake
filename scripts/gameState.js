@@ -1,12 +1,9 @@
 // Object storing various states of the game
+
+// Variables that show / hide menu screens
 const startGameMsg = document.querySelector("#start-msg");
-const startGameButton = document.querySelector("#start-game");
-
 const pauseGameMsg = document.querySelector("#pause-msg");
-const pauseGameButton = document.querySelector("#pause-msg");
-
 const gameOverMsg = document.querySelector("#game-over-msg");
-const gameOverButton = document.querySelector("#game-over");
 
 const beginGame = () => {
     startGameMsg.classList.add("hidden");
@@ -33,8 +30,18 @@ const unpauseGame = () => {
     pieceState.currentGameActive = true;
 };
 
-startGameButton.addEventListener("click", beginGame);
-pauseGameButton.addEventListener("click", unpauseGame);
+// Updates the game score
+// Only for player movements
+const updateScore = (increaseBy, playerMovement = false) => {
+
+    if(playerMovement !== false){
+        // Increases the score by the generated points
+        pieceState.currentScore = pieceState.currentScore + increaseBy;
+    
+        // Updates the displayed score
+        document.getElementById("score").textContent = pieceState.currentScore;
+    }
+};
 
 // Automatic movement timer, moves the piece down at an interval
 
