@@ -258,6 +258,9 @@ const setPiece = () => {
     // Updates held function to be 
     pieceState.currentHeld = false
 
+    // Un-Dims the held board list to indicate it CAN be used
+    document.getElementById("held-piece-board").classList.remove("held-used")
+
     // Checks and clears any lines
     checkForLineClear();
 }
@@ -318,6 +321,9 @@ const updateHeldPiece = () => {
 
         // Updates held to being used
         pieceState.currentHeld = true
+
+        // Dims the held board list to indicate it CANNOT be used
+        document.getElementById("held-piece-board").classList.add("held-used")
     
         if(swappedPiece == null){
             setNewPiece(pieceState.nextPiece);
@@ -376,7 +382,3 @@ const restartGame = () => {
     // Starts the game
     startGame();
 }
-
-// Sets cleared lines score
-var lineScore = document.getElementById("lines");
-lineScore.textContent = clearedLines;

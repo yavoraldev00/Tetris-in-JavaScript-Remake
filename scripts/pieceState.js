@@ -25,8 +25,6 @@ const pieceState = {
         this.held = false;
         this.lineClearAnimation = false;
         this.gameActive = false;
-
-        debugger;
     },
 
     get currentPiece() {

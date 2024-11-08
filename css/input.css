@@ -24,8 +24,12 @@
     @apply animate-ping;
 }
 
+.held-used {
+    @apply filter grayscale-[80%];
+}
+
 .cell {
-    @apply bg-gray-200 w-6 aspect-square border-white border text-xs overflow-hidden;
+    @apply bg-gray-300 w-6 aspect-square border-gray-200 border text-xs overflow-hidden;
 }
 
 .piece, .current-piece {
@@ -34,7 +38,7 @@
 
 .piece::before, .current-piece::before {
     content: "";
-    @apply absolute top-0 left-0 w-full h-full bg-black/40 cell-overlay z-20;
+    @apply absolute top-0 left-0 w-full h-full bg-black/60 cell-overlay z-20 blur-md;
 }
 
 .ghost-piece {

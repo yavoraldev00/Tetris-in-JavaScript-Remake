@@ -10,17 +10,17 @@
     <link rel="stylesheet" href="css/output.css">
     <title>Tetris</title>
 </head>
-<body class="block font-open-font">
+<body class="block font-open-font bg-zinc-800 text-gray-300">
     <h1 class="w-full my-8 text-center text-2xl font-bold font-silkscreen">Tetris</h1>
 
     <!-- Grid containing game and extra information -->
     <div class="grid relative grid-cols-7 h-fit w-10/12 mx-auto">
 
         <!-- Held piece and other information -->
-        <div class="bg-slate-200 border-2 border-black border-outset col-span-2 flex flex-col items-center">
-            <div id="held-piece-board" class="my-4"></div>
+        <div class="bg-zinc-600 border-2 border-black border-outset col-span-2 flex flex-col items-center">
+            <div id="held-piece-board" class="my-4 held-used"></div>
             <div class="font-extrabold font-silkscreen">Held Piece</div>
-            <p class="font-silkscreen">Lines cleared: <span id="lines"></span></p>
+            <p class="font-silkscreen">Lines cleared: <span id="lines">0</span></p>
             <p class="font-silkscreen">Level: <span id="level">1</span></p>
 
             <div class="my-auto">
@@ -35,7 +35,7 @@
         <div id="board" class="board"></div>
 
         <!-- Next piece and other information -->
-        <div class="bg-slate-200 col-span-2 flex flex-col items-center">
+        <div class="bg-zinc-600 col-span-2 flex flex-col items-center">
             <div id="next-piece-board" class="my-4"></div>
             <div class="font-extrabold font-silkscreen">Next Piece</div>
             <p class="font-silkscreen">Score:</p>
@@ -54,22 +54,22 @@
         </div>
 
         <!-- Start of game message -->
-        <div class="flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-green-300 z-30 border-2 border-gray-400 rounded-md" id="start-msg">
+        <div class="flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-zinc-500 z-30 border-2 border-gray-400 rounded-md" id="start-msg">
             <p class="text-2xl font-silkscreen">Welcome</p>
             <p class="text-center">This is a recreation of the game Tetris, recreated in JavaScript. You can see the controls on the right side of the screen. On the left side of the screen you may select various background music to listen to while you're playing. When you are ready, click the "Start" button to begin.</p>
-            <button class="bg-gray-300 bg-opacity-90 py-2 px-4 text-lg rounded-xl cursor-pointer" id="start-game" onclick=beginGame()>Start</button>
+            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 text-xl rounded-xl cursor-pointer" id="start-game" onclick=beginGame()>Start</button>
         </div>
 
         <!-- Pause message -->
-        <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-green-300 z-30 border-2 border-gray-400 rounded-md" id="pause-msg">
+        <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-zinc-500 z-30 border-2 border-gray-400 rounded-md" id="pause-msg">
             <p class="text-2xl font-silkscreen">PAUSED</p>
-            <button class="bg-gray-300 bg-opacity-90 py-2 px-4 my-auto text-lg rounded-xl cursor-pointer" id="resume-game" onclick=unpauseGame()>Continue</button>
+            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 my-auto text-xl rounded-xl cursor-pointer" id="resume-game" onclick=unpauseGame()>Continue</button>
         </div>
 
         <!-- Game Over screen -->
-        <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-green-300 z-30 border-2 border-gray-400 rounded-md" id="game-over-msg">
+        <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-zinc-500 z-30 border-2 border-gray-400 rounded-md" id="game-over-msg">
             <p class="text-2xl font-silkscreen">Game Over :(</p>
-            <button class="bg-gray-300 bg-opacity-90 py-2 px-4 my-auto text-lg rounded-xl cursor-pointer" id="game-over" onclick=restartGame() >Restart?</button>
+            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 my-auto text-xl rounded-xl cursor-pointer" id="game-over" onclick=restartGame() >Restart?</button>
         </div>
     </div>
 

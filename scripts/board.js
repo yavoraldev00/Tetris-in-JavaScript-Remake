@@ -10,7 +10,7 @@ for (let i = 0; i < 20; i++) {
         const cell = document.createElement("div");
         cell.classList.add("cell");
         cell.setAttribute("data-cell-number", cellNum);
-        cell.textContent = cellNum;
+        // cell.textContent = cellNum;
         row.appendChild(cell);
         cellNum += 1;
     }
