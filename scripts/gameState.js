@@ -39,7 +39,7 @@ pauseGameButton.addEventListener("click", unpauseGame);
 // Automatic movement timer, moves the piece down at an interval
 
 let timerId; // Store the timer ID to clear it later
-let intervalTime = 1000; // How fast the block automatically drops, becomes faster (lower time), when lines are cleared
+let intervalTime = 1500; // How fast the block automatically drops, becomes faster (lower time), when lines are cleared
 
 function startTimer() {
   timerId = setInterval(() => {

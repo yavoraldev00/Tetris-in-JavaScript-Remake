@@ -22,11 +22,77 @@ const checkForLineClear = () => {
         // Variable that displays the score
         var lineScore = document.getElementById("lines");
 
+        // Variable that displays the current level
+        var levelText = document.getElementById("level");
+
         // Updates the score
         pieceState.currentLines = pieceState.currentLines + filledRows.length;
 
         // Updates the text on the score board
         lineScore.textContent = pieceState.currentLines;
+
+        debugger;
+        // Increases level and game speed
+        switch(true){
+            case pieceState.currentLines >= 150:
+                if(pieceState.currentLevel != 6){
+                    pieceState.currentLevel = 6;
+                    intervalTime = 100;
+                    levelText.textContent = pieceState.currentLevel;
+
+                    clearInterval(timerId);
+                    startTimer();
+                }
+                break;
+            case pieceState.currentLines >= 100:
+                if(pieceState.currentLevel != 5){
+                    pieceState.currentLevel = 5;
+                    intervalTime = 225;
+                    levelText.textContent = pieceState.currentLevel;
+
+                    clearInterval(timerId);
+                    startTimer();
+                }
+                break;
+            case pieceState.currentLines >= 60:
+                if(pieceState.currentLevel != 4){
+                    pieceState.currentLevel = 4;
+                    intervalTime = 350;
+                    levelText.textContent = pieceState.currentLevel;
+
+                    clearInterval(timerId);
+                    startTimer();
+                }
+                break;
+            case pieceState.currentLines >= 30:
+                if(pieceState.currentLevel != 3){
+                    pieceState.currentLevel = 3;
+                    intervalTime = 700;
+                    levelText.textContent = pieceState.currentLevel;
+
+                    clearInterval(timerId);
+                    startTimer();
+                }
+                break;
+            case pieceState.currentLines >= 10:
+                if(pieceState.currentLevel != 2){
+                    pieceState.currentLevel = 2;
+                    intervalTime = 800;
+                    levelText.textContent = pieceState.currentLevel;
+
+                    clearInterval(timerId);
+                    startTimer();
+                }
+                break;
+            default:
+                pieceState.currentLevel = 1;
+                break;
+        }
+
+
+        // if(pieceState.currentLines >= 10){
+        //     intervalTime = 100;
+        // }
     }
 
     // Remove filled rows and move above rows down

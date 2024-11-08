@@ -368,6 +368,7 @@ const restartGame = () => {
     nextPieceBoard.parentElement.replaceChild(nextPieceBoardClone.cloneNode(true), nextPieceBoard);
     nextPieceBoard = document.getElementById("next-piece-board");
 
+    intervalTime = 1500;
     // ------------------------------------------------- //
 
     // Removes the game over message
