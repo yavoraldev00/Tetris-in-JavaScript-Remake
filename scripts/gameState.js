@@ -17,6 +17,13 @@ const pauseGame = () => {
 
     // Pauses the game
     pieceState.currentGameActive = false;
+
+    // Pauses music
+    current_level.pause();
+
+    // Plays pause sound effect
+    pauseSound.currentTime = 0;
+    pauseSound.play();
 };
 
 const gameOverScreen = () => {
@@ -28,6 +35,9 @@ const unpauseGame = () => {
 
     // Sets the game state to be active, allowing controlls
     pieceState.currentGameActive = true;
+
+    // Un-pauses music
+    current_level.play();
 };
 
 // Updates the game score

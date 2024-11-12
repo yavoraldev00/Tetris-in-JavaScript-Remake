@@ -63,7 +63,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_12;
+                        current_level = level_20;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -112,7 +112,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_12;
+                        current_level = level_16;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -130,7 +130,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_11;
+                        current_level = level_15;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -148,7 +148,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_10;
+                        current_level = level_14;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -171,7 +171,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_9;
+                        current_level = level_13;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -189,7 +189,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_8;
+                        current_level = level_12;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -207,7 +207,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_7;
+                        current_level = level_11;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -230,7 +230,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_6;
+                        current_level = level_10;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -255,7 +255,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_1_5;
+                        current_level = level_1_8;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -278,7 +278,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_2_4;
+                        current_level = level_3_7;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -315,7 +315,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_3;
+                        current_level = level_4;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
@@ -333,7 +333,7 @@ const checkForLineClear = () => {
 
                         // Changes game music
                         current_level.pause();
-                        current_level = level_2_4;
+                        current_level = level_3_7;
                         current_level.loop = true;
                         current_level.currentTime = 0;
 

@@ -25,28 +25,22 @@ clearTetris.load();
 const gameOver = new Audio("resources/game_over.mp3");
 gameOver.load();
 
+const pauseSound = new Audio("resources/pause.wav");
+pauseSound.load();
+
+const scoreSound = new Audio("resources/score.mp3");
+scoreSound.load();
+
 // Level music
 
-const level_1_5 = new Audio("resources/level_1_5.mp3");
-level_1_5.load();
+const level_1_8 = new Audio("resources/level_1_8.mp3");
+level_1_8.load();
 
-const level_2_4 = new Audio("resources/level_2_4.mp3");
-level_2_4.load();
+const level_3_7 = new Audio("resources/level_3_7.mp3");
+level_3_7.load();
 
-const level_3 = new Audio("resources/level_3.mp3");
-level_3.load();
-
-const level_6 = new Audio("resources/level_6.mp3");
-level_6.load();
-
-const level_7 = new Audio("resources/level_7.mp3");
-level_7.load();
-
-const level_8 = new Audio("resources/level_8.mp3");
-level_8.load();
-
-const level_9 = new Audio("resources/level_9.mp3");
-level_9.load();
+const level_4 = new Audio("resources/level_4.mp3");
+level_4.load();
 
 const level_10 = new Audio("resources/level_10.mp3");
 level_10.load();
@@ -56,6 +50,18 @@ level_11.load();
 
 const level_12 = new Audio("resources/level_12.mp3");
 level_12.load();
+
+const level_13 = new Audio("resources/level_13.mp3");
+level_13.load();
+
+const level_14 = new Audio("resources/level_14.mp3");
+level_14.load();
+
+const level_15 = new Audio("resources/level_15.mp3");
+level_15.load();
+
+const level_16 = new Audio("resources/level_16.mp3");
+level_16.load();
 
 const level_20 = new Audio("resources/level_20.mp3");
 level_20.load();
