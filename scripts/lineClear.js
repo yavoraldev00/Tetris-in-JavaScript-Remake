@@ -64,6 +64,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_12;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -112,6 +113,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_12;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -129,6 +131,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_11;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -146,6 +149,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_10;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -168,6 +172,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_9;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -185,6 +190,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_8;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -202,6 +208,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_7;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -224,6 +231,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_6;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -248,6 +256,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_1_5;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -270,6 +279,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_2_4;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -306,6 +316,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_3;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay
@@ -323,6 +334,7 @@ const checkForLineClear = () => {
                         // Changes game music
                         current_level.pause();
                         current_level = level_2_4;
+                        current_level.loop = true;
                         current_level.currentTime = 0;
 
                         // Starts song after 1 second delay

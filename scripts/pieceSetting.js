@@ -363,6 +363,7 @@ const startGame = () => {
     // Starts game music
     current_level = level_1_5;
     current_level.currentTime = 0;
+    current_level.loop = true;
     current_level.play();
 
     // Starts automatic drop down timer
