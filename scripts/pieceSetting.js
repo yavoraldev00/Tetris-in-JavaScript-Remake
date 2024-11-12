@@ -222,6 +222,9 @@ const setNewPiece = (newPiece) => {
         // Stops the automatic block falling interval
         clearInterval(timerId);
 
+        // Stops currently playing music
+        current_level.pause();
+
         // Game Over sound
         gameOver.currentTime = 0;
         gameOver.play();
@@ -356,6 +359,11 @@ const startGame = () => {
 
     // Sets the game state to be active, allowing controlls
     pieceState.currentGameActive = true;
+
+    // Starts game music
+    current_level = level_1_5;
+    current_level.currentTime = 0;
+    current_level.play();
 
     // Starts automatic drop down timer
     startTimer();

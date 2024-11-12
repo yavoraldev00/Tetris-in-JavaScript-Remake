@@ -25,6 +25,9 @@ const checkForLineClear = () => {
         // Variable that displays the current level
         var levelText = document.getElementById("level");
 
+        // Used for calculation checks
+        const oldLines = pieceState.currentLines;
+
         // Updates the score
         pieceState.currentLines = pieceState.currentLines + filledRows.length;
 
@@ -48,65 +51,151 @@ const checkForLineClear = () => {
             default: break;
         }
 
-        // Increases level and game speed
-        switch(true){
-            case pieceState.currentLines >= 150:
-                if(pieceState.currentLevel != 6){
-                    pieceState.currentLevel = 6;
-                    intervalTime = 100;
-                    levelText.textContent = pieceState.currentLevel;
-
-                    clearInterval(timerId);
-                    startTimer();
-                }
-                break;
-            case pieceState.currentLines >= 100:
-                if(pieceState.currentLevel != 5){
-                    pieceState.currentLevel = 5;
-                    intervalTime = 225;
-                    levelText.textContent = pieceState.currentLevel;
-
-                    clearInterval(timerId);
-                    startTimer();
-                }
-                break;
-            case pieceState.currentLines >= 60:
-                if(pieceState.currentLevel != 4){
-                    pieceState.currentLevel = 4;
-                    intervalTime = 350;
-                    levelText.textContent = pieceState.currentLevel;
-
-                    clearInterval(timerId);
-                    startTimer();
-                }
-                break;
-            case pieceState.currentLines >= 30:
-                if(pieceState.currentLevel != 3){
-                    pieceState.currentLevel = 3;
-                    intervalTime = 700;
-                    levelText.textContent = pieceState.currentLevel;
-
-                    clearInterval(timerId);
-                    startTimer();
-                }
-                break;
-            case pieceState.currentLines >= 10:
-                if(pieceState.currentLevel != 2){
-                    pieceState.currentLevel = 2;
-                    intervalTime = 800;
-                    levelText.textContent = pieceState.currentLevel;
-
-                    clearInterval(timerId);
-                    startTimer();
-                }
-                break;
-            default: break;
+        // Only does further checks 
+        if(filledRows.length > 0 && (pieceState.currentLines %10 < 4 && oldLines > 5)){
+            // Increases level, game speed, changes graphics etc.
+            switch(true){
+                case pieceState.currentLines >= 190:
+                    if(pieceState.currentLevel != 20){
+                        pieceState.currentLevel = 20;
+                        intervalTime = 100; //225 350 700 800
+                        levelText.textContent = pieceState.currentLevel;
+    
+                        clearInterval(timerId);
+                        startTimer();
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 180:
+                    if(pieceState.currentLevel != 19){
+                        pieceState.currentLevel = 19;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 170:
+                    if(pieceState.currentLevel != 18){
+                        pieceState.currentLevel = 18;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 160:
+                    if(pieceState.currentLevel != 17){
+                        pieceState.currentLevel = 17;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 150:
+                    if(pieceState.currentLevel != 16){
+                        pieceState.currentLevel = 16;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 140:
+                    if(pieceState.currentLevel != 15){
+                        pieceState.currentLevel = 15;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 130:
+                    if(pieceState.currentLevel != 14){
+                        pieceState.currentLevel = 14;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 120:
+                    if(pieceState.currentLevel != 13){
+                        pieceState.currentLevel = 13;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 110:
+                    if(pieceState.currentLevel != 12){
+                        pieceState.currentLevel = 12;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 100:
+                    if(pieceState.currentLevel != 11){
+                        pieceState.currentLevel = 11;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 90:
+                    if(pieceState.currentLevel != 10){
+                        pieceState.currentLevel = 10;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 80:
+                    if(pieceState.currentLevel != 9){
+                        pieceState.currentLevel = 9;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 70:
+                    if(pieceState.currentLevel != 8){
+                        pieceState.currentLevel = 8;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 60:
+                    if(pieceState.currentLevel != 7){
+                        pieceState.currentLevel = 7;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 50:
+                    if(pieceState.currentLevel != 6){
+                        pieceState.currentLevel = 6;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 40:
+                    if(pieceState.currentLevel != 5){
+                        pieceState.currentLevel = 5;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 30:
+                    if(pieceState.currentLevel != 4){
+                        pieceState.currentLevel = 4;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 20:
+                    if(pieceState.currentLevel != 3){
+                        pieceState.currentLevel = 3;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                case pieceState.currentLines >= 10:
+                    if(pieceState.currentLevel != 2){
+                        pieceState.currentLevel = 2;
+                        levelText.textContent = pieceState.currentLevel;
+                    }
+                    break;
+                
+                default: break;
+            }
         }
 
-
-        // if(pieceState.currentLines >= 10){
-        //     intervalTime = 100;
-        // }
     }
 
     // Remove filled rows and move above rows down
