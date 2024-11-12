@@ -57,12 +57,19 @@ const checkForLineClear = () => {
             switch(true){
                 case pieceState.currentLines >= 190:
                     if(pieceState.currentLevel != 20){
+                        // Increases level and updates level text
                         pieceState.currentLevel = 20;
-                        intervalTime = 100; //225 350 700 800
                         levelText.textContent = pieceState.currentLevel;
-    
-                        clearInterval(timerId);
-                        startTimer();
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_12;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -70,6 +77,11 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 19){
                         pieceState.currentLevel = 19;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Speeds up game speed
+                        intervalTime = 100;
+                        clearInterval(timerId);
+                        startTimer();
                     }
                     break;
                 
@@ -91,6 +103,21 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 16){
                         pieceState.currentLevel = 16;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Speeds up game speed
+                        intervalTime = 225;
+                        clearInterval(timerId);
+                        startTimer();
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_12;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -98,6 +125,16 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 15){
                         pieceState.currentLevel = 15;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_11;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -105,6 +142,16 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 14){
                         pieceState.currentLevel = 14;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_10;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -112,6 +159,21 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 13){
                         pieceState.currentLevel = 13;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Speeds up game speed
+                        intervalTime = 350;
+                        clearInterval(timerId);
+                        startTimer();
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_9;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -119,6 +181,16 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 12){
                         pieceState.currentLevel = 12;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_8;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -126,6 +198,16 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 11){
                         pieceState.currentLevel = 11;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_7;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -133,6 +215,21 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 10){
                         pieceState.currentLevel = 10;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Speeds up game speed
+                        intervalTime = 550;
+                        clearInterval(timerId);
+                        startTimer();
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_6;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -147,6 +244,16 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 8){
                         pieceState.currentLevel = 8;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_1_5;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -154,6 +261,21 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 7){
                         pieceState.currentLevel = 7;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Speeds up game speed
+                        intervalTime = 700;
+                        clearInterval(timerId);
+                        startTimer();
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_2_4;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -175,6 +297,21 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 4){
                         pieceState.currentLevel = 4;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Speeds up game speed
+                        intervalTime = 850;
+                        clearInterval(timerId);
+                        startTimer();
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_3;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
@@ -182,6 +319,16 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 3){
                         pieceState.currentLevel = 3;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes game music
+                        current_level.pause();
+                        current_level = level_2_4;
+                        current_level.currentTime = 0;
+
+                        // Starts song after 1 second delay
+                        setTimeout(() => {
+                            current_level.play();
+                        }, 1000);
                     }
                     break;
                 
