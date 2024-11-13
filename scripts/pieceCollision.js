@@ -2,83 +2,46 @@
 const collisionDetection = (curPieceLocation, movedPieceLocation, pressedKey) => {
     const movedPiece = board.querySelector(`[data-cell-number="${movedPieceLocation}"]`);
 
-    let lowerLimit = 2;
-    let upperLimit = 8;
-    if(movedPieceLocation < 0 || movedPieceLocation > 199){
-        return true;
+    if(pressedKey == "leftCollision" || pressedKey == "rightCollision"){
+        switch(pressedKey){
+            case "leftCollision":
+                if(
+                    (curPieceLocation%10 <= 2 && movedPieceLocation%10 >= 8)
+                    ||
+                    movedPieceLocation > 199
+                    ||
+                    movedPiece.classList.contains("piece")
+                ){
+                    return true;
+                }
+                break;
+            case "rightCollision":
+                if(
+                    (curPieceLocation%10 >= 8 && movedPieceLocation%10 <= 2)
+                    ||
+                    movedPieceLocation > 199
+                    ||
+                    movedPiece.classList.contains("piece")
+                ){
+                    return true;
+                }
+                break;
+        }
+
+        return false;
     }
 
-    switch(pressedKey){
-        case "ArrowRight":
-            if(
-                (curPieceLocation%10 == 9 && movedPieceLocation%10 == 0)
-                ||
-                movedPiece.classList.contains("piece")
-            ){
-                return true;
-            };
-            break;
-        case "ArrowLeft":
-            if(
-                (curPieceLocation%10 == 0 && (movedPieceLocation%10 == 9 || movedPieceLocation == -1))
-                ||
-                movedPiece.classList.contains("piece")
-            ){
-                return true;
-            }
-            break;
-        case "ArrowDown":
-        case "ArrowUp":
-            if(
-                movedPieceLocation > 199
-                ||
-                movedPiece.classList.contains("piece")
-            ){
-                return true;
-            }
-            break;
-        case "x":
-        case "z":
-            if(
-                (curPieceLocation%10 >= 8 && movedPieceLocation%10 <= 2 || curPieceLocation%10 <= 2 && movedPieceLocation%10 >= 8)
-                ||
-                movedPieceLocation > 199
-                ||
-                movedPiece.classList.contains("piece")
-            ){
-                return true;
-            }
-            break;
-        case "leftCollision":
-            if(
-                (curPieceLocation%10 <= 2 && movedPieceLocation%10 >= 8)
-                ||
-                movedPieceLocation > 199
-                ||
-                movedPiece.classList.contains("piece")
-            ){
-                return true;
-            }
-            break;
-        case "rightCollision":
-            if(
-                (curPieceLocation%10 >= 8 && movedPieceLocation%10 <= 2)
-                ||
-                movedPieceLocation > 199
-                ||
-                movedPiece.classList.contains("piece")
-            ){
-                return true;
-            }
-            break;
-        case "Collision":
-            if(
-                movedPiece.classList.contains("piece")
-            ){
-                return true;
-            }
-            break;
-        default: break;
+    // returns true if...
+    if(
+        (movedPieceLocation < 0 || movedPieceLocation > 199) // Pieces goes off board
+        ||
+        (curPieceLocation%10 >= 8 && movedPieceLocation%10 <= 2) // Piece moves from RIGH side TO LEFT side of board
+        ||
+        (curPieceLocation%10 <= 2 && movedPieceLocation%10 >= 8) // Piece moves from RIGH side TO LEFT side of board
+        ||
+        movedPiece.classList.contains("piece") // New location contains a piece
+    ){
+        return true;
     }
 }
 
@@ -102,11 +65,16 @@ const checkWallKick = (curPieceLocation, rotationDirection, leftCollision, right
     // Flag used for collision checks
     let breakFlag = false;
 
+    // If colliding in both directions, stops wall kick
+    if(leftCollision && rightCollision){
+        return false;
+    }
+
     if(rotationDirection == "x"){ // If rotating RIGHT
         //Pushed piece LEFT and checks for collision
         if(rightCollision){
-            kickedPieceLeft.forEach((piece) => {
-                if(collisionDetection(null, piece, "Collision")){
+            kickedPieceLeft.forEach((piece, index) => {
+                if(collisionDetection(curPieceLocation[index], piece, "rightCollision")){
                     breakFlag = true;
                 }
             });
@@ -119,8 +87,8 @@ const checkWallKick = (curPieceLocation, rotationDirection, leftCollision, right
             }
         }else if(leftCollision){ // If collision is on left side, when turn piece clockwise
             //Pushed piece LEFT and checks for collision
-            kickedPieceRight.forEach((piece) => {
-                if(collisionDetection(null, piece, "Collision")){
+            kickedPieceRight.forEach((piece, index) => {
+                if(collisionDetection(curPieceLocation[index], piece, "leftCollision")){
                     breakFlag = true;
                 }
             });
@@ -135,8 +103,8 @@ const checkWallKick = (curPieceLocation, rotationDirection, leftCollision, right
     }else if(rotationDirection == "z"){ // If rotating LEFT
         //Pushed piece RIGHT and checks for collision
         if(leftCollision){ // If collision is on left side, when turn piece counter-clockwise
-            kickedPieceRight.forEach((piece) => {
-                if(collisionDetection(null, piece, "Collision")){
+            kickedPieceRight.forEach((piece, index) => {
+                if(collisionDetection(curPieceLocation[index], piece, "leftCollision")){
                     breakFlag = true;
                 }
             });
@@ -149,8 +117,8 @@ const checkWallKick = (curPieceLocation, rotationDirection, leftCollision, right
             }
         }else if(rightCollision){ // If collision is on right side, when turn piece counter-clockwise
             //Pushed piece LEFT and checks for collision
-            kickedPieceLeft.forEach((piece) => {
-                if(collisionDetection(null, piece, "Collision")){
+            kickedPieceLeft.forEach((piece, index) => {
+                if(collisionDetection(curPieceLocation[index], piece, "rightCollision")){
                     breakFlag = true;
                 }
             });
