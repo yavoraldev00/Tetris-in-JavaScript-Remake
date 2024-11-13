@@ -71,6 +71,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_20_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -83,6 +95,18 @@ const checkForLineClear = () => {
                         intervalTime = 100;
                         clearInterval(timerId);
                         startTimer();
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_19_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -90,6 +114,18 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 18){
                         pieceState.currentLevel = 18;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_18_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -97,6 +133,18 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 17){
                         pieceState.currentLevel = 17;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_17_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -120,6 +168,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_16_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -138,6 +198,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_15_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -156,6 +228,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_14_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -179,6 +263,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_13_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -197,6 +293,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_12_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -215,6 +323,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_11_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -238,6 +358,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_10_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -263,6 +395,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_8_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -286,6 +430,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_7_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -323,6 +479,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_4_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 
@@ -341,6 +509,18 @@ const checkForLineClear = () => {
                         setTimeout(() => {
                             current_level.play();
                         }, 1000);
+
+                        // Replaces gameplay video with new level video
+                        current_video.classList.add("hide-video")
+
+                        setTimeout(() => {
+                            current_video.classList.add("hidden");
+                            current_video.pause();
+
+                            current_video = document.getElementById("level_3_vid");
+                            current_video.classList.remove("hidden");
+                            current_video.play();
+                        }, 500);
                     }
                     break;
                 

@@ -13,7 +13,7 @@
   }
 
 .board {
-    @apply border-2 border-gray-500 mx-auto w-fit flex flex-col col-span-3 items-center;
+    /* @apply  */
 }
 
 .row {
@@ -29,7 +29,7 @@
 }
 
 .cell {
-    @apply bg-gray-300 w-6 aspect-square border-gray-200 border text-xs overflow-hidden;
+    @apply bg-gray-300 h-5 aspect-square border-gray-200 border text-xs overflow-hidden;
 }
 
 .piece, .current-piece {
@@ -39,6 +39,14 @@
 .piece::before, .current-piece::before {
     content: "";
     @apply absolute top-0 left-0 w-full h-full bg-black/60 cell-overlay z-20 blur-md;
+}
+
+.game-video {
+    @apply -my-8 transition duration-500;
+}
+
+.hide-video {
+    @apply opacity-0;
 }
 
 .ghost-piece {

@@ -5,6 +5,9 @@ const startGameMsg = document.querySelector("#start-msg");
 const pauseGameMsg = document.querySelector("#pause-msg");
 const gameOverMsg = document.querySelector("#game-over-msg");
 
+// Variable that stores the currently playing video
+var current_video = document.getElementById("level_1_vid");
+
 const beginGame = () => {
     startGameMsg.classList.add("hidden");
 
@@ -20,6 +23,9 @@ const pauseGame = () => {
 
     // Pauses music
     current_level.pause();
+
+    // Pauses the gameplay video
+    current_video.pause();
 
     // Plays pause sound effect
     pauseSound.currentTime = 0;
@@ -38,6 +44,9 @@ const unpauseGame = () => {
 
     // Un-pauses music
     current_level.play();
+
+    // Un-pauses the gameplay video
+    current_video.play();
 };
 
 // Updates the game score

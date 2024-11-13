@@ -225,6 +225,9 @@ const setNewPiece = (newPiece) => {
         // Stops currently playing music
         current_level.pause();
 
+        // Stops currently playing video
+        current_video.pause();
+
         // Game Over sound
         gameOver.currentTime = 0;
         gameOver.play();
@@ -366,6 +369,9 @@ const startGame = () => {
     current_level.loop = true;
     current_level.play();
 
+    // Starts the game video
+    current_video.play();
+
     // Starts automatic drop down timer
     startTimer();
 }
@@ -383,7 +389,19 @@ const restartGame = () => {
     nextPieceBoard = document.getElementById("next-piece-board");
 
     intervalTime = 1500;
-    // ------------------------------------------------- //
+
+    // Resets game videos
+    document.querySelectorAll("video").forEach((vid) => {
+        vid.classList.remove("hide-video");
+        vid.currentTime = 0;
+    });
+
+    current_video.classList.add("hidden");
+    
+    current_video = document.getElementById("level_1_vid");
+
+    current_video.classList.remove("hidden");
+    current_video.play();
 
     // Removes the game over message
     gameOverMsg.classList.add("hidden");
