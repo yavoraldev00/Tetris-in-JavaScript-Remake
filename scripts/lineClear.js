@@ -53,6 +53,8 @@ const checkForLineClear = () => {
 
         // Only does further checks 
         if(filledRows.length > 0 && (pieceState.currentLines %10 < 4 && oldLines > 5)){
+            var sprite_image = document.getElementById("sprite");
+
             // Increases level, game speed, changes graphics etc.
             switch(true){
                 case pieceState.currentLines >= 190:
@@ -66,6 +68,9 @@ const checkForLineClear = () => {
                         current_level = level_20;
                         current_level.loop = true;
                         current_level.currentTime = 0;
+
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_20_sprite.png";
 
                         // Starts song after 1 second delay
                         setTimeout(() => {
@@ -96,6 +101,9 @@ const checkForLineClear = () => {
                         clearInterval(timerId);
                         startTimer();
 
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_19_sprite.png";
+
                         // Replaces gameplay video with new level video
                         current_video.classList.add("hide-video")
 
@@ -115,6 +123,9 @@ const checkForLineClear = () => {
                         pieceState.currentLevel = 18;
                         levelText.textContent = pieceState.currentLevel;
 
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_18_sprite.png";
+
                         // Replaces gameplay video with new level video
                         current_video.classList.add("hide-video")
 
@@ -133,6 +144,9 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 17){
                         pieceState.currentLevel = 17;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_17_sprite.png";
 
                         // Replaces gameplay video with new level video
                         current_video.classList.add("hide-video")
@@ -164,6 +178,9 @@ const checkForLineClear = () => {
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_16_sprite.png";
+
                         // Starts song after 1 second delay
                         setTimeout(() => {
                             current_level.play();
@@ -194,6 +211,9 @@ const checkForLineClear = () => {
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_15_sprite.png";
+
                         // Starts song after 1 second delay
                         setTimeout(() => {
                             current_level.play();
@@ -223,6 +243,9 @@ const checkForLineClear = () => {
                         current_level = level_14;
                         current_level.loop = true;
                         current_level.currentTime = 0;
+
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_14_sprite.png";
 
                         // Starts song after 1 second delay
                         setTimeout(() => {
@@ -259,6 +282,9 @@ const checkForLineClear = () => {
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_13_sprite.png";
+
                         // Starts song after 1 second delay
                         setTimeout(() => {
                             current_level.play();
@@ -289,6 +315,9 @@ const checkForLineClear = () => {
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_12_sprite.png";
+
                         // Starts song after 1 second delay
                         setTimeout(() => {
                             current_level.play();
@@ -318,6 +347,9 @@ const checkForLineClear = () => {
                         current_level = level_11;
                         current_level.loop = true;
                         current_level.currentTime = 0;
+
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_11_sprite.png";
 
                         // Starts song after 1 second delay
                         setTimeout(() => {
@@ -354,6 +386,9 @@ const checkForLineClear = () => {
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_10_sprite.png";
+
                         // Starts song after 1 second delay
                         setTimeout(() => {
                             current_level.play();
@@ -377,6 +412,9 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 9){
                         pieceState.currentLevel = 9;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_9_sprite.png";
                     }
                     break;
                 
@@ -390,6 +428,9 @@ const checkForLineClear = () => {
                         current_level = level_1_8;
                         current_level.loop = true;
                         current_level.currentTime = 0;
+
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_8_sprite.png";
 
                         // Starts song after 1 second delay
                         setTimeout(() => {
@@ -426,6 +467,9 @@ const checkForLineClear = () => {
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_7_sprite.png";
+
                         // Starts song after 1 second delay
                         setTimeout(() => {
                             current_level.play();
@@ -449,6 +493,9 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 6){
                         pieceState.currentLevel = 6;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_6_sprite.png";
                     }
                     break;
                 
@@ -456,6 +503,9 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 5){
                         pieceState.currentLevel = 5;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_5_sprite.png";
                     }
                     break;
                 
@@ -474,6 +524,9 @@ const checkForLineClear = () => {
                         current_level = level_4;
                         current_level.loop = true;
                         current_level.currentTime = 0;
+
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_4_sprite.png";
 
                         // Starts song after 1 second delay
                         setTimeout(() => {
@@ -505,6 +558,9 @@ const checkForLineClear = () => {
                         current_level.loop = true;
                         current_level.currentTime = 0;
 
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_3_sprite.png";
+
                         // Starts song after 1 second delay
                         setTimeout(() => {
                             current_level.play();
@@ -528,6 +584,9 @@ const checkForLineClear = () => {
                     if(pieceState.currentLevel != 2){
                         pieceState.currentLevel = 2;
                         levelText.textContent = pieceState.currentLevel;
+
+                        // Changes level sprite
+                        sprite_image.src = "resources/level_2_sprite.png";
                     }
                     break;
                 
