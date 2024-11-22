@@ -15,6 +15,12 @@
             top: 5%
         } */
     </style>
+    <style>
+        /* #sprite {
+            transform: translateX(-75%);
+            top: 5%
+        } */
+    </style>
 </head>
 <body class="block font-open-font bg-zinc-800 text-gray-300">
     <h1 class="w-full my-8 text-center text-2xl font-bold font-silkscreen">Tetris</h1>
@@ -36,6 +42,7 @@
         </div>
 
         <!-- Game board -->
+         <div class="border-2 border-gray-500 mx-auto w-fit flex flex-col col-span-3 items-center relative;">
          <div class="border-2 border-gray-500 mx-auto w-fit flex flex-col col-span-3 items-center relative;">
              <div class="flex h-52 mx-auto overflow-hidden">
                  <video src="resources/level_1_vid.mp4" class="game-video" muted loop id="level_1_vid"></video>
