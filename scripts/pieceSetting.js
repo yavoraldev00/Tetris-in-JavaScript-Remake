@@ -218,6 +218,9 @@ const setNewPiece = (newPiece) => {
 
         // Stops the game
         pieceState.currentGameActive = false;
+        
+        // Stops background sprite animation
+        document.getElementById("sprite").classList.remove("animate-idle");
 
         // Stops the automatic block falling interval
         clearInterval(timerId);
@@ -372,6 +375,9 @@ const startGame = () => {
     // Starts the game video
     current_video.play();
 
+    // Makes background sprite image animate
+    document.getElementById("sprite").classList.add("animate-idle")
+
     // Starts automatic drop down timer
     startTimer();
 }
@@ -402,6 +408,12 @@ const restartGame = () => {
 
     current_video.classList.remove("hidden");
     current_video.play();
+
+    // Resets sprite to level 1
+    document.getElementById("sprite").src = "resources/level_1_sprite.png";
+
+    // Makes background sprite image animate
+    document.getElementById("sprite").classList.add("animate-idle")
 
     // Removes the game over message
     gameOverMsg.classList.add("hidden");
