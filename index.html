@@ -42,30 +42,33 @@
         </div>
 
         <!-- Game board -->
-         <div class="border-2 border-gray-500 mx-auto w-fit flex flex-col col-span-3 items-center relative;">
-         <div class="border-2 border-gray-500 mx-auto w-fit flex flex-col col-span-3 items-center relative;">
-             <div class="flex h-52 mx-auto overflow-hidden">
-                 <video src="resources/level_1_vid.mp4" class="game-video" muted loop id="level_1_vid"></video>
-                 <video src="resources/level_3_vid.mp4" class="game-video hidden" muted loop id="level_3_vid"></video>
-                 <video src="resources/level_4_vid.mp4" class="game-video hidden" muted loop id="level_4_vid"></video>
-                 <video src="resources/level_7_vid.mp4" class="game-video hidden" muted loop id="level_7_vid"></video>
-                 <video src="resources/level_8_vid.mp4" class="game-video hidden" muted loop id="level_8_vid"></video>
-                 <video src="resources/level_10_vid.mp4" class="game-video hidden" muted loop id="level_10_vid"></video>
-                 <video src="resources/level_11_vid.mp4" class="game-video hidden" muted loop id="level_11_vid"></video>
-                 <video src="resources/level_12_vid.mp4" class="game-video hidden" muted loop id="level_12_vid"></video>
-                 <video src="resources/level_13_vid.mp4" class="game-video hidden" muted loop id="level_13_vid"></video>
-                 <video src="resources/level_14_vid.mp4" class="game-video hidden" muted loop id="level_14_vid"></video>
-                 <video src="resources/level_15_vid.mp4" class="game-video hidden" muted loop id="level_15_vid"></video>
-                 <video src="resources/level_16_vid.mp4" class="game-video hidden" muted loop id="level_16_vid"></video>
-                 <video src="resources/level_17_vid.mp4" class="game-video hidden" muted loop id="level_17_vid"></video>
-                 <video src="resources/level_18_vid.mp4" class="game-video hidden" muted loop id="level_18_vid"></video>
-                 <video src="resources/level_19_vid.mp4" class="game-video hidden" muted loop id="level_19_vid"></video>
-                 <video src="resources/level_20_vid.mp4" class="game-video hidden" muted loop id="level_20_vid"></video>
-             </div>
-             
-             <div id="board" class="board mx-auto"></div>
-         </div>
+        <div class="border-2 border-gray-500 mx-auto w-fit flex flex-col col-span-3 items-center relative;">
+            <div class="border-2 border-gray-500 mx-auto w-fit flex flex-col col-span-3 items-center relative;">
 
+                <!-- Video that plays during gameplay -->
+                <div class="flex h-52 mx-auto overflow-hidden">
+                    <video src="resources/level_1_vid.mp4" class="game-video" muted loop id="level_1_vid"></video>
+                    <video src="resources/level_3_vid.mp4" class="game-video hidden" muted loop id="level_3_vid"></video>
+                    <video src="resources/level_4_vid.mp4" class="game-video hidden" muted loop id="level_4_vid"></video>
+                    <video src="resources/level_7_vid.mp4" class="game-video hidden" muted loop id="level_7_vid"></video>
+                    <video src="resources/level_8_vid.mp4" class="game-video hidden" muted loop id="level_8_vid"></video>
+                    <video src="resources/level_10_vid.mp4" class="game-video hidden" muted loop id="level_10_vid"></video>
+                    <video src="resources/level_11_vid.mp4" class="game-video hidden" muted loop id="level_11_vid"></video>
+                    <video src="resources/level_12_vid.mp4" class="game-video hidden" muted loop id="level_12_vid"></video>
+                    <video src="resources/level_13_vid.mp4" class="game-video hidden" muted loop id="level_13_vid"></video>
+                    <video src="resources/level_14_vid.mp4" class="game-video hidden" muted loop id="level_14_vid"></video>
+                    <video src="resources/level_15_vid.mp4" class="game-video hidden" muted loop id="level_15_vid"></video>
+                    <video src="resources/level_16_vid.mp4" class="game-video hidden" muted loop id="level_16_vid"></video>
+                    <video src="resources/level_17_vid.mp4" class="game-video hidden" muted loop id="level_17_vid"></video>
+                    <video src="resources/level_18_vid.mp4" class="game-video hidden" muted loop id="level_18_vid"></video>
+                    <video src="resources/level_19_vid.mp4" class="game-video hidden" muted loop id="level_19_vid"></video>
+                    <video src="resources/level_20_vid.mp4" class="game-video hidden" muted loop id="level_20_vid"></video>
+                </div>
+             
+                <!-- Game board where pieces fall -->
+                <div id="board" class="board mx-auto"></div>
+            </div>
+        </div>
         <!-- Next piece and other information -->
         <div class="bg-zinc-600 bg-opacity-50 col-span-2 flex flex-col items-center">
             <div class="absolute top-10 -translate-x-48 -z-10">
