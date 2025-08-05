@@ -13,11 +13,16 @@ const checkForLineClear = () => {
 
     // If lines are cleared, plays line clear animation
     if(filledRows.length > 0){
+        var sprite_image = document.getElementById("sprite");
+
         // Starts the line clear animation
         lineClearAnimationStart(filledRows, rowArray);
 
         // Stops the line clear animation
         lineClearAnimationEnd(filledRows, rowArray);
+
+        // WORK IN PROGRESS - adds animation to sprite depending on number of lines cleared
+        playSpriteClearAnimation(filledRows, sprite_image);
 
         // Variable that displays the score
         var lineScore = document.getElementById("lines");
@@ -648,9 +653,6 @@ const lineClearAnimationStart = (clearedLines, rowArray) => {
             break;
         default: break;
     }
-
-    // Sound effect
-   
 }
 
 // Sets a class on rows when animation ends
@@ -667,3 +669,9 @@ const lineClearAnimationEnd = (clearedLines, rowArray) => {
         setNewPiece(pieceState.nextPiece);
     }, 400);
 }
+
+// Sets a class on rows when animation ends
+const playSpriteClearAnimation = (clearedLines, sprite) => {
+    debugger;
+}
+
