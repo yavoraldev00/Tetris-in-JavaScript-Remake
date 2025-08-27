@@ -741,8 +741,76 @@ video {
   }
 }
 
+@keyframes top-right-x {
+  0% {
+    transform: rotateX(0deg) rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateZ(360deg);
+  }
+}
+
+@keyframes top-left-x {
+  0% {
+    transform: rotateX(0deg) rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateZ(-360deg);
+  }
+}
+
+@keyframes top-right-y {
+  0% {
+    transform: rotateY(0deg) rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateY(360deg) rotateZ(360deg);
+  }
+}
+
+@keyframes top-left-y {
+  0% {
+    transform: rotateY(0deg) rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateY(360deg) rotateZ(-360deg);
+  }
+}
+
+@keyframes top-spin-x {
+  0% {
+    transform: rotateX(0deg);
+  }
+
+  100% {
+    transform: rotateX(360deg);
+  }
+}
+
+@keyframes top-spin-y {
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  50% {
+    transform: rotateY(180deg);
+  }
+
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
 .animate-idle {
-  animation: idle 25s linear infinite;
+  /* animation: idle 25s linear infinite; */
+}
+
+.animate-container {
+  animation: top-spin-y 6s linear;
 }
 
 .cursor-pointer {

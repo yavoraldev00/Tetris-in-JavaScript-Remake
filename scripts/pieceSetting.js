@@ -376,6 +376,8 @@ const startGame = () => {
     current_video.play();
 
     // Makes background sprite image animate
+    // document.getElementById("sprite").classList.add("animate-idle")
+    document.getElementById("sprite-container").classList.add("animate-container")
     document.getElementById("sprite").classList.add("animate-idle")
 
     // Starts automatic drop down timer

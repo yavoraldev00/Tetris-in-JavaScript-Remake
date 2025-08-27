@@ -98,7 +98,7 @@ document.addEventListener("keydown", (e)=> {
                 moveGhostPiece();
             }
         
-            console.log(pieceState.currentRotation)
+            // console.log(pieceState.currentRotation)
         }
     }
 })

@@ -22,7 +22,7 @@ const checkForLineClear = () => {
         lineClearAnimationEnd(filledRows, rowArray);
 
         // WORK IN PROGRESS - adds animation to sprite depending on number of lines cleared
-        playSpriteClearAnimation(filledRows, sprite_image);
+        playSpriteClearAnimation(filledRows.length, sprite_image);
 
         // Variable that displays the score
         var lineScore = document.getElementById("lines");
@@ -674,4 +674,3 @@ const lineClearAnimationEnd = (clearedLines, rowArray) => {
 const playSpriteClearAnimation = (clearedLines, sprite) => {
     debugger;
 }
-
