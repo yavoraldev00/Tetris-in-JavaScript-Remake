@@ -807,6 +807,21 @@ video {
   color: rgb(209 213 219 / var(--tw-text-opacity));
 }
 
+:root {
+  /* Rotation amount by axis */
+  --X: 0deg;
+  --Y: 0deg;
+  --Z: 0deg;
+  /* Scale factor */
+  --Scale: 1;
+}
+
+/* @property --Y {
+    syntax: "<angle>";
+    inherits: false;
+    initial-value: 90deg;
+} */
+
 .board {
   /* @apply  */
 }
@@ -976,7 +991,7 @@ video {
   }
 }
 
-@keyframes top-right-x {
+/* @keyframes top-right-x {
   0% {
     transform: rotateX(0deg) rotateZ(0deg);
   }
@@ -984,19 +999,9 @@ video {
   100% {
     transform: rotateX(360deg) rotateZ(360deg);
   }
-}
+} */
 
-@keyframes top-left-x {
-  0% {
-    transform: rotateX(0deg) rotateZ(0deg);
-  }
-
-  100% {
-    transform: rotateX(360deg) rotateZ(-360deg);
-  }
-}
-
-@keyframes top-right-y {
+/* @keyframes top-right-y {
   0% {
     transform: rotateY(0deg) rotateZ(0deg);
   }
@@ -1004,15 +1009,45 @@ video {
   100% {
     transform: rotateY(360deg) rotateZ(360deg);
   }
+} */
+
+@keyframes top-right {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(0deg) rotateZ(360deg) scale(1);
+  }
 }
 
-@keyframes top-left-y {
+/* @keyframes top-left-x {
+  0% {
+    transform: rotateX(0deg) rotateZ(0deg);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateZ(-360deg);
+  }
+} */
+
+/* @keyframes top-left-y {
   0% {
     transform: rotateY(0deg) rotateZ(0deg);
   }
 
   100% {
     transform: rotateY(360deg) rotateZ(-360deg);
+  }
+} */
+
+@keyframes top-left {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
+  }
+
+  100% {
+    transform: rotateX(360deg) rotateY(0deg) rotateZ(360deg) scale(1);
   }
 }
 
@@ -1031,12 +1066,18 @@ video {
     transform: rotateY(0deg);
   }
 
-  50% {
-    transform: rotateY(180deg);
+  100% {
+    transform: rotateY(360deg);
+  }
+}
+
+@keyframes spin {
+  0% {
+    transform: rotateX(0deg) rotateY(0deg) scale(1);
   }
 
   100% {
-    transform: rotateY(360deg);
+    transform: rotateX(var(--X)) rotateY(var(--Y)) scale(1);
   }
 }
 
@@ -1045,5 +1086,5 @@ video {
 }
 
 .animate-container {
-  animation: top-spin-y 6s linear;
+  animation: spin 2s linear;
 }
