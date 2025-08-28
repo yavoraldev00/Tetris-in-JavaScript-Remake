@@ -9,8 +9,11 @@
     --Y: 0deg;
     --Z: 0deg;
     
-    /* Scale factor */
+    /* Sprite size, 1 = normal size */
     --Scale: 1;
+
+    /* Animation lenght */
+    --Duration: 1000ms;
 }
 
 /* @property --Y {
@@ -233,5 +236,6 @@
 }
 
 .animate-container {
-  animation: container-spin 2s linear;
+  animation: container-spin linear;
+  animation-duration: var(--Duration);
 }

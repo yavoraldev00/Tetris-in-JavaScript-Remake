@@ -707,6 +707,7 @@ const lineClearAnimationEnd = (clearedLines, rowArray) => {
 // Sets a class on rows when animation ends
 const playSpriteClearAnimation = (clearedLines) => {
     // Picks a random rotation to do
+    debugger;
     const pickedRotation = spriteContainerRotations[Math.floor(Math.random() * spriteContainerRotations.length)];
 
     // Sets CSS variable values
@@ -714,13 +715,16 @@ const playSpriteClearAnimation = (clearedLines) => {
     r.style.setProperty("--Y",`${pickedRotation[1]}deg`);
     r.style.setProperty("--Z",`${pickedRotation[2]}deg`);
 
+    debugger;
+    r.style.setProperty("--Duration","100ms");
+
     // Adds class to container that plays an animation
     spriteContainer.classList.add("animate-container");
     
     // Removes the class from the container, after animation finsihes, so a new one can be played
     setTimeout(() => {
     document.getElementById("sprite-container").classList.remove("animate-container");
-    }, 3000);
+    }, getComputedStyle(r).getPropertyValue("--Duration").slice(0,-2));
     
     debugger;
 }
