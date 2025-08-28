@@ -22,7 +22,7 @@ const checkForLineClear = () => {
         lineClearAnimationEnd(filledRows, rowArray);
 
         // WORK IN PROGRESS - adds animation to sprite depending on number of lines cleared
-        playSpriteClearAnimation(filledRows.length, sprite_image);
+        playSpriteClearAnimation(filledRows.length);
 
         // Variable that displays the score
         var lineScore = document.getElementById("lines");
@@ -621,6 +621,40 @@ const moveLineClasses = (oldLine, newLine) => {
     }
 }
 
+/* Animation related code */
+
+const spriteContainerRotations = [
+        /* [ X rotation, Y rotation, Z rotation ] measured in deg */
+
+        [360,0,360], // || Top Right X
+        [0,360,360], // || Top Right Y
+        [360,0,-360], // || Top Left X
+        [0,360,-360], // || Top Left Y
+        [360,0,0], // || Top Spin X
+        [0,360,0], //|| Top Spin 
+    ];
+
+
+// Variable for access to change CSS variables related to container animation
+
+const r = document.querySelector(':root');
+
+// r.style.setProperty("--Y","0deg")
+// r.style.setProperty("--X","1720deg")
+
+// Variable containing the background sprite container, used during line clears
+const spriteContainer = document.getElementById("sprite-container");
+
+// setTimeout(() => {
+//     document.getElementById("sprite-container").classList.remove("animate-container");
+    
+//     setTimeout(() => {
+//         r.style.setProperty("--Y","1080deg")
+//         r.style.setProperty("--X","0deg")
+//         document.getElementById("sprite-container").classList.add("animate-container");
+//     }, 100);
+// }, 3000);
+
 // Sets a class on rows so they can play a clear animation
 const lineClearAnimationStart = (clearedLines, rowArray) => {     
     clearedLines.forEach((clearedLine) => {
@@ -671,6 +705,22 @@ const lineClearAnimationEnd = (clearedLines, rowArray) => {
 }
 
 // Sets a class on rows when animation ends
-const playSpriteClearAnimation = (clearedLines, sprite) => {
+const playSpriteClearAnimation = (clearedLines) => {
+    // Picks a random rotation to do
+    const pickedRotation = spriteContainerRotations[Math.floor(Math.random() * spriteContainerRotations.length)];
+
+    // Sets CSS variable values
+    r.style.setProperty("--X",`${pickedRotation[0]}deg`);
+    r.style.setProperty("--Y",`${pickedRotation[1]}deg`);
+    r.style.setProperty("--Z",`${pickedRotation[2]}deg`);
+
+    // Adds class to container that plays an animation
+    spriteContainer.classList.add("animate-container");
+    
+    // Removes the class from the container, after animation finsihes, so a new one can be played
+    setTimeout(() => {
+    document.getElementById("sprite-container").classList.remove("animate-container");
+    }, 3000);
+    
     debugger;
 }

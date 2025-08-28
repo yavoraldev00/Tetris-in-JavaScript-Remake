@@ -370,37 +370,14 @@ const startGame = () => {
     current_level = level_1_8;
     current_level.currentTime = 0;
     current_level.loop = true;
+    current_level.volume = 0.1
     current_level.play();
 
     // Starts the game video
     current_video.play();
 
     // Makes background sprite image animate
-    // document.getElementById("sprite").classList.add("animate-idle");
-
-var r = document.querySelector(':root');
-var rs = getComputedStyle(r);
-r.style.setProperty("--Y","360deg")
-r.style.setProperty("--X","720deg")
-
-    debugger;
-    
-// document.querySelector(":root").style.getPropertyValue("--Y");
-// document.querySelector(":root").style.setProperty("--Y", "360deg");
-
-    
-    document.getElementById("sprite-container").classList.add("animate-container");
-
-    setTimeout(() => {
-        document.getElementById("sprite-container").classList.remove("animate-container");
-        
-        setTimeout(() => {
-            r.style.setProperty("--Y","1080deg")
-            r.style.setProperty("--X","0deg")
-            document.getElementById("sprite-container").classList.add("animate-container");
-        }, 100)();
-    }, 3000)();
-
+    document.getElementById("sprite").classList.add("animate-idle");
 
     // Starts automatic drop down timer
     startTimer();
