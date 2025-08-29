@@ -11,7 +11,7 @@ const pieceState = {
     held: false,
     lineClearAnimation: false,
     gameActive: false,
-    spiteContainerAnimation: false,
+    spriteContainerAnimation: false,
 
     reset() {
         this.curTetronimo = null;
@@ -26,7 +26,7 @@ const pieceState = {
         this.held = false;
         this.lineClearAnimation = false;
         this.gameActive = false;
-        this.spiteContainerAnimation = false;
+        this.spriteContainerAnimation = false;
     },
 
     get currentPiece() {
@@ -123,5 +123,13 @@ const pieceState = {
 
     set currentGameActive(item) {
         this.gameActive = item
+    },
+
+    get currentSpriteContainerAnimation() {
+        return this.spriteContainerAnimation
+    },
+
+    set currentSpriteContainerAnimation(item) {
+        this.spriteContainerAnimation = item
     }
 }

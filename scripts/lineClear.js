@@ -639,21 +639,8 @@ const spriteContainerRotations = [
 
 const r = document.querySelector(':root');
 
-// r.style.setProperty("--Y","0deg")
-// r.style.setProperty("--X","1720deg")
-
 // Variable containing the background sprite container, used during line clears
 const spriteContainer = document.getElementById("sprite-container");
-
-// setTimeout(() => {
-//     document.getElementById("sprite-container").classList.remove("animate-container");
-    
-//     setTimeout(() => {
-//         r.style.setProperty("--Y","1080deg")
-//         r.style.setProperty("--X","0deg")
-//         document.getElementById("sprite-container").classList.add("animate-container");
-//     }, 100);
-// }, 3000);
 
 // Sets a class on rows so they can play a clear animation
 const lineClearAnimationStart = (clearedLines, rowArray) => {     
@@ -706,25 +693,32 @@ const lineClearAnimationEnd = (clearedLines, rowArray) => {
 
 // Sets a class on rows when animation ends
 const playSpriteClearAnimation = (clearedLines) => {
-    // Picks a random rotation to do
-    debugger;
-    const pickedRotation = spriteContainerRotations[Math.floor(Math.random() * spriteContainerRotations.length)];
+    if(clearedLines == 4 || (pieceState.currentSpriteContainerAnimation == false && clearedLines !== 4)){
+        // Sets animation variable to playing
+        pieceState.currentSpriteContainerAnimation = true;
 
-    // Sets CSS variable values
-    r.style.setProperty("--X",`${pickedRotation[0]}deg`);
-    r.style.setProperty("--Y",`${pickedRotation[1]}deg`);
-    r.style.setProperty("--Z",`${pickedRotation[2]}deg`);
+        // Picks a random rotation to do
+        const pickedRotation = spriteContainerRotations[Math.floor(Math.random() * spriteContainerRotations.length)];
 
-    debugger;
-    r.style.setProperty("--Duration","100ms");
+        // Sets CSS variable values
+        r.style.setProperty("--X",`${pickedRotation[0]}deg`);
+        r.style.setProperty("--Y",`${pickedRotation[1]}deg`);
+        r.style.setProperty("--Z",`${pickedRotation[2]}deg`);
+        r.style.setProperty("--Duration","5000ms");
 
-    // Adds class to container that plays an animation
-    spriteContainer.classList.add("animate-container");
+        // Adds class to container that plays an animation
+        spriteContainer.classList.add("animate-container");
+
+        setTimeout(() => {
+            // Removes the class from the container, after animation finsihes, so a new one can be played
+            document.getElementById("sprite-container").classList.remove("animate-container");
+
+            // Sets animation variable to NOT playing
+            pieceState.currentSpriteContainerAnimation = false;
+        }, 5000);
+    }
+}
+
+const myFunc = () => {
     
-    // Removes the class from the container, after animation finsihes, so a new one can be played
-    setTimeout(() => {
-    document.getElementById("sprite-container").classList.remove("animate-container");
-    }, getComputedStyle(r).getPropertyValue("--Duration").slice(0,-2));
-    
-    debugger;
 }
