@@ -693,18 +693,35 @@ const lineClearAnimationEnd = (clearedLines, rowArray) => {
 
 // Sets a class on rows when animation ends
 const playSpriteClearAnimation = (clearedLines) => {
-    if(clearedLines == 4 || (pieceState.currentSpriteContainerAnimation == false && clearedLines !== 4)){
+    if(pieceState.currentSpriteContainerAnimation == false){
         // Sets animation variable to playing
         pieceState.currentSpriteContainerAnimation = true;
+
+        var spinFactor;
+
+        switch(clearedLines){
+            case 1:
+                spinFactor = 1;
+                break;
+            case 2,3:
+                spinFactor = 4;
+                break;
+            case 4:
+                spinFactor = 12;
+                break;
+            default:
+                spinFactor = 0;
+                break;
+        }
 
         // Picks a random rotation to do
         const pickedRotation = spriteContainerRotations[Math.floor(Math.random() * spriteContainerRotations.length)];
 
         // Sets CSS variable values
-        r.style.setProperty("--X",`${pickedRotation[0]}deg`);
-        r.style.setProperty("--Y",`${pickedRotation[1]}deg`);
-        r.style.setProperty("--Z",`${pickedRotation[2]}deg`);
-        r.style.setProperty("--Duration","5000ms");
+        r.style.setProperty("--X",`${pickedRotation[0]*spinFactor}deg`);
+        r.style.setProperty("--Y",`${pickedRotation[1]*spinFactor}deg`);
+        r.style.setProperty("--Z",`${pickedRotation[2]*spinFactor}deg`);
+        r.style.setProperty("--Duration","2000ms");
 
         // Adds class to container that plays an animation
         spriteContainer.classList.add("animate-container");
@@ -715,7 +732,7 @@ const playSpriteClearAnimation = (clearedLines) => {
 
             // Sets animation variable to NOT playing
             pieceState.currentSpriteContainerAnimation = false;
-        }, 5000);
+        }, 2000);
     }
 }
 
