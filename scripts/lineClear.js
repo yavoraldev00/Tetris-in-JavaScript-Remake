@@ -698,19 +698,25 @@ const playSpriteClearAnimation = (clearedLines) => {
         pieceState.currentSpriteContainerAnimation = true;
 
         var spinFactor;
+        var scaleFactor;
 
         switch(clearedLines){
             case 1:
                 spinFactor = 1;
+                scaleFactor = 1;
                 break;
-            case 2,3:
-                spinFactor = 4;
+            case 2:
+            case 3:
+                spinFactor = 2;
+                scaleFactor = 1.2;
                 break;
             case 4:
-                spinFactor = 12;
+                spinFactor = 15;
+                scaleFactor = 1.5;
                 break;
             default:
                 spinFactor = 0;
+                scaleFactor = 1;
                 break;
         }
 
@@ -719,9 +725,15 @@ const playSpriteClearAnimation = (clearedLines) => {
 
         // Sets CSS variable values
         r.style.setProperty("--X",`${pickedRotation[0]*spinFactor}deg`);
+        r.style.setProperty("--X-mid",`${pickedRotation[0]*spinFactor / 2}deg`);
         r.style.setProperty("--Y",`${pickedRotation[1]*spinFactor}deg`);
+        r.style.setProperty("--Y-mid",`${pickedRotation[1]*spinFactor / 2}deg`);
         r.style.setProperty("--Z",`${pickedRotation[2]*spinFactor}deg`);
-        r.style.setProperty("--Duration","2000ms");
+        r.style.setProperty("--Z-mid",`${pickedRotation[2]*spinFactor / 2}deg`);
+        r.style.setProperty("--Duration","1500ms");
+        r.style.setProperty("--Scale",`${scaleFactor}`);
+
+        debugger;
 
         // Adds class to container that plays an animation
         spriteContainer.classList.add("animate-container");
@@ -732,7 +744,9 @@ const playSpriteClearAnimation = (clearedLines) => {
 
             // Sets animation variable to NOT playing
             pieceState.currentSpriteContainerAnimation = false;
-        }, 2000);
+
+            debugger;
+        }, 1250);
     }
 }
 

@@ -8,12 +8,16 @@
     --X: 0deg;
     --Y: 0deg;
     --Z: 0deg;
+
+    /* --X-mid: 0deg;
+    --Y-mid: 0deg;
+    --Z-mid: 0deg; */
     
     /* Sprite size, 1 = normal size */
     --Scale: 1;
 
     /* Animation lenght */
-    --Duration: 1000ms;
+    --Duration: 0ms;
 }
 
 /* @property --Y {
@@ -226,8 +230,12 @@
     transform: rotateX(0deg) rotateY(0deg) rotateZ(0deg) scale(1);
   }
 
+  50% {
+    transform: rotateX(var(--X-mid)) rotateY(var(--Y-mid)) rotateZ(var(--Z-mid)) scale(var(--Scale));
+  }
+
   100% {
-    transform: rotateX(var(--X)) rotateY(var(--Y)) rotateZ(var(--Z)) scale(var(--Scale));
+    transform: rotateX(var(--X)) rotateY(var(--Y)) rotateZ(var(--Z)) scale(1);
   }
 }
 
