@@ -367,10 +367,10 @@ const startGame = () => {
     pieceState.currentGameActive = true;
 
     // Starts game music
-    current_level = level_1_8;
+    current_level = level_1;
     current_level.currentTime = 0;
     current_level.loop = true;
-    current_level.volume = 0.1
+    setMusicVolume(0.2);
     current_level.play();
 
     // Starts the game video

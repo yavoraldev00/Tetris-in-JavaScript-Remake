@@ -239,3 +239,19 @@ const moveGhostPiece = () => {
     // Updates the ghost piece on the board
     setGhostPiece();
 }
+
+// Increases the movement speed of the falling piece
+const updateMovementSpeed = (movementSpeed) => {
+    switch(true){
+        case movementSpeed == 4: intervalTime = 850; break;
+        case movementSpeed == 7: intervalTime = 700; break;
+        case movementSpeed == 10: intervalTime = 550; break;
+        case movementSpeed == 13: intervalTime = 350; break;
+        case movementSpeed == 13: intervalTime = 225; break;
+        case movementSpeed == 19: intervalTime = 100; break;
+        default: break;
+    }
+
+    clearInterval(timerId);
+    startTimer();
+}

@@ -1,3 +1,5 @@
+// Sound effects
+
 const hardDropSound = new Audio("resources/se_game_harddrop.wav");
 hardDropSound.load();
 
@@ -32,15 +34,18 @@ const scoreSound = new Audio("resources/score.mp3");
 scoreSound.load();
 
 // Level music
+const level_1 = new Audio("resources/level_1_8.mp3");
+level_1.load();
 
-const level_1_8 = new Audio("resources/level_1_8.mp3");
-level_1_8.load();
-
-const level_3_7 = new Audio("resources/level_3_7.mp3");
-level_3_7.load();
+const level_3 = new Audio("resources/level_3_7.mp3");
+level_3.load();
 
 const level_4 = new Audio("resources/level_4.mp3");
 level_4.load();
+
+const level_7 = level_3;
+
+const level_8 = level_1;
 
 const level_10 = new Audio("resources/level_10.mp3");
 level_10.load();
@@ -66,4 +71,59 @@ level_16.load();
 const level_20 = new Audio("resources/level_20.mp3");
 level_20.load();
 
+// Variable holding the current level music
 var current_level;
+
+/* Functions */
+
+// Changes the music volume
+const setMusicVolume = (volume_level) => {
+    current_level.volume = volume_level;
+}
+
+// Changes the currently playing video
+const changeVideo = (level) => {
+    current_video.classList.add("hidden");
+    current_video.pause();
+
+    current_video = document.getElementById(`level_${level}_vid`);
+    current_video.classList.remove("hidden");
+    current_video.play();
+}
+
+
+// Changes the currently playing level theme
+const changeMusic = (level) => {
+    // Pauses the current level theme
+    current_level.pause();
+
+    // Changes the currently playing level theme
+    switch(true){
+        case level == 1: current_level = level_1; break;
+        case level == 3: current_level = level_3; break;
+        case level == 4: current_level = level_4; break;
+        case level == 7: current_level = level_7; break;
+        case level == 8: current_level = level_8; break;
+        case level == 10: current_level = level_10; break;
+        case level == 11: current_level = level_11; break;
+        case level == 12: current_level = level_12; break;
+        case level == 13: current_level = level_13; break;
+        case level == 14: current_level = level_14; break;
+        case level == 15: current_level = level_15; break;
+        case level == 16: current_level = level_16; break;
+        case level == 20: current_level = level_20; break;
+        default: break;
+    }
+
+    // Sets the level theme to loop and start at the beginning
+    current_level.loop = true;
+    current_level.currentTime = 0;
+
+    // Updates the volume to match the user selected one
+    setMusicVolume(0.5);
+
+    // Starts song after 1 second delay
+    setTimeout(() => {
+        current_level.play();
+    }, 1000);
+}
