@@ -9,9 +9,9 @@
     --Y: 0deg;
     --Z: 0deg;
 
-    /* --X-mid: 0deg;
+    --X-mid: 0deg;
     --Y-mid: 0deg;
-    --Z-mid: 0deg; */
+    --Z-mid: 0deg;
     
     /* Sprite size, 1 = normal size */
     --Scale: 1;
@@ -36,8 +36,21 @@
     }
 }
 
-.board {
-    /* @apply  */
+#tetris-clear-message {
+  background: repeating-linear-gradient(90deg in hsl longer hue, red 0 50%) 0/200%;
+  animation: r 1.5s linear infinite, tetris-clear-animation 1.25s ease-in-out;
+  background-clip: text;
+}
+
+
+@keyframes r {
+  to {background-position: 100%}
+}
+
+@keyframes tetris-clear-animation {
+  0% { transform: scale(1) }
+  50% { transform: scale(1.4) }
+  100% { transform: scale(1) }
 }
 
 .row {

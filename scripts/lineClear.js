@@ -52,6 +52,7 @@ const checkForLineClear = () => {
                 break;
             case filledRows.length == 4:
                 updateScore(800 * pieceState.currentLevel, true);
+                updateTetrisClearMessage(filledRows[0]);
                 break;
             default: break;
         }
