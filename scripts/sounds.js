@@ -33,6 +33,9 @@ pauseSound.load();
 const scoreSound = new Audio("resources/score.mp3");
 scoreSound.load();
 
+const levelUp = new Audio("resources/level_up.wav");
+levelUp.load();
+
 // Level music
 const level_1 = new Audio("resources/level_1_8.mp3");
 level_1.load();
@@ -120,7 +123,7 @@ const changeMusic = (level) => {
     current_level.currentTime = 0;
 
     // Updates the volume to match the user selected one
-    setMusicVolume(0.5);
+    setMusicVolume(1);
 
     // Starts song after 1 second delay
     setTimeout(() => {

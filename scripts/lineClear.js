@@ -16,8 +16,6 @@ const checkForLineClear = () => {
 
     // If lines are cleared, plays line clear animation
     if(filledRows.length > 0){
-        
-
         // Starts the line clear animation
         lineClearAnimationStart(filledRows, rowArray);
 
@@ -62,9 +60,12 @@ const checkForLineClear = () => {
 
         // Only does further checks if new level is reached (10, 20, 30 etc.)
         if(filledRows.length > 0 && (pieceState.currentLines % 10 < 4 && oldLines % 10 > 5)){
+            // Updates the current level
             pieceState.currentLevel += 1;
             levelText.textContent = pieceState.currentLevel;
 
+            // Plays level up sound effect
+            playLevelUpAnimation();
 
             // Increases level, game speed, changes graphics etc.
             updateLevelTextAndMusic(pieceState.currentLevel);

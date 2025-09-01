@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" viewBox="-6 2 52 36">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="red" />
+      <stop offset="90%" stop-color="orange" />
+    </linearGradient>
+  </defs>
+
+  <!-- White border (bottom layer) -->
+  <path d="M15.5 40.5h10v-18h12L21 2 3 22.5h12v18z"
+        fill="none"
+        stroke="white"
+        stroke-width="8"/>
+
+  <!-- Black border (middle layer) -->
+  <path d="M15.5 40.5h10v-18h12L21 2 3 22.5h12v18z"
+        fill="none"
+        stroke="black"
+        stroke-width="4"/>
+
+  <!-- Gradient fill (top layer) -->
+  <path d="M15.5 40.5h10v-18h12L21 2 3 22.5h12v18z"
+        fill="url(#grad)"/>
+</svg>

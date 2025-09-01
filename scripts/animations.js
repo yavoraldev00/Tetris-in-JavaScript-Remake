@@ -1,3 +1,6 @@
+// Variable containing HTML element for level up message
+const level_up_container = document.getElementById("level-up-message");
+
 // Array containing heights of each row, used to set and adjust Tetris clear message
 const rowCoordinates = Array.from(board.querySelectorAll('.row')).map(row => {
   return row.getBoundingClientRect().top;
@@ -114,4 +117,15 @@ const updateVideo = (currentLevel) => {
 // Updates the sprite image
 const updateLevelSprite = (currentLevel) => {
   sprite_image.src = `resources/level_${currentLevel}_sprite.png`;
+}
+
+// Plays level up animation
+const playLevelUpAnimation = () => {
+  level_up_container.classList.remove("hidden");
+  levelUp.currentTime = 0;
+  levelUp.play();
+
+  setTimeout(() => {
+    level_up_container.classList.add("hidden");
+  }, 2000);
 }

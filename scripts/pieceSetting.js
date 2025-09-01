@@ -370,7 +370,7 @@ const startGame = () => {
     current_level = level_1;
     current_level.currentTime = 0;
     current_level.loop = true;
-    setMusicVolume(0.2);
+    setMusicVolume(1);
     current_level.play();
 
     // Starts the game video
