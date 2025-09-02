@@ -27,6 +27,9 @@ clearTetris.load();
 const gameOver = new Audio("resources/game_over.mp3");
 gameOver.load();
 
+const Victory = new Audio("resources/victory.mp3");
+Victory.load();
+
 const pauseSound = new Audio("resources/pause.wav");
 pauseSound.load();
 
@@ -75,13 +78,19 @@ const level_20 = new Audio("resources/level_20.mp3");
 level_20.load();
 
 // Variable holding the current level music
-var current_level;
+var current_level = level_1;
 
 /* Functions */
 
 // Changes the music volume
 const setMusicVolume = (volume_level) => {
-    current_level.volume = volume_level;
+    if(typeof(volume_level) == "object"){
+        volume_level = volume_level.textContent;
+    }
+
+    current_level.volume = volume_level / 10;
+
+    r.style.setProperty("--Volume",`${volume_level}`);
 }
 
 // Changes the currently playing video
@@ -103,6 +112,7 @@ const changeMusic = (level) => {
     // Changes the currently playing level theme
     switch(true){
         case level == 1: current_level = level_1; break;
+        case level == 2: current_level = level_1; break;
         case level == 3: current_level = level_3; break;
         case level == 4: current_level = level_4; break;
         case level == 7: current_level = level_7; break;
@@ -123,7 +133,7 @@ const changeMusic = (level) => {
     current_level.currentTime = 0;
 
     // Updates the volume to match the user selected one
-    setMusicVolume(1);
+    setMusicVolume(getComputedStyle(r).getPropertyValue("--Volume"));
 
     // Starts song after 1 second delay
     setTimeout(() => {

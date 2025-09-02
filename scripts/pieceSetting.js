@@ -215,25 +215,9 @@ const setNewPiece = (newPiece) => {
     if(breakFlag){ // If there is a piece there already, game is over
         // Shows Game Over screen
         gameOverScreen();
-
-        // Stops the game
-        pieceState.currentGameActive = false;
         
-        // Stops background sprite animation
-        document.getElementById("sprite").classList.remove("animate-idle");
-
-        // Stops the automatic block falling interval
-        clearInterval(timerId);
-
-        // Stops currently playing music
-        current_level.pause();
-
-        // Stops currently playing video
-        current_video.pause();
-
-        // Game Over sound
-        gameOver.currentTime = 0;
-        gameOver.play();
+        // Ends the game
+        endGame();
     }else{ // If space is empty, places the piece on the board
         // Places the piece on the board
         placePiece(pieceState.currentCoordinates);
@@ -242,7 +226,6 @@ const setNewPiece = (newPiece) => {
             pieceState.nextPiece = structuredClone(generatePiece());
             updateNextPiece();
         }
-
 
         moveGhostPiece();
     }
@@ -370,7 +353,6 @@ const startGame = () => {
     current_level = level_1;
     current_level.currentTime = 0;
     current_level.loop = true;
-    setMusicVolume(1);
     current_level.play();
 
     // Starts the game video
@@ -417,7 +399,10 @@ const restartGame = () => {
     document.getElementById("sprite").classList.add("animate-idle")
 
     // Removes the game over message
-    gameOverMsg.classList.add("hidden");
+    document.querySelector("#game-over-msg").classList.add("hidden");
+    
+    // Removes the game victory message
+    document.querySelector("#game-victory-msg").classList.add("hidden");
 
     // Starts the game
     startGame();

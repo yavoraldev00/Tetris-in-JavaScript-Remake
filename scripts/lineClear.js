@@ -64,11 +64,21 @@ const checkForLineClear = () => {
             pieceState.currentLevel += 1;
             levelText.textContent = pieceState.currentLevel;
 
-            // Plays level up sound effect
-            playLevelUpAnimation();
+            // If level 20 is reached, game finishes
+            if(pieceState.currentLevel == 20){
+                // Shows victory screen
+                gameVictoryScreen();
 
-            // Increases level, game speed, changes graphics etc.
-            updateLevelTextAndMusic(pieceState.currentLevel);
+                // Ends the game
+                endGame();
+            } else{
+                // Plays level up sound effect
+                playLevelUpAnimation();
+    
+                // Increases level, game speed, changes graphics etc.
+                updateLevelTextAndMusic(pieceState.currentLevel);
+            }
+
         }
 
     }
@@ -108,7 +118,6 @@ const spriteContainerRotations = [
 
 
 // Variable for access to change CSS variables related to container animation
-
 const r = document.querySelector(':root');
 
 // Variable containing the background sprite container, used during line clears

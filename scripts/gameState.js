@@ -1,15 +1,16 @@
 // Object storing various states of the game
 
 // Variables that show / hide menu screens
-const startGameMsg = document.querySelector("#start-msg");
+
+// const startGameMsg = document.querySelector("#start-msg");
 const pauseGameMsg = document.querySelector("#pause-msg");
-const gameOverMsg = document.querySelector("#game-over-msg");
+// const gameOverMsg = document.querySelector("#game-over-msg");
 
 // Variable that stores the currently playing video
 var current_video = document.getElementById("level_1_vid");
 
 const beginGame = () => {
-    startGameMsg.classList.add("hidden");
+    document.querySelector("#start-msg").classList.add("hidden");
 
     // Starts the game by setting a piece on the board
     startGame();
@@ -32,8 +33,43 @@ const pauseGame = () => {
     pauseSound.play();
 };
 
+// Shows game over screen
 const gameOverScreen = () => {
-    gameOverMsg.classList.remove("hidden")
+    document.querySelector("#game-over-msg").classList.remove("hidden");
+
+    // Game Over sound
+    gameOver.currentTime = 0;
+    gameOver.play();
+};
+
+// Shows game victory screen
+const gameVictoryScreen = () => {
+    document.querySelector("#game-victory-msg").classList.remove("hidden");
+
+    // Victory sound
+    Victory.currentTime = 0;
+    Victory.play();
+};
+
+// Finishes the game
+const endGame = () => {
+    // Stops the game
+    pieceState.currentGameActive = false;
+    
+    // Stops background sprite animation
+    document.getElementById("sprite").classList.remove("animate-idle");
+
+    // Removes the class from the container, so any current animation stops
+    document.getElementById("sprite-container").classList.remove("animate-container");
+
+    // Stops the automatic block falling interval
+    clearInterval(timerId);
+
+    // Stops currently playing music
+    current_level.pause();
+
+    // Stops currently playing video
+    current_video.pause(); 
 };
 
 const unpauseGame = () => {
@@ -48,6 +84,8 @@ const unpauseGame = () => {
     // Un-pauses the gameplay video
     current_video.play();
 };
+
+
 
 // Updates the game score
 // Only for player movements
