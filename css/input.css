@@ -21,6 +21,9 @@
 
     /* Music Volume */
     --Volume: 5;
+
+    /* SFX Volume */
+    --SfxVolume: 5;
 }
 
 @layer utilities {
@@ -34,11 +37,12 @@
 }
 
 /* Volume control */
-#volume-control {
+#volume-control, #sfx-control {
   position: relative;
 }
 
-#volume-control::before {
+/* Volume and SFX control */
+#volume-control::before, #sfx-control::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -57,17 +61,29 @@
     rgb(51, 146, 60) 90% 100%   /* same as 3 */
   );
 
-  mask-image: linear-gradient(
-    to right,
-    black calc(var(--Volume) * 10%),
-    transparent calc(var(--Volume) * 10%)
-  );
-
   mask-repeat: no-repeat;
   mask-size: 100% 100%;
 }
 
-#volume-control > div {
+/* Volume mask. Only displays as many volume blocks as selected */
+#volume-control::before{
+    mask-image: linear-gradient(
+    to right,
+    black calc(var(--Volume) * 10%),
+    transparent calc(var(--Volume) * 10%)
+  );
+}
+
+/* Sfx mask. Only displays as many volume blocks as selected */
+#sfx-control::before{
+  mask-image: linear-gradient(
+    to right,
+    black calc(var(--SfxVolume) * 10%),
+    transparent calc(var(--SfxVolume) * 10%)
+  );
+}
+
+#volume-control > div, #sfx-control > div {
   position: relative;
   box-sizing: border-box;
   border: 4px solid rgb(226 232 240);

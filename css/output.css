@@ -872,15 +872,19 @@ video {
   --Duration: 0ms;
   /* Music Volume */
   --Volume: 5;
+  /* SFX Volume */
+  --SfxVolume: 5;
 }
 
 /* Volume control */
 
-#volume-control {
+#volume-control, #sfx-control {
   position: relative;
 }
 
-#volume-control::before {
+/* Volume and SFX control */
+
+#volume-control::before, #sfx-control::before {
   content: "";
   position: absolute;
   inset: 0;
@@ -898,6 +902,15 @@ video {
     rgb(37, 99, 235) 80% 90%,   /* same as 2 */
     rgb(51, 146, 60) 90% 100%   /* same as 3 */
   );
+  -webkit-mask-repeat: no-repeat;
+          mask-repeat: no-repeat;
+  -webkit-mask-size: 100% 100%;
+          mask-size: 100% 100%;
+}
+
+/* Volume mask. Only displays as many volume blocks as selected */
+
+#volume-control::before{
   -webkit-mask-image: linear-gradient(
     to right,
     black calc(var(--Volume) * 10%),
@@ -908,13 +921,24 @@ video {
     black calc(var(--Volume) * 10%),
     transparent calc(var(--Volume) * 10%)
   );
-  -webkit-mask-repeat: no-repeat;
-          mask-repeat: no-repeat;
-  -webkit-mask-size: 100% 100%;
-          mask-size: 100% 100%;
 }
 
-#volume-control > div {
+/* Sfx mask. Only displays as many volume blocks as selected */
+
+#sfx-control::before{
+  -webkit-mask-image: linear-gradient(
+    to right,
+    black calc(var(--SfxVolume) * 10%),
+    transparent calc(var(--SfxVolume) * 10%)
+  );
+          mask-image: linear-gradient(
+    to right,
+    black calc(var(--SfxVolume) * 10%),
+    transparent calc(var(--SfxVolume) * 10%)
+  );
+}
+
+#volume-control > div, #sfx-control > div {
   position: relative;
   box-sizing: border-box;
   border: 4px solid rgb(226 232 240);

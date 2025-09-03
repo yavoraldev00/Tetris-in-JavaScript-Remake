@@ -39,6 +39,11 @@ scoreSound.load();
 const levelUp = new Audio("resources/level_up.wav");
 levelUp.load();
 
+// Array containing all sound effects. Used for adjusting SFX volume
+const SfxArray = [
+    hardDropSound, moveSound, rotateSound, softDropSound, clearSingle, clearDouble, clearTriple, clearTetris, gameOver, Victory, pauseSound, scoreSound, levelUp
+]
+
 // Level music
 const level_1 = new Audio("resources/level_1_8.mp3");
 level_1.load();
@@ -84,14 +89,30 @@ var current_level = level_1;
 
 // Changes the music volume
 const setMusicVolume = (volume_level) => {
+    // If the function is called from the volume control, adjusts the value and changes the slider fullness
     if(typeof(volume_level) == "object"){
-        volume_level = volume_level.textContent;
+        volume_level = volume_level.textContent;        
+        r.style.setProperty("--Volume",`${volume_level}`);
     }
 
     current_level.volume = volume_level / 10;
-
-    r.style.setProperty("--Volume",`${volume_level}`);
 }
+
+// Changes the Sfx volume
+const setSfxVolume = (volume_level) => {
+    // If the function is called from the volume control, adjusts the value and changes the slider fullness
+    if(typeof(volume_level) == "object"){
+        volume_level = volume_level.textContent;        
+        r.style.setProperty("--SfxVolume",`${volume_level}`);
+    }
+
+    // Sets the volume level of each sound effect to match the user defined one
+    SfxArray.forEach((sound_effect) => {
+        sound_effect.volume = volume_level / 10;
+    })
+}
+
+setSfxVolume(getComputedStyle(r).getPropertyValue("--SfxVolume"));
 
 // Changes the currently playing video
 const changeVideo = (level) => {
