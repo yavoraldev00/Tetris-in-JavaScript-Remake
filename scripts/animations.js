@@ -129,3 +129,32 @@ const playLevelUpAnimation = () => {
     level_up_container.classList.add("hidden");
   }, 2000);
 }
+
+// Game victory animations
+const playVictoryAnimations = () => {
+  // Shows Congratulations message and palys victory fanfare
+  document.getElementById("congratulations-message").classList.remove("hidden");
+  Victory_intro.currentTime = 0;
+  Victory_intro.play();
+
+  // Plays the record animation and victory music after delay
+  setTimeout(() => {
+    document.getElementById("congratulations-message").classList.add("hidden");
+    document.getElementById("score-message").classList.remove("hidden");
+
+    // Sets the record score in records message
+    document.getElementById("victory-score").textContent = pieceState.score;
+
+    // Add score sound effect
+    levelUp.currentTime = 0;
+    levelUp.play();
+
+    // Shows the restart music after a short delay
+    setTimeout(() => {
+      Victory.currentTime = 0;
+      Victory.play();
+
+      document.getElementById("victory").classList.remove("hidden");
+    }, 2500);
+  }, 5000);
+}

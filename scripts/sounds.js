@@ -1,5 +1,4 @@
 // Sound effects
-
 const hardDropSound = new Audio("resources/se_game_harddrop.wav");
 hardDropSound.load();
 
@@ -27,21 +26,22 @@ clearTetris.load();
 const gameOver = new Audio("resources/game_over.mp3");
 gameOver.load();
 
+const Victory_intro = new Audio("resources/victory_intro.mp3");
+Victory_intro.load();
+
 const Victory = new Audio("resources/victory.mp3");
 Victory.load();
+Victory.loop = true;
 
 const pauseSound = new Audio("resources/pause.wav");
 pauseSound.load();
-
-const scoreSound = new Audio("resources/score.mp3");
-scoreSound.load();
 
 const levelUp = new Audio("resources/level_up.wav");
 levelUp.load();
 
 // Array containing all sound effects. Used for adjusting SFX volume
 const SfxArray = [
-    hardDropSound, moveSound, rotateSound, softDropSound, clearSingle, clearDouble, clearTriple, clearTetris, gameOver, Victory, pauseSound, scoreSound, levelUp
+    hardDropSound, moveSound, rotateSound, softDropSound, clearSingle, clearDouble, clearTriple, clearTetris, gameOver, Victory_intro, Victory, pauseSound, levelUp
 ]
 
 // Level music
@@ -50,6 +50,9 @@ level_1.load();
 
 const level_3 = new Audio("resources/level_3_7.mp3");
 level_3.load();
+
+const level_4_intro = new Audio("resources/level_4_intro.m4a");
+level_4_intro.load();
 
 const level_4 = new Audio("resources/level_4.mp3");
 level_4.load();
@@ -135,7 +138,7 @@ const changeMusic = (level) => {
         case level == 1: current_level = level_1; break;
         case level == 2: current_level = level_1; break;
         case level == 3: current_level = level_3; break;
-        case level == 4: current_level = level_4; break;
+        case level == 4: current_level = level_4_intro; break;
         case level == 7: current_level = level_7; break;
         case level == 8: current_level = level_8; break;
         case level == 10: current_level = level_10; break;
@@ -151,7 +154,18 @@ const changeMusic = (level) => {
 
     // Sets the level theme to loop and start at the beginning
     current_level.loop = true;
-    current_level.currentTime = 0;
+    if([10,11,14,15,16, 20].includes(level)){
+        switch(true){
+            case level == 10: current_level.currentTime = 6.7; break;
+            case level == 11: current_level.currentTime = 17.6; break;
+            case level == 14: current_level.currentTime = 12.8; break;
+            case level == 15: current_level.currentTime = 56.5; break;
+            case level == 16: current_level.currentTime = 23.3; break;
+            case level == 20: current_level.currentTime = 59.7; break;
+        }
+    }else{
+        current_level.currentTime = 0;
+    }
 
     // Updates the volume to match the user selected one
     setMusicVolume(getComputedStyle(r).getPropertyValue("--Volume"));
@@ -159,5 +173,16 @@ const changeMusic = (level) => {
     // Starts song after 1 second delay
     setTimeout(() => {
         current_level.play();
+
+        if(level == 4){
+            setTimeout(() => {
+                current_level.pause();
+                current_level = level_4;
+                current_level.loop = true;
+                current_level.currentTime = 0;
+                setMusicVolume(getComputedStyle(r).getPropertyValue("--Volume"));
+                current_level.play();
+            }, 3080);
+        }
     }, 1000);
 }

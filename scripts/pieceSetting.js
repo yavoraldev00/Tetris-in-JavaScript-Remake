@@ -392,6 +392,11 @@ const restartGame = () => {
     current_video.classList.remove("hidden");
     current_video.play();
 
+    Victory_intro.pause();
+    Victory.pause();
+    document.getElementById("victory").classList.add("hidden");
+    document.getElementById("score-message").classList.add("hidden");
+
     // Resets sprite to level 1
     document.getElementById("sprite").src = "resources/level_1_sprite.png";
 

@@ -145,8 +145,22 @@
 
         <!-- Game Victory screen -->
         <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-zinc-500 z-30 border-2 border-gray-400 rounded-md" id="game-victory-msg">
-            <p class="text-2xl font-silkscreen">Victory!</p>
-            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 my-auto text-xl rounded-xl cursor-pointer" id="game-over" onclick=restartGame() >Restart?</button>
+            <p class="text-2xl font-silkscreen animate-bounce hidden" id="congratulations-message">CONGRATULATIONS!</p>
+
+            <div id="score-message" class="hidden">
+                <div class="border-b-2 border-b-blue-400 overflow-hidden">
+                    <p class="text-3xl font-silkscreen text-center animateReveal">RECORD</p>
+                </div>
+    
+                <div class="flex">
+                    <div class="flex w-full gap-1 justify-center scoreAppear">
+                        <p class="text-xl font-silkscreen">SCORE:</p>
+                        <p class="text-xl font-silkscreen" id="victory-score">342342</p>
+                    </div>
+                </div>
+            </div>
+
+            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 my-auto text-xl rounded-xl cursor-pointer hidden" id="victory" onclick=restartGame() >Restart?</button>
         </div>
     </div>
 

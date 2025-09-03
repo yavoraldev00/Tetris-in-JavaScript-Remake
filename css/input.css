@@ -203,6 +203,35 @@
   }
 }
 
+.animateReveal {
+  animation: scoreReveal .3s linear;
+}
+
+@keyframes scoreReveal {
+  0% {transform: translateY(100%)}
+  100% {transform: translateY(0%)}
+}
+
+.scoreAppear {
+  animation: appear .4s linear forwards;
+}
+
+@keyframes appear {
+  0% {opacity: 0;}
+  99% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
+.scoreAppear {
+  animation: appear .4s linear forwards;
+}
+
+@keyframes appear {
+  0% {opacity: 0;}
+  99% {opacity: 0;}
+  100% {opacity: 1;}
+}
+
 .row {
   @apply flex w-fit;
 }

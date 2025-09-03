@@ -59,11 +59,11 @@ const gameOverScreen = () => {
 
 // Shows game victory screen
 const gameVictoryScreen = () => {
+    // Shows victory screen
     document.querySelector("#game-victory-msg").classList.remove("hidden");
 
-    // Victory sound
-    Victory.currentTime = 0;
-    Victory.play();
+    // Plays victory sounds and animations
+    playVictoryAnimations();
 };
 
 // Finishes the game

@@ -60,18 +60,18 @@ const checkForLineClear = () => {
 
         // Only does further checks if new level is reached (10, 20, 30 etc.)
         if(filledRows.length > 0 && (pieceState.currentLines % 10 < 4 && oldLines % 10 > 5)){
-            // Updates the current level
-            pieceState.currentLevel += 1;
-            levelText.textContent = pieceState.currentLevel;
-
-            // If level 20 is reached, game finishes
-            if(pieceState.currentLevel == 20){
+            // If 200 lines reached, game finishes
+            if(pieceState.currentLines >= 200){
                 // Shows victory screen
                 gameVictoryScreen();
 
                 // Ends the game
                 endGame();
             } else{
+                // Updates the current level
+                pieceState.currentLevel += 1;
+                levelText.textContent = pieceState.currentLevel;
+
                 // Plays level up sound effect
                 playLevelUpAnimation();
     
