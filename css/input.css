@@ -91,6 +91,10 @@
   aspect-ratio: 1/1;
 }
 
+.volume-control-styling {
+  @apply my-auto flex flex-col items-center gap-2;
+}
+
 #tetris-clear-message {
   background: repeating-linear-gradient(90deg in hsl longer hue, red 0 50%) 0/200%;
   animation: r 1.5s linear infinite, tetris-clear-animation 1.25s ease-in-out;

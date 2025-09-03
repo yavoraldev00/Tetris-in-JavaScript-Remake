@@ -16,10 +16,12 @@ const beginGame = () => {
     startGame();
 };
 
+// Pauses the game
 const pauseGame = () => {
+    // Shows pause message
     pauseGameMsg.classList.remove("hidden")
-
-    // Pauses the game
+ 
+    // Pauses the game from playing
     pieceState.currentGameActive = false;
 
     // Pauses music
@@ -31,6 +33,19 @@ const pauseGame = () => {
     // Plays pause sound effect
     pauseSound.currentTime = 0;
     pauseSound.play();
+};
+
+const unpauseGame = () => {
+    pauseGameMsg.classList.add("hidden")
+
+    // Sets the game state to be active, allowing controlls
+    pieceState.currentGameActive = true;
+
+    // Un-pauses music
+    current_level.play();
+
+    // Un-pauses the gameplay video
+    current_video.play();
 };
 
 // Shows game over screen
@@ -71,21 +86,6 @@ const endGame = () => {
     // Stops currently playing video
     current_video.pause(); 
 };
-
-const unpauseGame = () => {
-    pauseGameMsg.classList.add("hidden")
-
-    // Sets the game state to be active, allowing controlls
-    pieceState.currentGameActive = true;
-
-    // Un-pauses music
-    current_level.play();
-
-    // Un-pauses the gameplay video
-    current_video.play();
-};
-
-
 
 // Updates the game score
 // Only for player movements
@@ -129,7 +129,7 @@ document.addEventListener("keydown", (e)=> {
             }else if(pressedKey == "a"){ // If directional keys are perssed, moves piece
                 updateHeldPiece()
             }else if(pressedKey == "Escape"){
-                pauseGame()
+                pauseGame();
             }
         
             if(pieceState.currentLineClearAnimation == false){
@@ -138,5 +138,9 @@ document.addEventListener("keydown", (e)=> {
         
             // console.log(pieceState.currentRotation)
         }
+
+        // If the game is paused, the Escape key is pressed and the pause message is showing, allows to unpause the game
+    }else if(!pieceState.gameActive && e.key == "Escape" && !pauseGameMsg.classList.contains("hidden")){
+        unpauseGame();
     }
 })
