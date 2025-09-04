@@ -115,7 +115,10 @@ const setSfxVolume = (volume_level) => {
     })
 }
 
+// Sets initial sound volume
+setMusicVolume(getComputedStyle(r).getPropertyValue("--Volume"));
 setSfxVolume(getComputedStyle(r).getPropertyValue("--SfxVolume"));
+
 
 // Changes the currently playing video
 const changeVideo = (level) => {

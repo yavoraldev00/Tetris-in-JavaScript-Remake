@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <!-- <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet"> -->
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Silkscreen:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/output.css">
     <link rel="shortcut icon" href="#"> <!-- fav icon error -->
@@ -24,19 +23,20 @@
         <!-- Held piece and other information -->
         <div class="bg-zinc-600 bg-opacity-50 col-span-2 flex flex-col items-center">
             <div id="held-piece-board" class="my-4 held-used"></div>
-            <div class="font-extrabold font-silkscreen">Held Piece</div>
+            <div class="font-extrabold text-lg font-silkscreen">Held Piece</div>
             <p class="font-silkscreen my-2">Lines cleared: <span id="lines">0</span></p>
-            <p class="font-silkscreen">Level: <span id="level">1</span></p>
-
-            <div class="mt-8 font-silkscreen flex hidden" id="level-up-message">
-                <img src="img/arrow-up.svg" alt="" srcset="" class="h-4 animate-arrow">
-                <div class="text-nowrap text-sm h-fit self-end animate-level-text">LEVELUP</div>
-                <img src="img/arrow-up.svg" alt="" srcset="" class="h-4 animate-arrow">
+            <div class="h-24 flex flex-col items-center">
+                <p class="font-silkscreen">Level: <span id="level">1</span></p>
+                
+                <div class="mt-8 font-silkscreen flex hidden" id="level-up-message">
+                    <img src="img/arrow-up.svg" alt="" srcset="" class="h-4 animate-arrow">
+                    <div class="text-nowrap text-sm h-fit self-end animate-level-text">LEVELUP</div>
+                    <img src="img/arrow-up.svg" alt="" srcset="" class="h-4 animate-arrow">
+                </div>
             </div>
-            
 
-            <div class="volume-control-styling">
-                <div>Volume level:</div>
+            <div class="volume-control-styling font-silkscreen">
+                <div>Volume level</div>
                 <div class="flex" id="volume-control">
                     <div class="cursor-pointer w-8 text-transparent" onclick="setMusicVolume(this)">1</div>
                     <div class="cursor-pointer w-8 text-transparent" onclick="setMusicVolume(this)">2</div>
@@ -51,8 +51,8 @@
                 </div>
             </div>
 
-            <div class="volume-control-styling">
-                <div>Sfx volume level:</div>
+            <div class="volume-control-styling font-silkscreen">
+                <div>Sfx volume level</div>
                 <div class="flex" id="sfx-control">
                     <div class="cursor-pointer w-8 text-transparent" onclick="setSfxVolume(this)">1</div>
                     <div class="cursor-pointer w-8 text-transparent" onclick="setSfxVolume(this)">2</div>
@@ -108,44 +108,52 @@
             </div>
             
             <div id="next-piece-board" class="my-4"></div>
-            <div class="font-extrabold font-silkscreen">Next Piece</div>
+            <div class="font-extrabold text-lg font-silkscreen">Next Piece</div>
             <p class="font-silkscreen">Score:</p>
             <p class="font-silkscreen" id="score">0</p>
 
             <div class="my-3"></div> <!-- Spacer between score and controlls -->
 
-            <h2 class="text-lg font-semibold">Controlls</h2>
-            <p>Esc - Pause</p>
-            <p>Left/Right Arrow Key - Movement</p>
-            <p>Up Arrow key - Hard drop</p>
-            <p>Down Arrow key - Soft drop</p>
-            <p>Z - Rotate left</p>
-            <p>X - Rotate right</p>
-            <p>A - Hold piece</p>
+            <h2 class="text-lg font-semibold font-silkscreen mb-4">Controlls</h2>
+            <p class="flex items-center"><img src="img/esc_icon.png" alt="" srcset="" class="h-10"> - Pause</p>
+            <p class="flex items-center"><img src="img/left_icon.png" alt="" srcset="" class="h-10"><img src="img/right_icon.png" alt="" srcset="" class="h-10"> - Movement</p>
+            <p class="flex items-center"><img src="img/up_icon.png" alt="" srcset="" class="h-10"> - Hard drop</p>
+            <p class="flex items-center"><img src="img/down_icon.png" alt="" srcset="" class="h-10"> - Soft drop</p>
+            <div class="flex items-center gap-2">
+                <p class="flex items-center"><img src="img/z_icon.png" alt="" srcset="" class="h-10"> - Rotate left</p>
+                <div class="rotate-180">↺</div>
+            </div>
+            <div class="flex items-center gap-2">
+                <p class="flex items-center"><img src="img/x_icon.png" alt="" srcset="" class="h-10"> - Rotate right</p>
+                <div class="rotate-180">↻</div>
+            </div>
+            <p class="flex items-center"><img src="img/a_icon.png" alt="" srcset="" class="h-10"> - Hold piece</p>
         </div>
 
         <!-- Start of game message -->
         <div class="flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-zinc-500 z-30 border-2 border-gray-400 rounded-md" id="start-msg">
-            <p class="text-2xl font-silkscreen">Welcome</p>
+            <p class="text-3xl font-silkscreen">Welcome</p>
             <p class="text-center">This is a recreation of the game Tetris, recreated in JavaScript. You can see the controls on the right side of the screen. On the left side of the screen you may select various background music to listen to while you're playing. When you are ready, click the "Start" button to begin.</p>
-            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 text-xl rounded-xl cursor-pointer" id="start-game" onclick=beginGame()>Start</button>
+            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 text-xl rounded-xl cursor-pointer font-silkscreen" id="start-game" onclick=beginGame()>Start</button>
         </div>
 
         <!-- Pause message -->
         <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-zinc-500 z-30 border-2 border-gray-400 rounded-md" id="pause-msg">
-            <p class="text-2xl font-silkscreen">PAUSED</p>
-            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 my-auto text-xl rounded-xl cursor-pointer" id="resume-game" onclick=unpauseGame()>Continue</button>
+            <p class="text-3xl font-silkscreen">PAUSED</p>
+            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 my-auto text-xl rounded-xl cursor-pointer font-silkscreen" id="resume-game" onclick=unpauseGame()>Continue</button>
         </div>
 
         <!-- Game Over screen -->
         <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-zinc-500 z-30 border-2 border-gray-400 rounded-md" id="game-over-msg">
-            <p class="text-2xl font-silkscreen">Game Over :(</p>
-            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 my-auto text-xl rounded-xl cursor-pointer" id="game-over" onclick=restartGame() >Restart?</button>
+            <p class="text-3xl font-silkscreen">Game Over :(</p>
+            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 my-auto text-xl rounded-xl cursor-pointer font-silkscreen" id="game-over" onclick=restartGame() >Restart?</button>
         </div>
 
         <!-- Game Victory screen -->
-        <div class="hidden flex flex-col items-center gap-6 p-4 w-1/4 h-5/6 absolute self-center left-1/2 -translate-x-1/2 bg-zinc-500 z-30 border-2 border-gray-400 rounded-md" id="game-victory-msg">
-            <p class="text-2xl font-silkscreen animate-bounce hidden" id="congratulations-message">CONGRATULATIONS!</p>
+        <div class="hidden text-2xl flex flex-col items-center gap-6 p-4 w-1/3 h-full absolute self-center left-1/2 -translate-x-1/2 bg-black bg-opacity-90 z-30 pt-20 rounded-md" id="game-victory-msg">
+            <div class="scale-150">
+                <p class=" font-silkscreen animate-bounce hidden" id="congratulations-message">CONGRATULATIONS!</p>
+            </div>
 
             <div id="score-message" class="hidden">
                 <div class="border-b-2 border-b-blue-400 overflow-hidden">
@@ -160,7 +168,7 @@
                 </div>
             </div>
 
-            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 my-auto text-xl rounded-xl cursor-pointer hidden" id="victory" onclick=restartGame() >Restart?</button>
+            <button class="bg-gray-300 bg-opacity-40 py-2 px-4 my-auto text-xl rounded-xl cursor-pointer font-silkscreen hidden" id="victory" onclick=restartGame() >Restart?</button>
         </div>
     </div>
 
