@@ -4,6 +4,6 @@
 
 ## Summary
 
-https://github.com/yavoraldev00/Tetris-in-JavaScript-Remake/blob/main/img/Tetris%20showcase.mp4
+https://github.com/yavoraldev00/Tetris-in-JavaScript-Remake/issues/1#issue-3484063127
 
 This is a browser version of the game "Tetris DS" I've remade using plain JavaScript for the logic and Tailwind for the styling
