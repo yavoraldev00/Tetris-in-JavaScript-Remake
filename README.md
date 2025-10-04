@@ -1,24 +1,9 @@
-# Tetris-in-JavaScript-Remake
+# Tetris in JavaScript
 
-## Features to add
-1. (Advanced) Wall kicks - Floor kicks, wall kicks against other pieces, t-spins
-2. Line clear animation
-3. Sound effects ( line clear, tetris, piece drop )
-4. Music
-5. Game loop
-6. Instructions
-7. Improved UI
-8. Score
-9. Leaderboards
+[Play here](https://yavoraldev00.github.io/Tetris-in-JavaScript-Remake/)
 
-### How to create line clear animation
-- while cycle
-- disable controls
-- disable game state
-- https://stackoverflow.com/questions/16623852/how-to-pause-javascript-code-execution-for-2-seconds
-- piece setting game controls
-- difficulty
-- levels
-- t-spins
+## Summary
 
-#### Features to fix
+VIDEO LINK
+
+This is a browser version of the game "Tetris DS" I've remade using plain JavaScript for the logic and Tailwind for the styling
